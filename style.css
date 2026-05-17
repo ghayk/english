@@ -393,7 +393,7 @@ table.mini .q   { color: var(--violet); font-weight: 500; font-family: var(--mon
 /* ─── TENSES ─── */
 .tense-comparison {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0;
   border: 1px solid var(--border);
   margin-bottom: 48px;
@@ -407,6 +407,7 @@ table.mini .q   { color: var(--violet); font-weight: 500; font-family: var(--mon
 .tense-col:nth-child(1) { border-top: 3px solid var(--violet); }
 .tense-col:nth-child(2) { border-top: 3px solid var(--cyan); }
 .tense-col:nth-child(3) { border-top: 3px solid var(--amber); }
+.tense-col:nth-child(4) { border-top: 3px solid var(--green); }
 .tense-name {
   font-family: var(--serif);
   font-size: 17px;
