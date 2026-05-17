@@ -1,0 +1,3601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Study Guide — A1/A2</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0a0b0f;
+  --surface:  #111318;
+  --surface2: #181c24;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --text:     #e8eaf0;
+  --muted:    #5a6075;
+  --dim:      #3a3f52;
+  --cyan:     #00d4c8;
+  --cyan-dim: rgba(0,212,200,0.12);
+  --violet:   #8b7cf8;
+  --violet-dim: rgba(139,124,248,0.12);
+  --amber:    #f5a623;
+  --amber-dim: rgba(245,166,35,0.1);
+  --red:      #ff4757;
+  --green:    #2ed573;
+  --serif:    'Syne', sans-serif;
+  --sans:     'Space Grotesk', sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* Grid texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,200,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,200,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── HEADER ─── */
+header {
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.header-left {
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-right {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0d1020 0%, #0a0b0f 100%);
+  border-left: 1px solid var(--border);
+}
+
+/* Glowing orb background */
+.header-right::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(139,124,248,0.18) 0%, rgba(0,212,200,0.06) 50%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+}
+
+.header-right::before {
+  content: 'Aa Bb Cc\A Dd Ee Ff\A Gg Hh Ii';
+  white-space: pre;
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 80px;
+  font-weight: 800;
+  color: rgba(139,124,248,0.07);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+}
+
+.flag-strip {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--red) 33.33%, var(--amber) 33.33% 66.66%, var(--violet) 66.66%);
+}
+
+.subtitle-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid rgba(0,212,200,0.25);
+  padding: 6px 14px;
+  margin-bottom: 32px;
+  background: rgba(0,212,200,0.06);
+  animation: fadeUp 0.8s ease both;
+}
+.subtitle-tag::before {
+  content: '◆';
+  font-size: 6px;
+  animation: pulse 2s infinite;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 7vw, 100px);
+  font-weight: 800;
+  line-height: 0.92;
+  color: var(--text);
+  letter-spacing: -3px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--cyan);
+  position: relative;
+}
+
+.header-desc {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 360px;
+  margin-bottom: 52px;
+  line-height: 1.8;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+
+.header-meta {
+  display: flex;
+  gap: 40px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+.meta-item { text-align: left; }
+.meta-num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--cyan);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.meta-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  font-family: var(--mono);
+  margin-top: 4px;
+  display: block;
+}
+
+.big-letter {
+  font-family: var(--serif);
+  font-size: clamp(160px, 28vw, 340px);
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(139,124,248,0.4);
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 1s 0.4s ease both;
+  letter-spacing: -8px;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,11,15,0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  padding: 18px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .2s;
+  position: relative;
+}
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20px; right: 20px;
+  height: 2px;
+  background: var(--cyan);
+  transform: scaleX(0);
+  transition: transform .25s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 0 8px var(--cyan);
+}
+.nav-btn:hover, .nav-btn.active { color: var(--text); }
+.nav-btn.active::after, .nav-btn:hover::after { transform: scaleX(1); }
+
+@media (max-width: 768px) {
+  .nav-inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0;
+    overflow: visible;
+    gap: 0;
+  }
+  .nav-btn {
+    padding: 12px 4px;
+    font-size: 8px;
+    letter-spacing: .04em;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    white-space: normal;
+    line-height: 1.3;
+  }
+  .nav-btn::after { left: 0; right: 0; bottom: 0; }
+  .nav-btn:nth-child(4n) { border-right: none; }
+}
+
+/* ─── MAIN ─── */
+main { max-width: 1200px; margin: 0 auto; padding: 80px 40px; position: relative; z-index: 1; }
+
+/* ─── SECTION TITLES ─── */
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.section-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--muted);
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-kicker::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  max-width: 200px;
+}
+.section-kicker span { color: var(--cyan); }
+
+/* ─── GRAMMAR SECTION ─── */
+.grammar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.grammar-card {
+  background: var(--surface);
+  padding: 28px 32px;
+  transition: background .2s;
+}
+.grammar-card:hover { background: var(--surface2); }
+
+.grammar-card h3 {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+.grammar-card h3::before {
+  content: attr(data-icon);
+  width: 32px; height: 32px;
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,212,200,0.2);
+}
+
+table.mini {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+table.mini th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+table.mini td {
+  padding: 7px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: top;
+  color: var(--text);
+}
+table.mini tr:last-child td { border-bottom: none; }
+table.mini .pos { color: var(--green); font-weight: 500; font-family: var(--mono); font-size: 11px; }
+table.mini .neg { color: var(--red); font-weight: 500; font-family: var(--mono); font-size: 11px; }
+table.mini .q   { color: var(--violet); font-weight: 500; font-family: var(--mono); font-size: 11px; }
+
+.example {
+  font-size: 12.5px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid rgba(0,212,200,0.3);
+  padding-left: 10px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.chip {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--violet);
+}
+
+/* ─── TENSES ─── */
+.tense-comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.tense-col {
+  padding: 32px;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+.tense-col:last-child { border-right: none; }
+.tense-col:nth-child(1) { border-top: 3px solid var(--violet); }
+.tense-col:nth-child(2) { border-top: 3px solid var(--cyan); }
+.tense-col:nth-child(3) { border-top: 3px solid var(--amber); }
+.tense-name {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.tense-use {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.signal-words {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.signal-word {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--cyan);
+  padding: 4px 8px;
+  background: var(--cyan-dim);
+}
+
+/* ─── FREQ BAR ─── */
+.freq-section { margin-bottom: 48px; }
+.freq-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 60px;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.freq-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  text-align: right;
+}
+.freq-bar-wrap {
+  height: 20px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.freq-bar {
+  height: 100%;
+  position: absolute;
+  left: 0; top: 0;
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+.freq-pct {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ─── VOCAB ─── */
+.vocab-section { display: none; }
+.vocab-section.active { display: block; }
+
+.vocab-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  margin-bottom: 40px;
+  overflow-x: auto;
+}
+.vtab {
+  background: none;
+  border: none;
+  border-right: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 14px 22px;
+  cursor: pointer;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: all .2s;
+}
+.vtab:last-child { border-right: none; }
+.vtab.active, .vtab:hover { background: var(--cyan-dim); color: var(--cyan); }
+
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+.vocab-card {
+  background: var(--surface);
+  padding: 16px 20px;
+  cursor: default;
+  transition: background .15s, transform .15s;
+  position: relative;
+}
+.vocab-card:hover {
+  background: var(--surface2);
+  transform: translateY(-2px);
+  z-index: 2;
+}
+.vocab-card:hover .v-en { color: var(--cyan); }
+.v-en {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  transition: color .15s;
+  margin-bottom: 3px;
+}
+.v-am {
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--mono);
+  transition: color .15s;
+  margin-bottom: 5px;
+}
+.v-ex {
+  font-size: 11px;
+  color: var(--dim);
+  font-style: italic;
+  transition: color .15s;
+  line-height: 1.4;
+}
+
+/* ─── OPPOSITES ─── */
+.opp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--border);
+}
+.opp-pair {
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+}
+.opp-word {
+  flex: 1;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.opp-divider {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--cyan);
+  padding: 0 14px;
+  letter-spacing: .12em;
+}
+.opp-word.right { text-align: right; color: var(--violet); }
+
+/* ─── TIME ─── */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 32px;
+}
+.time-card {
+  background: var(--surface);
+  padding: 20px;
+  transition: background .15s;
+}
+.time-card:hover { background: var(--surface2); }
+.time-clock {
+  font-family: var(--mono);
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--cyan);
+  margin-bottom: 6px;
+  letter-spacing: .04em;
+}
+.time-say {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ─── PHRASES ─── */
+.phrase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.phrase-item {
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 20px;
+  transition: background .15s;
+}
+.phrase-item:hover { background: var(--surface2); }
+.phrase-en {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text);
+}
+.phrase-tag {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.tag-greeting  { background: var(--violet-dim); color: var(--violet); border: 1px solid rgba(139,124,248,0.2); }
+.tag-restaurant{ background: rgba(255,71,87,0.1); color: var(--red); border: 1px solid rgba(255,71,87,0.2); }
+.tag-family    { background: rgba(46,213,115,0.1); color: var(--green); border: 1px solid rgba(46,213,115,0.2); }
+.tag-general   { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,166,35,0.2); }
+
+/* ─── IRREGULAR VERBS ─── */
+.irr-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.irr-table thead tr { background: var(--surface2); }
+.irr-table thead th {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--cyan);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border2);
+}
+.irr-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background .1s;
+}
+.irr-table tbody tr:hover { background: var(--surface2); }
+.irr-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+.irr-table tbody tr:nth-child(even):hover { background: var(--surface2); }
+.irr-table td {
+  padding: 10px 16px;
+  vertical-align: middle;
+}
+.irr-table .col-base  { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--text); width: 14%; }
+.irr-table .col-past  { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--red); width: 16%; }
+.irr-table .col-pp    { font-family: var(--serif); font-size: 15px; font-weight: 700; color: var(--violet); width: 16%; }
+.irr-table .col-arm   { font-family: var(--mono); font-size: 11px; color: var(--muted); width: 26%; }
+.irr-table .col-ex    { font-size: 12px; color: var(--dim); font-style: italic; width: 28%; }
+
+.irr-filter-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.irr-filter {
+  background: none;
+  border: 1px solid var(--border2);
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: 7px 16px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all .15s;
+}
+.irr-filter:hover, .irr-filter.active {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border-color: rgba(0,212,200,0.3);
+}
+.irr-search {
+  margin-left: auto;
+  padding: 7px 14px;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+  width: 200px;
+  outline: none;
+  transition: border-color .15s;
+}
+.irr-search::placeholder { color: var(--muted); }
+.irr-search:focus { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(0,212,200,0.1); }
+.irr-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.irr-table th { position: relative; cursor: pointer; user-select: none; }
+.irr-table th .sort-arrow {
+  display: inline-block;
+  font-size: 10px;
+  opacity: 0.3;
+  margin-left: 4px;
+  transition: opacity .15s;
+}
+.irr-table th:hover .sort-arrow { opacity: 0.7; }
+.irr-table th.sorted .sort-arrow { opacity: 1; color: var(--cyan); }
+
+/* ─── QUIZ ─── */
+.quiz-wrap {
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.quiz-header {
+  background: var(--surface2);
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.quiz-header h3 {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 700;
+}
+.quiz-score {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--cyan);
+}
+.quiz-body { padding: 32px; background: var(--surface); }
+.quiz-q {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.quiz-hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 28px;
+}
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.quiz-opt {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  padding: 14px 18px;
+  font-family: var(--sans);
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all .15s;
+  color: var(--text);
+}
+.quiz-opt:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); }
+.quiz-opt.correct { background: rgba(46,213,115,0.1); border-color: rgba(46,213,115,0.4); color: var(--green); font-weight: 500; }
+.quiz-opt.wrong   { background: rgba(255,71,87,0.1); border-color: rgba(255,71,87,0.4); color: var(--red); font-weight: 500; }
+.quiz-opt:disabled { cursor: default; }
+.quiz-feedback {
+  font-size: 13px;
+  min-height: 24px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  font-family: var(--mono);
+}
+.quiz-feedback.ok  { color: var(--green); }
+.quiz-feedback.err { color: var(--red); }
+.quiz-next {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border: 1px solid rgba(0,212,200,0.25);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all .15s;
+}
+.quiz-next:hover { background: rgba(0,212,200,0.2); box-shadow: 0 0 16px rgba(0,212,200,0.2); }
+.quiz-progress {
+  width: 100%;
+  height: 2px;
+  background: var(--surface2);
+  margin-top: 20px;
+}
+.quiz-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--violet));
+  transition: width .4s;
+  box-shadow: 0 0 8px var(--cyan);
+}
+
+/* ─── PLACES / JOBS ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.list-block h4 {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+.place-grid, .job-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+}
+.place-item, .job-item {
+  background: var(--surface);
+  padding: 10px 16px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background .12s;
+}
+.place-item:hover, .job-item:hover { background: var(--surface2); }
+.place-item::before {
+  content: '›';
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--cyan);
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+/* ─── p-en / p-am ─── */
+.p-en { color: var(--text); font-weight: 500; }
+.p-am { color: var(--muted); font-family: var(--mono); font-size: 11px; margin-left: auto; }
+
+/* ─── SECTION WRAPPERS ─── */
+.page-section { display: none; padding-top: 20px; }
+.page-section.active { display: block; }
+
+/* ─── INLINE STYLE OVERRIDES (dark mode for inline bg/color) ─── */
+[style*="background:var(--surface)"] { background: var(--surface) !important; }
+[style*="background:var(--surface2)"] { background: var(--surface2) !important; }
+[style*="color:var(--muted)"] { color: var(--muted) !important; }
+[style*="color:var(--violet)"] { color: var(--violet) !important; }
+[style*="color:var(--red)"] { color: var(--red) !important; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--surface);
+  color: var(--muted);
+  text-align: center;
+  padding: 32px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  margin-top: 80px;
+  border-top: 1px solid var(--border);
+}
+footer strong { color: var(--cyan); }
+
+/* ─── LESSONS SECTION ─── */
+.lessons-intro {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 32px;
+  padding: 18px 24px;
+  background: var(--surface);
+  border-left: 3px solid var(--cyan);
+  line-height: 1.7;
+}
+.lessons-intro strong { color: var(--text); }
+
+.lesson-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.lesson-card.exam { border-left: 3px solid var(--red); }
+.lesson-card.live { border-left: 3px solid var(--cyan); }
+
+.lesson-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 24px 32px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+.lesson-num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+.lesson-num em {
+  font-style: normal;
+  color: var(--cyan);
+}
+.lesson-card.exam .lesson-num em { color: var(--red); }
+
+.lesson-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 12px;
+  border: 1px solid var(--border2);
+  background: var(--bg);
+}
+.lesson-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: rgba(255,71,87,0.12);
+  color: var(--red);
+  border: 1px solid rgba(255,71,87,0.3);
+}
+.lesson-tag.live-tag {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border-color: rgba(0,212,200,0.3);
+}
+
+.lesson-body { padding: 32px; }
+.lesson-body.center { text-align: center; padding: 48px 32px; }
+
+.topic-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.topic-pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  background: var(--violet-dim);
+  color: var(--violet);
+  border: 1px solid rgba(139,124,248,0.25);
+}
+
+.topic-block {
+  margin-bottom: 36px;
+  padding-bottom: 28px;
+  border-bottom: 1px dashed var(--border2);
+}
+.topic-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.topic-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.topic-arm {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--amber);
+  letter-spacing: .02em;
+}
+.topic-formula {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--cyan);
+  background: var(--cyan-dim);
+  padding: 8px 14px;
+  margin-bottom: 18px;
+  border-left: 2px solid var(--cyan);
+  display: inline-block;
+}
+
+/* Conjugation tables (be going to / would like) */
+.conj-table {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+.conj-table.cols-3 { grid-template-columns: minmax(120px, 1fr) minmax(120px, 1.4fr) minmax(100px, 1fr); }
+.conj-table.cols-4 { grid-template-columns: 100px minmax(120px, 1fr) minmax(120px, 1.4fr) minmax(100px, 1fr); }
+
+.conj-table .ch {
+  padding: 10px 14px;
+  background: var(--surface2);
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+.conj-table .cell {
+  padding: 10px 14px;
+  background: var(--surface);
+  color: var(--text);
+  line-height: 1.6;
+}
+.conj-table .cell.subj { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+.conj-table .cell.pos { color: var(--green); font-weight: 500; }
+.conj-table .cell.neg { color: var(--red); font-weight: 500; }
+.conj-table .cell.q { color: var(--violet); font-weight: 500; }
+.conj-table .cell.tail { color: var(--muted); font-style: italic; }
+
+.conj-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+.conj-grid-2 > div > .conj-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--muted);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.conj-label.pos-label { color: var(--green); }
+.conj-label.neg-label { color: var(--red); }
+.conj-label.q-label { color: var(--violet); }
+
+.three-forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.three-forms > div {
+  padding: 14px 18px;
+  background: var(--surface);
+}
+.three-forms .lbl {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.three-forms .pos-bg { border-top: 2px solid var(--green); }
+.three-forms .neg-bg { border-top: 2px solid var(--red); }
+.three-forms .q-bg { border-top: 2px solid var(--violet); }
+.three-forms .sentence {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.homework-block {
+  margin-top: 28px;
+  padding: 24px 28px;
+  background: var(--amber-dim);
+  border-left: 3px solid var(--amber);
+}
+.homework-block .hw-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--amber);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.homework-block .hw-title::before { content: '📌'; }
+.hw-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.hw-list li {
+  font-size: 13px;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.hw-list .hw-topic {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--cyan);
+  padding: 2px 8px;
+  background: var(--cyan-dim);
+  flex-shrink: 0;
+}
+.hw-list a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--muted);
+  word-break: break-all;
+  transition: color .2s, border-color .2s;
+}
+.hw-list a:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
+
+.exam-icon {
+  font-family: var(--serif);
+  font-size: 80px;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--red);
+  letter-spacing: -3px;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+.exam-msg {
+  font-family: var(--mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--muted);
+}
+
+/* ─── COMPACT LESSON CARDS (for timeline of all lessons) ─── */
+.lesson-card.compact .lesson-body { padding: 24px 32px; }
+
+.mini-block {
+  margin-bottom: 18px;
+}
+.mini-block:last-child { margin-bottom: 0; }
+.mini-block-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--cyan);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mini-block-title::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+}
+.mini-block p, .mini-block .ex-line {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.mini-block .ex-line {
+  font-style: italic;
+  color: var(--muted);
+  padding-left: 14px;
+  border-left: 1px solid var(--border2);
+}
+.mini-block .ex-line strong { color: var(--text); font-style: normal; }
+
+.mini-formula {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--violet);
+  background: var(--violet-dim);
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  border-left: 2px solid var(--violet);
+  display: inline-block;
+}
+
+.tiny-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin: 8px 0 4px;
+}
+.tiny-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.tiny-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: var(--text);
+}
+.tiny-table tr:last-child td { border-bottom: none; }
+.tiny-table .pos { color: var(--green); font-family: var(--mono); font-size: 11px; }
+.tiny-table .neg { color: var(--red); font-family: var(--mono); font-size: 11px; }
+.tiny-table .q   { color: var(--violet); font-family: var(--mono); font-size: 11px; }
+
+.vocab-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.vocab-inline .vi {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3px 0;
+}
+.vocab-inline .vi-en { color: var(--text); }
+.vocab-inline .vi-am { color: var(--muted); font-family: var(--mono); font-size: 10.5px; }
+.vocab-inline .vi-sep { color: var(--dim); }
+
+.two-mini-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+}
+
+@media (max-width: 768px) {
+  .two-mini-cols { grid-template-columns: 1fr; }
+  .conj-table.cols-3, .conj-table.cols-4 { grid-template-columns: 1fr 1fr; }
+  .conj-table .ch:nth-child(n+3), .conj-table.cols-4 .ch:nth-child(n+3) { display: none; }
+  .three-forms { grid-template-columns: 1fr; }
+  .conj-grid-2 { grid-template-columns: 1fr; }
+  .lesson-body { padding: 24px 20px; }
+  .lesson-head { padding: 18px 20px; }
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .header-inner { grid-template-columns: 1fr; }
+  .header-right { display: none; }
+  .header-left  { padding: 60px 32px; min-height: 100vh; }
+  .tense-comparison { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  main { padding: 60px 24px; }
+  .quiz-options { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="flag-strip"></div>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="subtitle-tag">A1 / A2 · English Course 2026</div>
+      <h1>English<br><em>Study</em><br>Guide</h1>
+      <p class="header-desc">A complete reference covering grammar, vocabulary, phrases, and practice from Lessons 1–25.</p>
+      <div class="header-meta">
+        <div class="meta-item">
+          <span class="meta-num">25</span>
+          <span class="meta-label">Lessons</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-num">8</span>
+          <span class="meta-label">Topics</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-num">300+</span>
+          <span class="meta-label">Words</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="big-letter">E</div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('grammar',this)">Grammar</button>
+    <button class="nav-btn" onclick="showSection('tenses',this)">Tenses</button>
+    <button class="nav-btn" onclick="showSection('vocabulary',this)">Vocabulary</button>
+    <button class="nav-btn" onclick="showSection('time',this)">Time</button>
+    <button class="nav-btn" onclick="showSection('phrases',this)">Phrases</button>
+    <button class="nav-btn" onclick="showSection('verbs',this)">Irregular Verbs</button>
+    <button class="nav-btn" onclick="showSection('places',this)">Places & Jobs</button>
+    <button class="nav-btn" onclick="showSection('lessons',this)">Lessons</button>
+    <button class="nav-btn" onclick="showSection('quiz',this)">Quiz</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══ GRAMMAR ═══ -->
+<div id="grammar" class="page-section active">
+  <div class="section-kicker"><span>01 /</span> Core Rules</div>
+  <h2 class="section-title">Grammar</h2>
+
+  <div class="grammar-grid">
+
+    <div class="grammar-card">
+      <h3 data-icon="BE">To be — am / is / are</h3>
+      <table class="mini">
+        <tr><th>Subject</th><th>+</th><th>−</th><th>?</th></tr>
+        <tr><td>I</td><td class="pos">am</td><td class="neg">am not</td><td class="q">Am I?</td></tr>
+        <tr><td>He/She/It</td><td class="pos">is</td><td class="neg">isn't</td><td class="q">Is she?</td></tr>
+        <tr><td>You/We/They</td><td class="pos">are</td><td class="neg">aren't</td><td class="q">Are they?</td></tr>
+      </table>
+      <p class="example">I am a student. → Am I a student? → I am not a student.</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="PS">Present Simple</h3>
+      <table class="mini">
+        <tr><th></th><th>Form</th><th>Example</th></tr>
+        <tr><td class="pos">+</td><td>verb (+s/es he/she/it)</td><td>She works.</td></tr>
+        <tr><td class="neg">−</td><td>don't / doesn't + base</td><td>He doesn't eat.</td></tr>
+        <tr><td class="q">?</td><td>Do / Does + base?</td><td>Do you like coffee?</td></tr>
+      </table>
+      <p class="example">study→studies · watch→watches · go→goes</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="PC">Present Continuous</h3>
+      <table class="mini">
+        <tr><th></th><th>Form</th><th>Example</th></tr>
+        <tr><td class="pos">+</td><td>am/is/are + -ing</td><td>I am reading.</td></tr>
+        <tr><td class="neg">−</td><td>am/is/are + not + -ing</td><td>She isn't sleeping.</td></tr>
+        <tr><td class="q">?</td><td>Am/Is/Are + -ing?</td><td>Are they studying?</td></tr>
+      </table>
+      <p class="example">-ing: live→living · sit→sitting · play→playing</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="PA">Past Simple</h3>
+      <table class="mini">
+        <tr><th></th><th>Form</th><th>Example</th></tr>
+        <tr><td class="pos">+</td><td>verb + -ed / irregular</td><td>I watched / went.</td></tr>
+        <tr><td class="neg">−</td><td>didn't + base verb</td><td>He didn't go.</td></tr>
+        <tr><td class="q">?</td><td>Did + subject + base?</td><td>Did you eat?</td></tr>
+      </table>
+      <p class="example">go→went · see→saw · have→had · buy→bought</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="HG">Have got / Has got</h3>
+      <table class="mini">
+        <tr><th>Subject</th><th>Form</th></tr>
+        <tr><td>I/You/We/They</td><td class="pos">have got / haven't got</td></tr>
+        <tr><td>He/She/It</td><td class="pos">has got / hasn't got</td></tr>
+        <tr><td>Question</td><td class="q">Have/Has + subject + got?</td></tr>
+      </table>
+      <p class="example">She's got blue eyes. Have you got a car?</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="CC">Can / Could</h3>
+      <table class="mini">
+        <tr><th>Use</th><th>Example</th></tr>
+        <tr><td>Ability now</td><td>I can swim.</td></tr>
+        <tr><td>Negative</td><td>He can't drive.</td></tr>
+        <tr><td>Past ability</td><td>She could play piano.</td></tr>
+        <tr><td>Question</td><td>Can you help me?</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="TI">There is / There are</h3>
+      <table class="mini">
+        <tr><th>Form</th><th>Example</th></tr>
+        <tr><td class="pos">There is / There's</td><td>There's a park.</td></tr>
+        <tr><td class="pos">There are</td><td>There are two cafés.</td></tr>
+        <tr><td class="neg">There isn't</td><td>There isn't a pharmacy.</td></tr>
+        <tr><td class="neg">There aren't any</td><td>There aren't any hotels.</td></tr>
+        <tr><td class="q">Is there? / Are there?</td><td>Is there a bus stop?</td></tr>
+      </table>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="PO">Possessives</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:10px;">
+        <div class="chip">I → my</div><div class="chip">He → his</div>
+        <div class="chip">She → her</div><div class="chip">We → our</div>
+        <div class="chip">You → your</div><div class="chip">They → their</div>
+      </div>
+      <p class="example">Anna's book · Tom's bag · parents' car (plural + apostrophe only)</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="PL">Plurals</h3>
+      <table class="mini">
+        <tr><th>Rule</th><th>Example</th></tr>
+        <tr><td>+ s</td><td>book → books</td></tr>
+        <tr><td>-sh/-ch/-x → + es</td><td>watch → watches</td></tr>
+        <tr><td>consonant + y → ies</td><td>city → cities</td></tr>
+        <tr><td>Irregular</td><td>man→men · child→children</td></tr>
+        <tr><td>Irregular</td><td>tooth→teeth · foot→feet</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ TENSES ═══ -->
+<div id="tenses" class="page-section">
+  <div class="section-kicker"><span>02 /</span> When to Use</div>
+  <h2 class="section-title">Tenses</h2>
+
+  <div class="tense-comparison">
+    <div class="tense-col">
+      <div class="tense-name">Present Simple</div>
+      <div class="tense-use">Habits, routines, facts, permanent situations</div>
+      <div class="signal-words">
+        <div class="signal-word">always / usually / often</div>
+        <div class="signal-word">every day / every week</div>
+        <div class="signal-word">on Mondays / in the morning</div>
+      </div>
+    </div>
+    <div class="tense-col">
+      <div class="tense-name">Present Continuous</div>
+      <div class="tense-use">Happening now, temporary situations, changing events</div>
+      <div class="signal-words">
+        <div class="signal-word">now / at the moment</div>
+        <div class="signal-word">today / this week</div>
+        <div class="signal-word">right now / these days</div>
+      </div>
+    </div>
+    <div class="tense-col">
+      <div class="tense-name">Past Simple</div>
+      <div class="tense-use">Finished actions, definite past time, sequence of events</div>
+      <div class="signal-words">
+        <div class="signal-word">yesterday / last night</div>
+        <div class="signal-word">last week / last year</div>
+        <div class="signal-word">ago / in 2020 / on Friday</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:20px;">Adverbs of Frequency</h3>
+  <div class="freq-section">
+    <div class="freq-row"><div class="freq-label">never</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:0%;background:#b84c2a;"></div></div><div class="freq-pct">0%</div></div>
+    <div class="freq-row"><div class="freq-label">sometimes</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:35%;background:#c9a84c;"></div></div><div class="freq-pct">35%</div></div>
+    <div class="freq-row"><div class="freq-label">often</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:75%;background:#4a6741;"></div></div><div class="freq-pct">75%</div></div>
+    <div class="freq-row"><div class="freq-label">usually</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:90%;background:#3d4a5c;"></div></div><div class="freq-pct">90%</div></div>
+    <div class="freq-row"><div class="freq-label">always</div><div class="freq-bar-wrap"><div class="freq-bar" style="width:100%;background:#1a1612;"></div></div><div class="freq-pct">100%</div></div>
+  </div>
+  <div class="example" style="font-size:13px;margin-bottom:32px;">
+    Position: <strong>before main verb</strong> — I always drink tea.<br>
+    After <strong>be</strong> — She is never late.<br>
+    With <strong>don't/doesn't</strong> — He doesn't always eat breakfast.
+  </div>
+
+  <h3 style="font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:16px;">Stative Verbs — No -ing Form</h3>
+  <div class="chips" style="margin-bottom:12px;">
+    <div class="chip">like</div><div class="chip">love</div><div class="chip">hate</div>
+    <div class="chip">know</div><div class="chip">understand</div><div class="chip">want</div>
+    <div class="chip">need</div><div class="chip">believe</div><div class="chip">remember</div><div class="chip">seem</div>
+  </div>
+  <p class="example">✓ I like chocolate. &nbsp;&nbsp; ✗ I am liking chocolate.</p>
+
+  <div style="margin-top:40px;">
+  <h3 style="font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:16px;">Adjective vs Adverb</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);">
+    <div style="padding:14px 20px;background:var(--surface2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);">Adjective (describes noun)</div>
+    <div style="padding:14px 20px;background:var(--surface2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);">Adverb (describes verb)</div>
+    <div style="padding:12px 20px;background:var(--surface);">She is a <strong>careful</strong> driver.</div>
+    <div style="padding:12px 20px;background:var(--surface);">She drives <strong>carefully</strong>.</div>
+    <div style="padding:12px 20px;background:var(--surface2);">He is a <strong>good</strong> student.</div>
+    <div style="padding:12px 20px;background:var(--surface2);">He studies <strong>well</strong>. (good→well)</div>
+    <div style="padding:12px 20px;background:var(--surface);">They are <strong>hard</strong> workers.</div>
+    <div style="padding:12px 20px;background:var(--surface);">They work <strong>hard</strong>. (no change)</div>
+    <div style="padding:12px 20px;background:var(--surface2);">She is a <strong>fast</strong> runner.</div>
+    <div style="padding:12px 20px;background:var(--surface2);">She runs <strong>fast</strong>. (no change)</div>
+  </div>
+  </div>
+</div>
+
+<!-- ═══ VOCABULARY ═══ -->
+<div id="vocabulary" class="page-section">
+  <div class="section-kicker"><span>03 /</span> Word Bank</div>
+  <h2 class="section-title">Vocabulary</h2>
+
+  <div class="vocab-tabs">
+    <button class="vtab active" onclick="showVocab('activities',this)">Activities</button>
+    <button class="vtab" onclick="showVocab('family',this)">Family</button>
+    <button class="vtab" onclick="showVocab('opposites',this)">Opposites</button>
+    <button class="vtab" onclick="showVocab('clothing',this)">Clothing</button>
+    <button class="vtab" onclick="showVocab('person',this)">Personality</button>
+  </div>
+
+  <div id="activities" class="vocab-section active">
+    <div class="vocab-grid" id="act-grid"></div>
+  </div>
+  <div id="family" class="vocab-section">
+    <div class="vocab-grid" id="fam-grid"></div>
+  </div>
+  <div id="opposites" class="vocab-section">
+    <div class="opp-grid" id="opp-grid"></div>
+  </div>
+  <div id="clothing" class="vocab-section">
+    <div class="vocab-grid" id="cloth-grid"></div>
+  </div>
+  <div id="person" class="vocab-section">
+    <div class="vocab-grid" id="pers-grid"></div>
+  </div>
+</div>
+
+<!-- ═══ TIME ═══ -->
+<div id="time" class="page-section">
+  <div class="section-kicker"><span>04 /</span> Telling the Time</div>
+  <h2 class="section-title">Time</h2>
+
+  <div class="time-grid">
+    <div class="time-card"><div class="time-clock">3:00</div><div class="time-say">three o'clock</div></div>
+    <div class="time-card"><div class="time-clock">3:05</div><div class="time-say">five past three</div></div>
+    <div class="time-card"><div class="time-clock">3:10</div><div class="time-say">ten past three</div></div>
+    <div class="time-card"><div class="time-clock">3:15</div><div class="time-say">a quarter past three</div></div>
+    <div class="time-card"><div class="time-clock">3:20</div><div class="time-say">twenty past three</div></div>
+    <div class="time-card"><div class="time-clock">3:30</div><div class="time-say">half past three</div></div>
+    <div class="time-card"><div class="time-clock">3:40</div><div class="time-say">twenty to four</div></div>
+    <div class="time-card"><div class="time-clock">3:45</div><div class="time-say">a quarter to four</div></div>
+    <div class="time-card"><div class="time-clock">3:50</div><div class="time-say">ten to four</div></div>
+    <div class="time-card"><div class="time-clock">3:55</div><div class="time-say">five to four</div></div>
+  </div>
+  <div class="example" style="font-size:13px;">
+    a.m. = midnight to noon (00:00–12:00) &nbsp;·&nbsp; p.m. = noon to midnight (12:00–00:00)<br>
+    3:00 a.m. = three o'clock in the morning &nbsp;·&nbsp; 3:00 p.m. = three o'clock in the afternoon
+  </div>
+
+  <div style="margin-top:48px;">
+  <h3 style="font-family:var(--serif);font-size:22px;font-weight:700;margin-bottom:16px;">This / That / These / Those</h3>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);">
+    <div style="padding:20px;background:var(--surface);text-align:center;">
+      <div style="font-family:var(--serif);font-size:28px;font-weight:900;color:var(--violet);">This</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;">singular · near<br>սա</div>
+    </div>
+    <div style="padding:20px;background:var(--surface);text-align:center;">
+      <div style="font-family:var(--serif);font-size:28px;font-weight:900;color:var(--violet);">That</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;">singular · far<br>դա</div>
+    </div>
+    <div style="padding:20px;background:var(--surface);text-align:center;">
+      <div style="font-family:var(--serif);font-size:28px;font-weight:900;color:var(--red);">These</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;">plural · near<br>սրանք</div>
+    </div>
+    <div style="padding:20px;background:var(--surface);text-align:center;">
+      <div style="font-family:var(--serif);font-size:28px;font-weight:900;color:var(--red);">Those</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px;">plural · far<br>դրանք</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ═══ PHRASES ═══ -->
+<div id="phrases" class="page-section">
+  <div class="section-kicker"><span>05 /</span> Communication</div>
+  <h2 class="section-title">Phrases</h2>
+
+  <div class="phrase-list">
+    <div class="phrase-item"><span class="phrase-en">Hello / Hi · Good morning / Good afternoon / Good evening</span><span class="phrase-tag tag-greeting">Greeting</span></div>
+    <div class="phrase-item"><span class="phrase-en">How are you? → Fine, thanks. / Not bad. / Not much.</span><span class="phrase-tag tag-greeting">Greeting</span></div>
+    <div class="phrase-item"><span class="phrase-en">Nice to meet you. → Nice to meet you too.</span><span class="phrase-tag tag-greeting">Greeting</span></div>
+    <div class="phrase-item"><span class="phrase-en">My name is… / Hi, I'm…</span><span class="phrase-tag tag-greeting">Greeting</span></div>
+    <div class="phrase-item"><span class="phrase-en">Goodbye / Bye · See you later · Good night</span><span class="phrase-tag tag-greeting">Greeting</span></div>
+    <div class="phrase-item"><span class="phrase-en">Can I see the menu, please?</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">I'd like to order [dish], please.</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">Could you recommend something?</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">Is this dish spicy / vegetarian?</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">Could we have a table for [number]?</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">Can I get the bill / check, please?</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">Everything was delicious, thank you!</span><span class="phrase-tag tag-restaurant">Restaurant</span></div>
+    <div class="phrase-item"><span class="phrase-en">I come from a big / small family.</span><span class="phrase-tag tag-family">Family</span></div>
+    <div class="phrase-item"><span class="phrase-en">I'm the oldest / youngest of [number] siblings.</span><span class="phrase-tag tag-family">Family</span></div>
+    <div class="phrase-item"><span class="phrase-en">I get along really well with my [family member].</span><span class="phrase-tag tag-family">Family</span></div>
+    <div class="phrase-item"><span class="phrase-en">I'm really proud of my family.</span><span class="phrase-tag tag-family">Family</span></div>
+    <div class="phrase-item"><span class="phrase-en">My family celebrates [holiday] every year.</span><span class="phrase-tag tag-family">Family</span></div>
+    <div class="phrase-item"><span class="phrase-en">I don't understand. / Can you please repeat that?</span><span class="phrase-tag tag-general">General</span></div>
+    <div class="phrase-item"><span class="phrase-en">I'm afraid of [spiders / making mistakes].</span><span class="phrase-tag tag-general">General</span></div>
+    <div class="phrase-item"><span class="phrase-en">I'm good at / bad at [subject].</span><span class="phrase-tag tag-general">General</span></div>
+    <div class="phrase-item"><span class="phrase-en">I used to [smoke] but now I don't.</span><span class="phrase-tag tag-general">General</span></div>
+    <div class="phrase-item"><span class="phrase-en">I'd like to introduce… / This is…</span><span class="phrase-tag tag-general">General</span></div>
+    <div class="phrase-item"><span class="phrase-en">Besides [English], I also learn [German].</span><span class="phrase-tag tag-general">General</span></div>
+  </div>
+</div>
+
+<!-- ═══ IRREGULAR VERBS ═══ -->
+<div id="verbs" class="page-section">
+  <div class="section-kicker"><span>06 /</span> Must Memorise</div>
+  <h2 class="section-title">Irregular Verbs</h2>
+
+  <div class="irr-filter-row">
+    <button class="irr-filter active" onclick="filterIrr('all',this)">All</button>
+    <button class="irr-filter" onclick="filterIrr('common',this)">Most Common</button>
+    <button class="irr-filter" onclick="filterIrr('a-f',this)">A – F</button>
+    <button class="irr-filter" onclick="filterIrr('g-m',this)">G – M</button>
+    <button class="irr-filter" onclick="filterIrr('n-z',this)">N – Z</button>
+    <input class="irr-search" type="text" placeholder="Search verb…" oninput="searchIrr(this.value)" id="irr-search">
+  </div>
+  <div class="irr-count" id="irr-count"></div>
+  <div style="border:1px solid var(--border);overflow:hidden;">
+    <table class="irr-table">
+      <thead>
+        <tr>
+          <th onclick="sortIrr(0)" style="cursor:pointer;user-select:none;" id="th-0">Base form <span class="sort-arrow">↑</span></th>
+          <th onclick="sortIrr(1)" style="cursor:pointer;user-select:none;" id="th-1">Past simple <span class="sort-arrow"></span></th>
+          <th onclick="sortIrr(2)" style="cursor:pointer;user-select:none;" id="th-2">Past participle <span class="sort-arrow"></span></th>
+          <th>Armenian</th>
+          <th>Example sentence</th>
+        </tr>
+      </thead>
+      <tbody id="irr-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══ PLACES & JOBS ═══ -->
+<div id="places" class="page-section">
+  <div class="section-kicker"><span>07 /</span> Around Town</div>
+  <h2 class="section-title">Places & Occupations</h2>
+
+  <div class="two-col">
+    <div class="list-block">
+      <h4>Places around town</h4>
+      <div class="place-grid" id="places-list"></div>
+    </div>
+    <div class="list-block">
+      <h4>Occupations</h4>
+      <div class="job-grid" id="jobs-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LESSONS ═══ -->
+<div id="lessons" class="page-section">
+  <div class="section-kicker"><span>08 /</span> Course Timeline</div>
+  <h2 class="section-title">Lessons</h2>
+
+  <div class="lessons-intro">
+    A chronological record of every live session — <strong>February through May 2026</strong>. Each card lists the date, topics covered, key examples, and homework links. Detailed grammar tables live in the <strong>Grammar</strong> and <strong>Tenses</strong> sections.
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>1</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">First Class</span>
+        <span class="lesson-date">07 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Personal Pronouns</span>
+        <span class="topic-pill">To Be (am / is / are)</span>
+        <span class="topic-pill">Greetings</span>
+      </div>
+
+      <div class="two-mini-cols">
+      <div class="mini-block">
+        <div class="mini-block-title">Personal Pronouns</div>
+        <p>I — ես · You — դու · He / She / It — նա · We — մենք · You — դուք · They — նրանք</p>
+        <p style="font-size:12px;color:var(--muted);">Vowels: a, e, i, o, u</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">To Be — Present</div>
+        <table class="tiny-table">
+          <tr><th>Subject</th><th>+</th><th>−</th><th>?</th></tr>
+          <tr><td>I</td><td class="pos">am</td><td class="neg">am not</td><td class="q">Am I?</td></tr>
+          <tr><td>he/she/it</td><td class="pos">is</td><td class="neg">isn't</td><td class="q">Is she?</td></tr>
+          <tr><td>you/we/they</td><td class="pos">are</td><td class="neg">aren't</td><td class="q">Are they?</td></tr>
+        </table>
+      </div>
+
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Examples</div>
+        <div class="ex-line">I am a writer. → <strong>Am</strong> I a writer? → I am <strong>not</strong> a writer.</div>
+        <div class="ex-line">She is smart. → <strong>Is</strong> she smart? — Yes, she is. / No, she isn't.</div>
+        <div class="ex-line">They are good <strong>at</strong> programming.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Everyday Phrases</div>
+        <p style="font-size:12px;line-height:1.8;">
+          Hello / Hi · Good morning / afternoon / evening / night ·
+          How are you? — Fine, thanks. · What's new? — Not much. ·
+          Nice to meet you. · I'd like to introduce… · Excuse me. ·
+          May I ask a question? · Thank you. — You're welcome. ·
+          Sorry, I don't understand. · Can you please repeat that?
+        </p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Vocabulary</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">bat</span><span class="vi-am">չղջիկ</span></span>
+          <span class="vi"><span class="vi-en">unique</span><span class="vi-am">յուրահատուկ</span></span>
+          <span class="vi"><span class="vi-en">muddy</span><span class="vi-am">ցեխոտ</span></span>
+          <span class="vi"><span class="vi-en">smile</span><span class="vi-am">ժպտալ</span></span>
+          <span class="vi"><span class="vi-en">thumb</span><span class="vi-am">բութ մատ</span></span>
+          <span class="vi"><span class="vi-en">knee</span><span class="vi-am">ծունկ</span></span>
+          <span class="vi"><span class="vi-en">net</span><span class="vi-am">ցանց</span></span>
+          <span class="vi"><span class="vi-en">ring</span><span class="vi-am">մատանի</span></span>
+          <span class="vi"><span class="vi-en">carry</span><span class="vi-am">տանել</span></span>
+          <span class="vi"><span class="vi-en">rough</span><span class="vi-am">կոշտ</span></span>
+          <span class="vi"><span class="vi-en">attention</span><span class="vi-am">ուշադրություն</span></span>
+          <span class="vi"><span class="vi-en">hope</span><span class="vi-am">հուսալ</span></span>
+          <span class="vi"><span class="vi-en">giant</span><span class="vi-am">հսկայական</span></span>
+          <span class="vi"><span class="vi-en">edge</span><span class="vi-am">ծայր</span></span>
+          <span class="vi"><span class="vi-en">treasure</span><span class="vi-am">գանձ</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Workbook</span> Navigate Workbook p.4, ex. 1–6</li>
+          <li><span class="hw-topic">Polya Bot</span> Workbook p.8 (ex. 1a, 2a, 4a, 5) — write a short text about your family using my, your, his…</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>3</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">11 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Personal Information</span>
+        <span class="topic-pill">Self-Introduction</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Personal Information Vocabulary</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">first name</span><span class="vi-am">անուն</span></span>
+          <span class="vi"><span class="vi-en">last name / surname</span><span class="vi-am">ազգանուն</span></span>
+          <span class="vi"><span class="vi-en">middle initial</span><span class="vi-am">միջին սկզբնատառ</span></span>
+          <span class="vi"><span class="vi-en">address</span><span class="vi-am">հասցե</span></span>
+          <span class="vi"><span class="vi-en">street</span><span class="vi-am">փողոց</span></span>
+          <span class="vi"><span class="vi-en">apartment number</span><span class="vi-am">բնակարանի համար</span></span>
+          <span class="vi"><span class="vi-en">city</span><span class="vi-am">քաղաք</span></span>
+          <span class="vi"><span class="vi-en">state</span><span class="vi-am">պետություն</span></span>
+          <span class="vi"><span class="vi-en">zip code</span><span class="vi-am">փոստային ինդեքս</span></span>
+          <span class="vi"><span class="vi-en">area code</span><span class="vi-am">տարածքային կոդ</span></span>
+          <span class="vi"><span class="vi-en">phone number</span><span class="vi-am">հեռախոսահամար</span></span>
+          <span class="vi"><span class="vi-en">e-mail address</span><span class="vi-am">էլ. փոստի հասցե</span></span>
+          <span class="vi"><span class="vi-en">date of birth</span><span class="vi-am">ծննդյան տարեթիվ</span></span>
+          <span class="vi"><span class="vi-en">place of birth</span><span class="vi-am">ծննդյան վայր</span></span>
+        </div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Notes & Useful Words</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">wear</span><span class="vi-am">հագնել</span></span>
+          <span class="vi"><span class="vi-en">special</span><span class="vi-am">յուրահատուկ</span></span>
+          <span class="vi"><span class="vi-en">scary</span><span class="vi-am">վախեցնող</span></span>
+          <span class="vi"><span class="vi-en">noisy / loud</span><span class="vi-am">աղմկոտ</span></span>
+          <span class="vi"><span class="vi-en">genre</span><span class="vi-am">ժանր</span></span>
+          <span class="vi"><span class="vi-en">at all</span><span class="vi-am">ընդհանրապես</span></span>
+          <span class="vi"><span class="vi-en">spirit</span><span class="vi-am">ոգի</span></span>
+          <span class="vi"><span class="vi-en">soulmate</span><span class="vi-am">հոգու ընկեր</span></span>
+          <span class="vi"><span class="vi-en">classmate</span><span class="vi-am">դասընկեր</span></span>
+          <span class="vi"><span class="vi-en">exciting</span><span class="vi-am">ոգևորիչ</span></span>
+          <span class="vi"><span class="vi-en">shy</span><span class="vi-am">ամաչկոտ</span></span>
+          <span class="vi"><span class="vi-en">brave</span><span class="vi-am">համարձակ</span></span>
+          <span class="vi"><span class="vi-en">kind</span><span class="vi-am">բարի</span></span>
+          <span class="vi"><span class="vi-en">quiet</span><span class="vi-am">լուռ, հանգիստ</span></span>
+          <span class="vi"><span class="vi-en">village</span><span class="vi-am">գյուղակ</span></span>
+          <span class="vi"><span class="vi-en">throw</span><span class="vi-am">նետել</span></span>
+          <span class="vi"><span class="vi-en">each other</span><span class="vi-am">միմյանց</span></span>
+          <span class="vi"><span class="vi-en">to last</span><span class="vi-am">տևել</span></span>
+          <span class="vi"><span class="vi-en">parade</span><span class="vi-am">շքերթ</span></span>
+          <span class="vi"><span class="vi-en">cover</span><span class="vi-am">ծածկել</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Writing</span> Write and tell some personal information about yourself</li>
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/who-is-in-your-new-class-a1-english-listening-test/" target="_blank" rel="noopener">test-english.com — Who is in your new class</a></li>
+          <li><span class="hw-topic">Reading</span> <a href="https://test-english.com/reading/a1/looking-for-the-perfect-home-a1-english-reading-test/" target="_blank" rel="noopener">test-english.com — Looking for the perfect home</a></li>
+          <li><span class="hw-topic">Phonics</span> <a href="https://www.letterland.com/letter-sounds" target="_blank" rel="noopener">letterland.com — vowels section</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>4</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">14 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Singular & Plural Nouns</span>
+        <span class="topic-pill">This / That / These / Those</span>
+        <span class="topic-pill">Numbers & Ordinals</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Plural Rules</div>
+        <table class="tiny-table">
+          <tr><th>Rule</th><th>Example</th></tr>
+          <tr><td>Regular + s</td><td>book → books · phone → phones</td></tr>
+          <tr><td>Ends in -s, -sh, -ch, -x → +es</td><td>bus → buses · watch → watches · box → boxes</td></tr>
+          <tr><td>Consonant + y → -ies</td><td>city → cities · crazy → crazies</td></tr>
+          <tr><td>Vowel + y → +s</td><td>boy → boys</td></tr>
+          <tr><td>Irregular</td><td>man → men · woman → women · child → children</td></tr>
+          <tr><td>Irregular</td><td>foot → feet · tooth → teeth · goose → geese · mouse → mice</td></tr>
+        </table>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Demonstratives — How Many + How Far</div>
+        <table class="tiny-table">
+          <tr><th></th><th>Near</th><th>Far</th></tr>
+          <tr><td>Singular</td><td><strong>this</strong> — սա</td><td><strong>that</strong> — դա</td></tr>
+          <tr><td>Plural</td><td><strong>these</strong> — սրանք</td><td><strong>those</strong> — դրանք</td></tr>
+        </table>
+        <div class="ex-line">This is a pen. → What is this? — It is a pen.</div>
+        <div class="ex-line">These are keys. → What are these? — They are keys.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Numbers & Ordinals</div>
+        <p style="font-size:12px;line-height:1.8;">
+          one → first · two → second · three → third · four → fourth · five → fifth ·
+          eight → eighth · nine → ninth · twelve → twelfth · twenty → twentieth ·
+          thirty → thirtieth · forty → fortieth · one hundred → one hundredth
+        </p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Vocabulary</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">oven</span><span class="vi-am">գազօջախ</span></span>
+          <span class="vi"><span class="vi-en">bright</span><span class="vi-am">լուսավոր</span></span>
+          <span class="vi"><span class="vi-en">garden</span><span class="vi-am">այգի</span></span>
+          <span class="vi"><span class="vi-en">dishwasher</span><span class="vi-am">սպասք լվացող մեքենա</span></span>
+          <span class="vi"><span class="vi-en">wardrobe</span><span class="vi-am">զգեստապահարան</span></span>
+          <span class="vi"><span class="vi-en">desk</span><span class="vi-am">գրասեղան</span></span>
+          <span class="vi"><span class="vi-en">modern</span><span class="vi-am">ժամանակակից</span></span>
+          <span class="vi"><span class="vi-en">fresh</span><span class="vi-am">թարմ</span></span>
+          <span class="vi"><span class="vi-en">elephant</span><span class="vi-am">փիղ</span></span>
+          <span class="vi"><span class="vi-en">strong</span><span class="vi-am">ուժեղ</span></span>
+          <span class="vi"><span class="vi-en">delicious</span><span class="vi-am">համեղ</span></span>
+          <span class="vi"><span class="vi-en">dangerous</span><span class="vi-am">վտանգավոր</span></span>
+          <span class="vi"><span class="vi-en">fashionable</span><span class="vi-am">նորաձև</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Vocab</span> <a href="http://eso3english.pbworks.com/w/file/fetch/91329033/ethis1e1.pdf" target="_blank" rel="noopener">ethis1e1.pdf</a> — learn vocabulary and write 10 sentences</li>
+          <li><span class="hw-topic">Polya Bot</span> Workbook p.14 (ex. 1, 2) · p.15 (ex. 4a, 5ab, 6)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>6</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">18 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Telling the Time</span>
+        <span class="topic-pill">Prepositions of Place</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Telling the Time</div>
+        <p style="font-size:12px;color:var(--muted);">Question: <strong style="color:var(--text);">What time is it?</strong> Answer: <strong style="color:var(--text);">It's …</strong></p>
+        <table class="tiny-table">
+          <tr><th>Rule</th><th>Example</th></tr>
+          <tr><td>Full hours — o'clock</td><td>It's five o'clock.</td></tr>
+          <tr><td>1–30 min after → past / անց</td><td>It's twenty past four. (4:20)</td></tr>
+          <tr><td>15 = a quarter · 30 = half</td><td>It's a quarter past seven. (7:15) · half past nine. (9:30)</td></tr>
+          <tr><td>31–59 min before → to / պակաս</td><td>It's a quarter to five. (4:45)</td></tr>
+          <tr><td>Digital reading</td><td>3:15 → three fifteen · 8:45 → eight forty-five</td></tr>
+          <tr><td>a.m. / p.m.</td><td>3 a.m. = morning · 3 p.m. = afternoon</td></tr>
+        </table>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Prepositions of Place</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">beside / next to</span><span class="vi-am">կողքին</span></span>
+          <span class="vi"><span class="vi-en">above</span><span class="vi-am">վերևում</span></span>
+          <span class="vi"><span class="vi-en">below / under</span><span class="vi-am">ներքևում / տակ</span></span>
+          <span class="vi"><span class="vi-en">in front of</span><span class="vi-am">առջևում</span></span>
+          <span class="vi"><span class="vi-en">behind</span><span class="vi-am">ետևում</span></span>
+          <span class="vi"><span class="vi-en">on</span><span class="vi-am">վրա</span></span>
+          <span class="vi"><span class="vi-en">to the right of</span><span class="vi-am">դեպի աջ</span></span>
+          <span class="vi"><span class="vi-en">to the left of</span><span class="vi-am">դեպի ձախ</span></span>
+          <span class="vi"><span class="vi-en">in</span><span class="vi-am">մեջ</span></span>
+          <span class="vi"><span class="vi-en">between</span><span class="vi-am">միջև</span></span>
+        </div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Notes & Useful Verbs</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">nearby</span><span class="vi-am">մոտակայքում</span></span>
+          <span class="vi"><span class="vi-en">actually</span><span class="vi-am">իրականում</span></span>
+          <span class="vi"><span class="vi-en">tip</span><span class="vi-am">խորհուրդ / թեյավճար</span></span>
+          <span class="vi"><span class="vi-en">useful</span><span class="vi-am">օգտակար</span></span>
+          <span class="vi"><span class="vi-en">to be afraid of</span><span class="vi-am">վախենալ</span></span>
+          <span class="vi"><span class="vi-en">notice</span><span class="vi-am">նկատել</span></span>
+          <span class="vi"><span class="vi-en">look for</span><span class="vi-am">փնտրել</span></span>
+          <span class="vi"><span class="vi-en">opportunity</span><span class="vi-am">հնարավորություն</span></span>
+          <span class="vi"><span class="vi-en">make notes</span><span class="vi-am">նշումներ անել</span></span>
+          <span class="vi"><span class="vi-en">during</span><span class="vi-am">ընթացքում</span></span>
+          <span class="vi"><span class="vi-en">arrive</span><span class="vi-am">ժամանել</span></span>
+          <span class="vi"><span class="vi-en">belong</span><span class="vi-am">պատկանել</span></span>
+          <span class="vi"><span class="vi-en">borrow</span><span class="vi-am">պարտք վերցնել</span></span>
+          <span class="vi"><span class="vi-en">build</span><span class="vi-am">կառուցել</span></span>
+          <span class="vi"><span class="vi-en">compare</span><span class="vi-am">համեմատել</span></span>
+          <span class="vi"><span class="vi-en">continue</span><span class="vi-am">շարունակել</span></span>
+          <span class="vi"><span class="vi-en">decide</span><span class="vi-am">որոշել</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Workbook</span> p.16 (ex. 1, 2, 3a) · p.18 (ex. 1a, 2a, 3) · Student book p.119 (ex. 1, 2)</li>
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/tell-me-about-your-life-a1-english-listening-test/" target="_blank" rel="noopener">Tell me about your life</a></li>
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/what-are-you-doing-a1-english-listening-test/" target="_blank" rel="noopener">What are you doing</a></li>
+          <li><span class="hw-topic">Reading</span> <a href="https://test-english.com/reading/a1/tips-for-visiting-london-with-young-children-a1-english-reading-test/" target="_blank" rel="noopener">Tips for visiting London</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>7</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">21 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Describing People & Things</span>
+        <span class="topic-pill">Have Got / Has Got</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Have Got / Has Got — possession</div>
+        <div class="mini-formula">have got / has got = have / has</div>
+        <table class="tiny-table">
+          <tr><th>Subject</th><th>+</th><th>−</th><th>?</th></tr>
+          <tr><td>I / You / We / They</td><td class="pos">have got · 've got</td><td class="neg">haven't got</td><td class="q">Have you got…?</td></tr>
+          <tr><td>He / She / It</td><td class="pos">has got · 's got</td><td class="neg">hasn't got</td><td class="q">Has she got…?</td></tr>
+        </table>
+        <div class="ex-line">She's got a dog. · Have you got a pet? · He hasn't got a copybook.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Describing Adjectives — Opposite Pairs</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">new — old</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">young — old</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">tall — short</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">long — short</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">big — small</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">fast — slow</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">heavy — thin</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">heavy — light</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">straight — curly</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">wide — narrow</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">thick — thin</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">dark — light</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">high — low</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">loose — tight</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">good — bad</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">hot — cold</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">neat — messy</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">clean — dirty</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">soft — hard</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">easy — difficult</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">smooth — rough</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">noisy — quiet</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">married — single</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">rich — poor</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">pretty — ugly</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">wet — dry</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">open — closed</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">full — empty</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">expensive — cheap</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">fancy — plain</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">shiny — dull</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">sharp — dull</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">honest — dishonest</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Workbook</span> pages 20, 21</li>
+          <li><span class="hw-topic">Quiz</span> Repeat lessons and take the quiz in the bot</li>
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/daily-routines-listening-test/" target="_blank" rel="noopener">Daily routines</a></li>
+          <li><span class="hw-topic">Grammar</span> <a href="https://test-english.com/grammar-points/a1/have-got/" target="_blank" rel="noopener">Have got — ex. 1</a></li>
+          <li><span class="hw-topic">Polya Bot</span> Workbook pages 22, 23</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>9</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">25 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Family</span>
+        <span class="topic-pill">Possessive Determiners</span>
+        <span class="topic-pill">Apostrophe 's</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Possessive Determiners — before a noun</div>
+        <p style="font-size:13px;line-height:1.8;">
+          I → <strong>my</strong> · You → <strong>your</strong> · He → <strong>his</strong> · She → <strong>her</strong> ·
+          It → <strong>its</strong> · We → <strong>our</strong> · They → <strong>their</strong>
+        </p>
+        <div class="ex-line">This is <strong>my</strong> mother. · That is <strong>her</strong> phone. · We have got <strong>our</strong> books.</div>
+        <p style="font-size:12px;color:var(--red);margin-top:6px;">✗ Do not use <em>a</em> or <em>the</em> before a possessive determiner. (NOT "the my car")</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Possessive 's — belongs to a person/place/thing</div>
+        <div class="mini-formula">Name + 's + noun</div>
+        <table class="tiny-table">
+          <tr><th>Rule</th><th>Example</th></tr>
+          <tr><td>Add 's even if name ends in s</td><td>Ross's pen · James's car</td></tr>
+          <tr><td>Two people share → 's after last name</td><td>Monika and Yung's keys</td></tr>
+          <tr><td>Plural noun ending in s → just apostrophe</td><td>my parents' car · my teachers' room</td></tr>
+          <tr><td>Irregular plurals still add 's</td><td>men's cars · children's toys</td></tr>
+          <tr><td>'s can also mean <em>is</em> or <em>has</em></td><td>She's my sister. · She's got a phone.</td></tr>
+        </table>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Family Vocabulary (highlights)</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">husband / wife</span><span class="vi-am">ամուսին / կին</span></span>
+          <span class="vi"><span class="vi-en">parents</span><span class="vi-am">ծնողներ</span></span>
+          <span class="vi"><span class="vi-en">siblings</span><span class="vi-am">քույր-եղբայր</span></span>
+          <span class="vi"><span class="vi-en">grandparents</span><span class="vi-am">տատիկ-պապիկ</span></span>
+          <span class="vi"><span class="vi-en">grandchildren</span><span class="vi-am">թոռներ</span></span>
+          <span class="vi"><span class="vi-en">uncle / aunt</span><span class="vi-am">քեռի / հորաքույր</span></span>
+          <span class="vi"><span class="vi-en">niece / nephew</span><span class="vi-am">եղբոր/քրոջ զավակներ</span></span>
+          <span class="vi"><span class="vi-en">cousin</span><span class="vi-am">զարմիկ</span></span>
+          <span class="vi"><span class="vi-en">mother-in-law</span><span class="vi-am">սկեսուր</span></span>
+          <span class="vi"><span class="vi-en">father-in-law</span><span class="vi-am">սկեսրայր</span></span>
+          <span class="vi"><span class="vi-en">son-in-law</span><span class="vi-am">փեսա</span></span>
+          <span class="vi"><span class="vi-en">daughter-in-law</span><span class="vi-am">հարս</span></span>
+          <span class="vi"><span class="vi-en">brother-in-law</span><span class="vi-am">աներորդի / տեգր</span></span>
+          <span class="vi"><span class="vi-en">sister-in-law</span><span class="vi-am">տալ, քենի</span></span>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;">Full list in the <strong style="color:var(--text);">Vocabulary → Family</strong> tab.</p>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Student Book</span> pages 120–121</li>
+          <li><span class="hw-topic">Apostrophe 's</span> <a href="https://en.islcollective.com/english-esl-worksheets/grammar-practice/general-grammar-practice/apostrophe-s/using-apostrophes-to-show-possession/131853" target="_blank" rel="noopener">islcollective worksheet</a></li>
+          <li><span class="hw-topic">Possessives</span> <a href="https://en.islcollective.com/english-esl-worksheets/grammar-practice/general-grammar-practice/possessive-determiners/133382" target="_blank" rel="noopener">islcollective worksheet</a></li>
+          <li><span class="hw-topic">Reading</span> <a href="https://www.fabulang.com/en/en/stories/a1-peace-quiet" target="_blank" rel="noopener">fabulang — Peace & Quiet</a></li>
+          <li><span class="hw-topic">Listening</span> <a href="https://learnenglish.britishcouncil.org/skills/listening/a1-listening/meeting-people-dinner" target="_blank" rel="noopener">British Council — Meeting people at dinner</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>10</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">28 · 02 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Everyday Activities</span>
+        <span class="topic-pill">Present Simple</span>
+        <span class="topic-pill">Adverbs of Frequency</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Present Simple — use</div>
+        <p style="font-size:13px;line-height:1.7;">
+          Daily routines &amp; habits · Permanent facts and truths · Regular actions · Timetables and schedules.
+        </p>
+        <div class="ex-line">I get up at 7 o'clock. · The sun rises in the east. · The train leaves at 8:30.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Present Simple — form</div>
+        <table class="tiny-table">
+          <tr><th></th><th>Form</th><th>Example</th></tr>
+          <tr><td class="pos">+</td><td>verb (+s/es for he/she/it)</td><td>She works.</td></tr>
+          <tr><td class="neg">−</td><td>don't / doesn't + base</td><td>She doesn't watch TV.</td></tr>
+          <tr><td class="q">?</td><td>Do / Does + subject + base?</td><td>Does he play tennis?</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--muted);">Spelling: watch → watches · go → goes · study → studies · cry → cries</p>
+        <p style="font-size:12px;color:var(--red);">✗ "She doesn't plays" — after <em>doesn't</em> / <em>does</em> the verb is always in base form.</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Adverbs of Frequency</div>
+        <p style="font-size:12px;color:var(--muted);">Position: <strong style="color:var(--text);">before</strong> main verb · <strong style="color:var(--text);">after</strong> the verb <em>to be</em></p>
+        <div class="ex-line">I <strong>always</strong> drink coffee. · She is <strong>never</strong> late. · They <strong>often</strong> visit grandparents.</div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">A1 Workbook</span> p.28 (ex. 2a, 3)</li>
+          <li><span class="hw-topic">A2</span> p.139 (ex. 1, 3)</li>
+          <li><span class="hw-topic">Listening</span> <a href="https://www.adelescorner.org/listening/my_day/my_day_1.html" target="_blank" rel="noopener">adelescorner — My Day</a></li>
+          <li><span class="hw-topic">Grammar</span> <a href="https://test-english.com/grammar-points/a1/present-simple/3/" target="_blank" rel="noopener">test-english — Present Simple ex. 3, 4</a></li>
+          <li><span class="hw-topic">Polya Bot</span> A1 Workbook p.32 (ex. 1a, 2, 3, 4) · A2 p.21 (ex. 7a, 8a)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>12</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Practice</span>
+        <span class="lesson-date">Early March 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Translation Practice</span>
+        <span class="topic-pill">Mid-course Review</span>
+        <span class="topic-pill">Would Like (intro)</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Quick Notes</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">would like</span><span class="vi-am">կցանկանայի</span></span>
+          <span class="vi"><span class="vi-en">maybe</span><span class="vi-am">միգուցե, երևի</span></span>
+          <span class="vi"><span class="vi-en">art museum</span><span class="vi-am">արվեստի թանգարան</span></span>
+        </div>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;">a.m. = 00:00–12:00 · p.m. = 12:00–24:00</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Translation Drills — sample sentences</div>
+        <div class="ex-line">My name is Anna Brown, and my zip code is 0051.</div>
+        <div class="ex-line">My English lesson lasts two hours on Mondays.</div>
+        <div class="ex-line">There is a dishwasher next to the oven in our modern kitchen.</div>
+        <div class="ex-line">My cousin is young and fashionable, but my grandfather is old and wise.</div>
+        <div class="ex-line">There is a muddy road between the hill and the village.</div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Exam</span> <a href="https://academy-polyglot.onlyoffice.com/doceditor?fileId=1807093" target="_blank" rel="noopener">academy-polyglot — exam document</a></li>
+          <li><span class="hw-topic">Speaking</span> <a href="https://docs.google.com/document/d/1B7FMpmrxPt3OolVStm1gWfe57CQSN4Xf23xHJq-02iI/edit?tab=t.0" target="_blank" rel="noopener">Google Doc — speaking practice</a></li>
+          <li><span class="hw-topic">Video</span> <a href="https://www.youtube.com/watch?v=S769QPE5s9w" target="_blank" rel="noopener">YouTube playlist</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>13</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">11 · 03 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Clothing</span>
+        <span class="topic-pill">Adverbs of Frequency</span>
+        <span class="topic-pill">Wh- Questions</span>
+        <span class="topic-pill">There is / There are</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Frequency Scale</div>
+        <p style="font-size:12px;line-height:1.8;">
+          never (0%) · sometimes (30–40%) · often (70–80%) · usually (85–95%) · always (100%)
+        </p>
+        <div class="ex-line">She <strong>always</strong> buys expensive jeans. · He doesn't <strong>usually</strong> wear smart clothes.</div>
+        <p style="font-size:12px;color:var(--red);margin-top:6px;">✗ I don't sometimes · ✗ I don't never — use <em>I sometimes don't</em> or <em>I never</em>.</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Wh- Question Words</div>
+        <p style="font-size:13px;line-height:1.8;">
+          <strong>What</strong> — ինչ · <strong>Where</strong> — որտեղ · <strong>When</strong> — երբ ·
+          <strong>Why</strong> — ինչու · <strong>How</strong> — ինչպես ·
+          <strong>How much / many</strong> · <strong>How long</strong> — ինչքա՞ն ժամանակ
+        </p>
+        <div class="mini-formula">Wh-word + do/does + subject + base verb</div>
+        <div class="ex-line">What does your cat eat? · Why do you like fashion? · Where's my skirt?</div>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;">Contract <em>is</em> after Wh-words (What's, Where's) but <strong style="color:var(--text);">never</strong> contract <em>are</em>.</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">There is / There are</div>
+        <table class="tiny-table">
+          <tr><th></th><th>Singular</th><th>Plural</th></tr>
+          <tr><td class="pos">+</td><td>There's a theatre.</td><td>There are refreshments.</td></tr>
+          <tr><td class="neg">−</td><td>There isn't a park.</td><td>There aren't any hotels.</td></tr>
+          <tr><td class="q">?</td><td>Is there a show?</td><td>Are there any towels?</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;">Use <strong style="color:var(--text);">any</strong> with plural in negatives and questions. For lists, use <strong style="color:var(--text);">There's</strong>: "There's a gym, a car park and a restaurant."</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Clothing (highlights)</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">blouse</span><span class="vi-am">բլուզ</span></span>
+          <span class="vi"><span class="vi-en">skirt</span><span class="vi-am">կիսաշրջազգեստ</span></span>
+          <span class="vi"><span class="vi-en">shirt</span><span class="vi-am">վերնաշապիկ</span></span>
+          <span class="vi"><span class="vi-en">pants / slacks</span><span class="vi-am">տաբատ</span></span>
+          <span class="vi"><span class="vi-en">jeans</span><span class="vi-am">ջինս</span></span>
+          <span class="vi"><span class="vi-en">dress</span><span class="vi-am">զգեստ</span></span>
+          <span class="vi"><span class="vi-en">sweater</span><span class="vi-am">սվիտեր</span></span>
+          <span class="vi"><span class="vi-en">jacket</span><span class="vi-am">բաճկոն</span></span>
+          <span class="vi"><span class="vi-en">suit</span><span class="vi-am">կոստյում</span></span>
+          <span class="vi"><span class="vi-en">tie</span><span class="vi-am">փողկապ</span></span>
+          <span class="vi"><span class="vi-en">uniform</span><span class="vi-am">համազգեստ</span></span>
+          <span class="vi"><span class="vi-en">T-shirt</span><span class="vi-am">շապիկ</span></span>
+          <span class="vi"><span class="vi-en">shorts</span><span class="vi-am">շորտ</span></span>
+          <span class="vi"><span class="vi-en">vest</span><span class="vi-am">անթև բաճկոն</span></span>
+          <span class="vi"><span class="vi-en">tuxedo</span><span class="vi-am">երեկոյան կոստյում</span></span>
+          <span class="vi"><span class="vi-en">bow tie</span><span class="vi-am">թիթեռնիկ-փողկապ</span></span>
+          <span class="vi"><span class="vi-en">scarf / gloves / belt</span><span class="vi-am">շարֆ / ձեռնոց / գոտի</span></span>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px;">Full list in <strong style="color:var(--text);">Vocabulary → Clothing</strong>.</p>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Reading</span> <a href="https://test-english.com/reading/a1/a-day-in-the-life-of-an-airline-pilot-a1-english-reading-test/" target="_blank" rel="noopener">A day in the life of an airline pilot</a></li>
+          <li><span class="hw-topic">Quiz</span> Take the quiz in the bot</li>
+          <li><span class="hw-topic">Listening</span> <a href="https://learnenglishteens.britishcouncil.org/skills/listening/a1-listening/getting-id-card" target="_blank" rel="noopener">British Council — Getting an ID card</a></li>
+          <li><span class="hw-topic">Grammar</span> <a href="https://www.perfect-english-grammar.com/present-simple-exercise-16.html" target="_blank" rel="noopener">Present Simple exercise 16</a></li>
+          <li><span class="hw-topic">Polya Bot</span> Write a "My Family" narrative · Workbook p.49 (ex. 3), p.50 (ex. 1a, 2)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>15</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">14 · 03 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Speaking Essay</span>
+        <span class="topic-pill">Adverb Position</span>
+        <span class="topic-pill">There is / are Drill</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Speaking Task — "About Me" essay</div>
+        <p style="font-size:13px;line-height:1.7;">Write and narrate an essay answering:</p>
+        <div class="ex-line">1. Where do you live?</div>
+        <div class="ex-line">2. Who do you live with?</div>
+        <div class="ex-line">3. What do you do?</div>
+        <div class="ex-line">4. Do you like your job?</div>
+        <div class="ex-line">5. What don't you like in your job / profession?</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Drill Focus</div>
+        <p style="font-size:13px;line-height:1.7;">
+          Place <strong>always / usually / often / sometimes / rarely / never</strong> in the correct position
+          across 15 sentences. Fill 15 gaps with <strong>there is / are / isn't / aren't / Is there / Are there</strong>.
+        </p>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Writing</span> Write and narrate the 5-question essay above</li>
+          <li><span class="hw-topic">Grammar PDF</span> <a href="https://www.perfect-english-grammar.com/support-files/present_simple_form_mixed_exercise_1_other_verbs.pdf" target="_blank" rel="noopener">Present Simple mixed exercise 1</a></li>
+          <li><span class="hw-topic">In-class</span> Adverb-position drill (15 items) + There is/are drill (15 items)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>16</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">18 · 03 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Can / Could</span>
+        <span class="topic-pill">Like + -ing</span>
+        <span class="topic-pill">Places & Occupations</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Can — ability, possibility, permission (present)</div>
+        <div class="mini-formula">subject + can / can't + base verb</div>
+        <table class="tiny-table">
+          <tr><th>Form</th><th>Example</th></tr>
+          <tr><td class="pos">+</td><td>I can swim. · She can speak English.</td></tr>
+          <tr><td class="neg">−</td><td>I can't drive. · He can't come today.</td></tr>
+          <tr><td class="q">?</td><td>Can you swim? — Yes, I can. / No, I can't.</td></tr>
+        </table>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Could — past ability</div>
+        <div class="mini-formula">subject + could / couldn't + base verb</div>
+        <div class="ex-line">I could read when I was five. · She couldn't swim when she was young.</div>
+        <div class="ex-line">Could you read when you were six?</div>
+        <p style="font-size:12px;color:var(--muted);margin-top:6px;">Related: <strong style="color:var(--text);">be able to</strong> — ունակ լինել · <strong style="color:var(--text);">might</strong> — possibility · <strong style="color:var(--text);">used to</strong> — past habit</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Like + -ing — enjoying activities</div>
+        <div class="mini-formula">subject + like / don't like + verb-ing</div>
+        <div class="ex-line">I like reading. · She likes cooking. · We like watching films.</div>
+        <div class="ex-line">He doesn't like studying at night. · Does she like dancing? — Yes, she does.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Places & Occupations</div>
+        <p style="font-size:12px;line-height:1.7;">
+          Bakery, bank, barber shop, bookstore, bus station, clinic, coffee shop, drugstore, gas station, grocery store, hospital, hotel, laundromat, library, movie theater, park, pharmacy, post office, restaurant, school, supermarket, train station…
+        </p>
+        <p style="font-size:12px;line-height:1.7;">
+          Accountant, architect, baker, barber, businessman/woman, carpenter, cashier, chef, engineer, farmer, firefighter, journalist, lawyer, mechanic, musician, nurse, painter, pharmacist, photographer, pilot, police officer, teacher, translator, veterinarian, waiter…
+        </p>
+        <p style="font-size:11px;color:var(--muted);margin-top:6px;">Full lists in the <strong style="color:var(--text);">Places &amp; Jobs</strong> section.</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Notes</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">smart uniform</span><span class="vi-am">կոկիկ համազգեստ</span></span>
+          <span class="vi"><span class="vi-en">passenger</span><span class="vi-am">ուղևոր</span></span>
+          <span class="vi"><span class="vi-en">visit</span><span class="vi-am">այցելել</span></span>
+          <span class="vi"><span class="vi-en">look after</span><span class="vi-am">խնամել</span></span>
+          <span class="vi"><span class="vi-en">satisfied / dissatisfied</span><span class="vi-am">գոհ / դժգոհ</span></span>
+          <span class="vi"><span class="vi-en">properly</span><span class="vi-am">պատշաճ</span></span>
+          <span class="vi"><span class="vi-en">find out</span><span class="vi-am">պարզել</span></span>
+          <span class="vi"><span class="vi-en">colleague</span><span class="vi-am">կոլեգա</span></span>
+          <span class="vi"><span class="vi-en">responsibility</span><span class="vi-am">պատասխանատվություն</span></span>
+          <span class="vi"><span class="vi-en">weird</span><span class="vi-am">տարօրինակ</span></span>
+          <span class="vi"><span class="vi-en">pretend</span><span class="vi-am">ձևացնել</span></span>
+          <span class="vi"><span class="vi-en">in fact</span><span class="vi-am">իրականում</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">A2 Workbook</span> p.32 (ex. 1, 2, 3)</li>
+          <li><span class="hw-topic">Can / Could</span> <a href="https://kouprepschool.weebly.com/uploads/8/1/7/5/81754966/atg-worksheet-can-could.pdf" target="_blank" rel="noopener">kouprepschool — Can/Could worksheet</a></li>
+          <li><span class="hw-topic">Polya Bot</span> A2 Workbook p.34 (ex. 1a, 3) · p.35 (ex. 6) · p.36 (ex. 1, 2, 3)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>18</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">21 · 03 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Present Simple vs Continuous</span>
+        <span class="topic-pill">Stative Verbs</span>
+        <span class="topic-pill">Person Adjectives</span>
+        <span class="topic-pill">Adverbs of Manner</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Present Simple vs Present Continuous</div>
+        <table class="tiny-table">
+          <tr><th></th><th>Present Simple</th><th>Present Continuous</th></tr>
+          <tr><td>Use</td><td>Routines, facts, permanent situations</td><td>Now, today, this week, temporary/changing</td></tr>
+          <tr><td>Form</td><td>verb (+s for he/she/it)</td><td>am / is / are + verb-ing</td></tr>
+          <tr><td>Signal</td><td>always, usually, often, every day</td><td>now, at the moment, today, these days</td></tr>
+          <tr><td>Example</td><td>I often wear a jacket.</td><td>I'm wearing a jacket today.</td></tr>
+          <tr><td>"What do you do?"</td><td>= What's your job?</td><td>"What are you doing?" = right now</td></tr>
+        </table>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">-ing Spelling Rules</div>
+        <p style="font-size:12px;line-height:1.8;">
+          Most verbs: <strong>+ ing</strong> (wear → wearing) ·
+          End in -e: <strong>drop e + ing</strong> (live → living) ·
+          One vowel + one consonant: <strong>double</strong> (sit → sitting, run → running) ·
+          End in -y: just add ing (play → playing)
+        </p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Stative Verbs — NOT used in continuous</div>
+        <p style="font-size:12px;line-height:1.8;">
+          like · love · hate · know · understand · want · need · believe · remember · seem
+        </p>
+        <div class="ex-line">✓ I like chocolate. &nbsp; ✗ I am liking chocolate.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Person Adjectives & Opposites</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">kind — mean</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">polite — rude</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">hard-working — lazy</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">generous — selfish</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">brave — cowardly</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">calm — nervous</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">honest, clever, funny, patient, helpful, shy, quiet, talkative, serious</span></span>
+        </div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Adjective vs Adverb</div>
+        <p style="font-size:12px;color:var(--muted);">Adjective describes a <strong style="color:var(--text);">noun</strong>; adverb describes a <strong style="color:var(--text);">verb</strong>. Usually + ly.</p>
+        <table class="tiny-table">
+          <tr><th>Adjective</th><th>Adverb</th></tr>
+          <tr><td>She is a careful driver.</td><td>She drives carefully.</td></tr>
+          <tr><td>He is a good singer.</td><td>He sings well. (good → well)</td></tr>
+          <tr><td>They are hard workers.</td><td>They work hard. (no change)</td></tr>
+          <tr><td>She is a fast runner.</td><td>She runs fast. (no change)</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--muted);">Watch out: <strong style="color:var(--text);">hardly</strong> = almost not · <strong style="color:var(--text);">lately</strong> = recently.</p>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/how-often-do-you-a1-english-listening-test/" target="_blank" rel="noopener">How often do you…</a></li>
+          <li><span class="hw-topic">Listening</span> <a href="https://learnenglish.britishcouncil.org/skills/listening/a1-listening/first-english-class" target="_blank" rel="noopener">British Council — First English class</a></li>
+          <li><span class="hw-topic">PDF</span> <a href="https://www.perfect-english-grammar.com/support-files/adverbs_or_adjectives_exercise_1.pdf" target="_blank" rel="noopener">Adverbs or adjectives ex. 1</a></li>
+          <li><span class="hw-topic">PDF</span> <a href="https://www.perfect-english-grammar.com/support-files/present_simple_or_present_continuous_2.pdf" target="_blank" rel="noopener">Present Simple or Continuous 2</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>19</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">25 · 03 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Past Simple</span>
+        <span class="topic-pill">Was / Were</span>
+        <span class="topic-pill">Irregular Verbs</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Past of <em>to be</em> — was / were</div>
+        <table class="tiny-table">
+          <tr><th>Subject</th><th>+</th><th>−</th><th>?</th></tr>
+          <tr><td>I / he / she / it</td><td class="pos">was</td><td class="neg">wasn't</td><td class="q">Was he?</td></tr>
+          <tr><td>you / we / they</td><td class="pos">were</td><td class="neg">weren't</td><td class="q">Were they?</td></tr>
+        </table>
+        <div class="ex-line">I was at school yesterday. · They weren't in the classroom. · Were you at home? — Yes, I was.</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Past Simple — other verbs</div>
+        <div class="mini-formula">Regular: verb + -ed · Negative: didn't + base · Question: Did + subject + base?</div>
+        <table class="tiny-table">
+          <tr><th>Type</th><th>Example</th></tr>
+          <tr><td class="pos">+ Regular</td><td>I played tennis. · She watched a film.</td></tr>
+          <tr><td class="pos">+ Irregular</td><td>I went · saw · ate · had · did · made · came · bought · drank · wrote</td></tr>
+          <tr><td class="neg">−</td><td>I didn't play football. · She didn't watch TV.</td></tr>
+          <tr><td class="q">?</td><td>Did you play tennis? — Yes, I did. / No, I didn't.</td></tr>
+        </table>
+        <p style="font-size:12px;color:var(--red);">After <em>didn't</em> / <em>Did</em>, verb goes back to base form. ✗ "Did you went?"</p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Past time markers</div>
+        <p style="font-size:12px;line-height:1.8;">
+          yesterday · last night · last week · last month · last year · two days ago ·
+          a week ago · in 2020 · on Monday · this morning (if finished)
+        </p>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">A1 Workbook</span> p.60 (ex. 1, 2, 4, 5, 8)</li>
+          <li><span class="hw-topic">Quiz</span> Take the quiz in the bot</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>21</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">Late March 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Three Tenses Review</span>
+        <span class="topic-pill">Family Discussion</span>
+        <span class="topic-pill">Speaking Practice</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Tense Review at a Glance</div>
+        <table class="tiny-table">
+          <tr><th>Tense</th><th>Form</th><th>Example</th></tr>
+          <tr><td>Present Simple</td><td>verb (+s)</td><td>I work from 3 pm to 10 pm.</td></tr>
+          <tr><td>Present Continuous</td><td>am/is/are + -ing</td><td>I am reading a book at this moment.</td></tr>
+          <tr><td>Past Simple</td><td>-ed / irregular · did</td><td>I went to work early yesterday.</td></tr>
+        </table>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Family — useful speaking phrases</div>
+        <div class="ex-line">"I come from a big / small family."</div>
+        <div class="ex-line">"I'm the oldest / youngest of [number] siblings."</div>
+        <div class="ex-line">"I get along / լեզու գտնել really well with my [family member]."</div>
+        <div class="ex-line">"I have a strong bond / կապ with my [family member]."</div>
+        <div class="ex-line">"My parents have been married for [number] years."</div>
+        <div class="ex-line">"My family values / արժևորել equality and honesty."</div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Discussion Prompts</div>
+        <p style="font-size:12px;line-height:1.7;">
+          Choose a side and defend it: big vs small families · older vs younger siblings · strict vs friendly parents.
+          Agree / disagree: "Family is more important than career." · "Social media makes families less close."
+          Future-family vision questions: ideal age to marry, how many children, raising kids differently, values to teach.
+        </p>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Key Notes</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">must</span><span class="vi-am">պետք է / պարտադիր</span></span>
+          <span class="vi"><span class="vi-en">should</span><span class="vi-am">պետք է / խորհուրդ</span></span>
+          <span class="vi"><span class="vi-en">bring up</span><span class="vi-am">մեծացնել, դաստիարակել</span></span>
+          <span class="vi"><span class="vi-en">honesty</span><span class="vi-am">ազնվություն</span></span>
+          <span class="vi"><span class="vi-en">dedication</span><span class="vi-am">նվիրվածություն</span></span>
+          <span class="vi"><span class="vi-en">destination</span><span class="vi-am">ուղղություն</span></span>
+          <span class="vi"><span class="vi-en">nature</span><span class="vi-am">բնություն</span></span>
+        </div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">A1 Workbook</span> p.64 (ex. 2, 3) · p.66 (ex. 1a)</li>
+          <li><span class="hw-topic">Reading</span> <a href="https://www.esl-lounge.com/student/reading/1r26-elementary-reading-my-garden-missing-word.php" target="_blank" rel="noopener">esl-lounge — My Garden</a> (read and retell)</li>
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/what-did-you-do-last-weekend-a1-english-listening-test/" target="_blank" rel="noopener">What did you do last weekend?</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>22</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">11 · 04 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body">
+      <div class="topic-pill-row">
+        <span class="topic-pill">Cafés & Restaurants</span>
+        <span class="topic-pill">Ordering Vocabulary</span>
+        <span class="topic-pill">Speaking Practice</span>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Restaurant Vocabulary</div>
+        <div class="vocab-inline">
+          <span class="vi"><span class="vi-en">menu</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">waiter / waitress</span><span class="vi-am">մատուցող</span></span>
+          <span class="vi"><span class="vi-en">chef</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">host / hostess</span><span class="vi-am">հյուրընկալ</span></span>
+          <span class="vi"><span class="vi-en">reservation</span><span class="vi-am">ամրագրում</span></span>
+          <span class="vi"><span class="vi-en">bill / check</span><span class="vi-am">հաշիվ</span></span>
+          <span class="vi"><span class="vi-en">tip</span><span class="vi-am">թեյավճար</span></span>
+          <span class="vi"><span class="vi-en">dish</span><span class="vi-am">ուտեստ</span></span>
+          <span class="vi"><span class="vi-en">appetizer / starter</span><span class="vi-am">նախուտեստ</span></span>
+          <span class="vi"><span class="vi-en">main course</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">dessert</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">beverage</span><span class="vi-am">ըմպելիք</span></span>
+          <span class="vi"><span class="vi-en">side dish</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">specials</span><span class="vi-am">հատուկ առաջարկ</span></span>
+          <span class="vi"><span class="vi-en">allergies / vegetarian / vegan</span></span>
+          <span class="vi-sep">·</span>
+          <span class="vi"><span class="vi-en">utensils</span><span class="vi-am">սպասք</span></span>
+          <span class="vi"><span class="vi-en">napkin</span><span class="vi-am">անձեռոցիկ</span></span>
+          <span class="vi"><span class="vi-en">plate / glass / cup</span></span>
+        </div>
+      </div>
+
+      <div class="mini-block">
+        <div class="mini-block-title">Useful Phrases</div>
+        <div class="ex-line">"Can I see the menu, please?"</div>
+        <div class="ex-line">"I'd like to make a reservation for [time]."</div>
+        <div class="ex-line">"Do you have any vegetarian / vegan options?"</div>
+        <div class="ex-line">"What's today's special?"</div>
+        <div class="ex-line">"Could you recommend something?"</div>
+        <div class="ex-line">"Can I have this without [ingredient]?"</div>
+        <div class="ex-line">"Could we have a table for [number]?"</div>
+        <div class="ex-line">"I'll have the same as them."</div>
+        <div class="ex-line">"Can we get separate checks?"</div>
+        <div class="ex-line">"Can I get the bill / check, please?"</div>
+        <div class="ex-line">"Everything was delicious, thank you!"</div>
+      </div>
+
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Speaking</span> Practice the 25 restaurant phrases with role-play</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── LESSON 24 — EXAM ─── -->
+  <div class="lesson-card exam">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>24</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag">Exam Day</span>
+        <span class="lesson-date">16 · 04 · 2026</span>
+      </div>
+    </div>
+    <div class="lesson-body center">
+      <div class="exam-icon">EXAM</div>
+      <div class="exam-msg">Mid-course assessment</div>
+    </div>
+  </div>
+
+  <!-- ─── LESSON 25 ─── -->
+  <div class="lesson-card live">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>25</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">09 · 05 · 2026</span>
+      </div>
+    </div>
+
+    <div class="lesson-body">
+
+      <div class="topic-pill-row">
+        <span class="topic-pill">Past Continuous</span>
+        <span class="topic-pill">Would Like</span>
+        <span class="topic-pill">Be Going To</span>
+      </div>
+
+      <!-- ── Past Continuous ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Past Continuous
+          <span class="topic-arm">— շարունակական անցյալ ժամանակ</span>
+        </div>
+        <div class="topic-formula">was / were + verb-ing</div>
+
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+          Used for an action <strong style="color:var(--text);">in progress</strong> at a specific moment in the past, often interrupted by another action in the Past Simple.
+        </p>
+
+        <div class="three-forms">
+          <div class="pos-bg">
+            <div class="lbl" style="color:var(--green);">＋ Positive</div>
+            <div class="sentence">I <strong>was reading</strong> a book when you called yesterday.</div>
+          </div>
+          <div class="neg-bg">
+            <div class="lbl" style="color:var(--red);">− Negative</div>
+            <div class="sentence">I <strong>was not reading</strong> a book.</div>
+          </div>
+          <div class="q-bg">
+            <div class="lbl" style="color:var(--violet);">? Question</div>
+            <div class="sentence"><strong>Was</strong> I reading…? &nbsp; <strong>Were</strong> you studying?</div>
+          </div>
+        </div>
+
+        <table class="mini">
+          <tr><th>Subject</th><th>was / were</th></tr>
+          <tr><td>I / He / She / It</td><td class="pos">was</td></tr>
+          <tr><td>You / We / They</td><td class="pos">were</td></tr>
+        </table>
+      </div>
+
+      <!-- ── Would Like ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Would Like (+ noun) &nbsp;/&nbsp; Would Like To (+ verb)
+          <span class="topic-arm">— կցանկանայի</span>
+        </div>
+        <div class="topic-formula">would like + noun &nbsp;·&nbsp; would like to + verb</div>
+
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+          A polite way to say <strong style="color:var(--text);">want</strong>. Same form for all subjects — I, you, he, she, it, we, they.
+        </p>
+
+        <!-- Positive / Negative -->
+        <div class="conj-grid-2">
+          <div>
+            <div class="conj-label pos-label">＋ Positive</div>
+            <div class="conj-table cols-3">
+              <div class="ch">Subject</div><div class="ch">Form</div><div class="ch">Object</div>
+              <div class="cell subj">I / You / He / She /<br>It / We / They</div>
+              <div class="cell pos">would like<br>would like to</div>
+              <div class="cell tail">a cup of tea.<br>drink tea.</div>
+            </div>
+          </div>
+          <div>
+            <div class="conj-label neg-label">− Negative</div>
+            <div class="conj-table cols-3">
+              <div class="ch">Subject</div><div class="ch">Form</div><div class="ch">Object</div>
+              <div class="cell subj">I / You / He / She /<br>It / We / They</div>
+              <div class="cell neg">wouldn't like<br>wouldn't like to</div>
+              <div class="cell tail">a cup of tea.<br>drink tea.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Questions & Short answers -->
+        <div class="conj-grid-2">
+          <div>
+            <div class="conj-label q-label">? Question</div>
+            <div class="conj-table cols-4">
+              <div class="ch">Aux</div><div class="ch">Subject</div><div class="ch">Form</div><div class="ch">Object</div>
+              <div class="cell q">Would</div>
+              <div class="cell subj">I / you / he / she /<br>it / we / they</div>
+              <div class="cell">like<br>like to</div>
+              <div class="cell tail">a cup of tea?<br>drink tea?</div>
+            </div>
+          </div>
+          <div>
+            <div class="conj-label">Short Answers</div>
+            <div class="conj-table cols-3">
+              <div class="ch">Subject</div><div class="ch">Yes,</div><div class="ch">No,</div>
+              <div class="cell subj">I / you / he / she /<br>it / we / they</div>
+              <div class="cell pos">would.</div>
+              <div class="cell neg">wouldn't.</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="example">
+          ✓ I <strong>would like</strong> a cup of tea. &nbsp;·&nbsp;
+          ✓ She <strong>would like to</strong> visit Germany. &nbsp;·&nbsp;
+          ✓ <strong>Would</strong> you <strong>like</strong> some coffee?
+        </p>
+      </div>
+
+      <!-- ── To Be Going To ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Future: To Be Going To
+          <span class="topic-arm">— պատրաստվում եմ ինչ-որ բան անել</span>
+        </div>
+        <div class="topic-formula">am / is / are + going to + base verb</div>
+
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.7;">
+          Used for <strong style="color:var(--text);">plans, intentions, or predictions</strong> based on present evidence. Conjugates with am / is / are like the verb "to be".
+        </p>
+
+        <!-- Positive / Negative -->
+        <div class="conj-grid-2">
+          <div>
+            <div class="conj-label pos-label">＋ Positive</div>
+            <div class="conj-table cols-4">
+              <div class="ch">Subject</div><div class="ch">be</div><div class="ch">going to</div><div class="ch">Verb</div>
+              <div class="cell subj">I</div><div class="cell pos">am</div><div class="cell">going to</div><div class="cell tail">cook.</div>
+              <div class="cell subj">You / We / They</div><div class="cell pos">are</div><div class="cell">going to</div><div class="cell tail">cook.</div>
+              <div class="cell subj">He / She / It</div><div class="cell pos">is</div><div class="cell">going to</div><div class="cell tail">cook.</div>
+            </div>
+          </div>
+          <div>
+            <div class="conj-label neg-label">− Negative</div>
+            <div class="conj-table cols-4">
+              <div class="ch">Subject</div><div class="ch">be + not</div><div class="ch">going to</div><div class="ch">Verb</div>
+              <div class="cell subj">I</div><div class="cell neg">am not</div><div class="cell">going to</div><div class="cell tail">cook.</div>
+              <div class="cell subj">You / We / They</div><div class="cell neg">aren't</div><div class="cell">going to</div><div class="cell tail">cook.</div>
+              <div class="cell subj">He / She / It</div><div class="cell neg">isn't</div><div class="cell">going to</div><div class="cell tail">cook.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Questions & Short answers -->
+        <div class="conj-grid-2">
+          <div>
+            <div class="conj-label q-label">? Question</div>
+            <div class="conj-table cols-4">
+              <div class="ch">be</div><div class="ch">Subject</div><div class="ch">going to</div><div class="ch">Verb</div>
+              <div class="cell q">Am</div><div class="cell subj">I</div><div class="cell">going to</div><div class="cell tail">cook?</div>
+              <div class="cell q">Are</div><div class="cell subj">you / we / they</div><div class="cell">going to</div><div class="cell tail">cook?</div>
+              <div class="cell q">Is</div><div class="cell subj">he / she / it</div><div class="cell">going to</div><div class="cell tail">cook?</div>
+            </div>
+          </div>
+          <div>
+            <div class="conj-label">Short Answers</div>
+            <div class="conj-table cols-3">
+              <div class="ch">Subject</div><div class="ch">Yes,</div><div class="ch">No,</div>
+              <div class="cell subj">I</div><div class="cell pos">am.</div><div class="cell neg">am not.</div>
+              <div class="cell subj">you / we / they</div><div class="cell pos">are.</div><div class="cell neg">aren't.</div>
+              <div class="cell subj">he / she / it</div><div class="cell pos">is.</div><div class="cell neg">isn't.</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="example">
+          ✓ I <strong>am going to</strong> visit my grandmother tomorrow. &nbsp;·&nbsp;
+          ✓ Look at those clouds — it <strong>is going to</strong> rain. &nbsp;·&nbsp;
+          <span style="font-family:var(--mono);color:var(--muted);">aren't = are not &nbsp;·&nbsp; isn't = is not</span>
+        </p>
+      </div>
+
+      <!-- ── Homework ── -->
+      <div class="homework-block">
+        <div class="hw-title">Homework</div>
+        <ul class="hw-list">
+          <li>
+            <span class="hw-topic">Would Like</span>
+            <a href="https://universe.earlystage.pl/default/Short-Test-WOULD-LIKE.pdf" target="_blank" rel="noopener">universe.earlystage.pl/default/Short-Test-WOULD-LIKE.pdf</a>
+          </li>
+          <li>
+            <span class="hw-topic">Be Going To</span>
+            <a href="https://test-english.com/grammar-points/a1/be-going-to-plans-predictions/" target="_blank" rel="noopener">test-english.com/grammar-points/a1/be-going-to-plans-predictions/</a>
+          </li>
+          <li>
+            <span class="hw-topic">Mixed</span>
+            <a href="https://web.unica.it/unica/protected/217527/0/def/ref/MAT215083/" target="_blank" rel="noopener">web.unica.it/unica/protected/217527/0/def/ref/MAT215083/</a>
+            <span style="font-size:11px;color:var(--muted);font-style:italic;">as many exercises as you'll manage!</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ QUIZ ═══ -->
+<div id="quiz" class="page-section">
+  <div class="section-kicker"><span>09 /</span> Test Yourself</div>
+  <h2 class="section-title">Quiz</h2>
+
+  <div class="quiz-wrap">
+    <div class="quiz-header">
+      <h3 id="quiz-title">Grammar Quiz</h3>
+      <div class="quiz-score">Score: <span id="score">0</span> / <span id="total">0</span></div>
+    </div>
+    <div class="quiz-body">
+      <div class="quiz-q" id="quiz-q">Loading…</div>
+      <div class="quiz-hint" id="quiz-hint"></div>
+      <div class="quiz-options" id="quiz-opts"></div>
+      <div class="quiz-feedback" id="quiz-fb"></div>
+      <button class="quiz-next" id="quiz-next" onclick="nextQ()">Next question →</button>
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-prog"></div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  English A1/A2 · Lessons 1–25 · February–May 2026
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────
+
+const activities = [
+  ['wake up','արթնանալ','I wake up at 7 every morning.'],
+  ['get up','վեր կենալ','She gets up early on weekdays.'],
+  ['take a shower','լոգանք ընդունել','He takes a shower before work.'],
+  ['brush teeth','ատամները լվանալ','I brush my teeth twice a day.'],
+  ['get dressed','հագնվել','She gets dressed quickly in the morning.'],
+  ['make breakfast','նախաճաշ պատրաստել','I make breakfast every day.'],
+  ['eat breakfast','նախաճաշել','We eat breakfast at 8 o\'clock.'],
+  ['go to work','գնալ աշխատանքի','He goes to work by bus.'],
+  ['drive to work','մեքենայով գնալ','She drives to work every day.'],
+  ['come home','գալ տուն','I come home at 6 in the evening.'],
+  ['cook dinner','ընթրիք պատրաստել','My mother cooks dinner at 7.'],
+  ['eat dinner','ընթրել','We eat dinner together.'],
+  ['wash the dishes','ափսեները լվանալ','He washes the dishes after dinner.'],
+  ['do the laundry','լվացք անել','I do the laundry on Saturdays.'],
+  ['iron','արդուկել','She irons her clothes every week.'],
+  ['walk the dog','շան հետ զբոսնել','He walks the dog every morning.'],
+  ['go to bed','գնալ քնելու','I go to bed at 11 pm.'],
+  ['sleep','քնել','The baby sleeps for 10 hours.'],
+  ['make the bed','կահույք հավաքել','I make the bed every morning.'],
+  ['clean the house','տունը մաքրել','She cleans the house on Sundays.'],
+];
+const family = [
+  ['husband','ամուսին','Her husband is a doctor.'],
+  ['wife','կին','His wife speaks three languages.'],
+  ['father','հայր','My father works in a bank.'],
+  ['mother','մայր','Her mother is very kind.'],
+  ['son','որդի','They have one son and two daughters.'],
+  ['daughter','դուստր','Their daughter is very talented.'],
+  ['children','երեխաներ','They have two children.'],
+  ['parents','ծնողներ','My parents live in Yerevan.'],
+  ['brother','եղբայր','My brother is tall and strong.'],
+  ['sister','քույր','Her sister plays the piano.'],
+  ['grandfather','պապիկ','My grandfather is 75 years old.'],
+  ['grandmother','տատիկ','My grandmother cooks delicious food.'],
+  ['grandparents','տատիկ-պապիկ','My grandparents live in a village.'],
+  ['uncle','քեռի / հորեղբայր','My uncle is a clever architect.'],
+  ['aunt','հորաքույր / մորաքույր','Her aunt lives in France.'],
+  ['cousin','զարմիկ','I get along well with my cousin.'],
+  ['nephew','եղբորորդի','His nephew is 10 years old.'],
+  ['niece','եղբոր դուստր','Her niece is a shy girl.'],
+  ['siblings','քույր-եղբայր','I have two siblings — a brother and a sister.'],
+  ['grandchildren','թոռներ','They have four grandchildren.'],
+];
+const opposites = [
+  ['tall','short'],['young','old'],['big','small'],['fast','slow'],
+  ['hot','cold'],['clean','dirty'],['easy','difficult'],['cheap','expensive'],
+  ['kind','rude'],['brave','shy'],['rich','poor'],['open','closed'],
+  ['full','empty'],['soft','hard'],['loud','quiet'],['wet','dry'],
+  ['fresh','stale'],['light','heavy'],['smooth','rough'],['straight','curly'],
+];
+const clothing = [
+  ['shirt','վերնաշապիկ','He is wearing a white shirt.'],
+  ['blouse','բլուզ','She wears a blue blouse to work.'],
+  ['dress','զգեստ','She wore a beautiful red dress.'],
+  ['skirt','կիսաշրջազգեստ','She always wears long skirts.'],
+  ['pants / trousers','տաբատ','He is wearing black trousers today.'],
+  ['jeans','ջինս','I usually wear jeans on weekends.'],
+  ['jacket','բաճկոն','It is cold — put on your jacket.'],
+  ['sweater','սվիտեր','She wore a warm sweater.'],
+  ['suit','կոստյում','He wears a suit to the office.'],
+  ['T-shirt','շապիկ','I like wearing comfortable T-shirts.'],
+  ['shorts','շորտ','In summer he wears shorts.'],
+  ['tie','փողկապ','He always wears a tie at work.'],
+  ['scarf','շարֆ','She put on a warm scarf.'],
+  ['gloves','ձեռնոց','Don\'t forget your gloves — it\'s cold!'],
+  ['belt','գոտի','He bought a new leather belt.'],
+  ['socks','գուլպա','I have colourful socks.'],
+  ['hat','գլխարկ','She is wearing a funny hat.'],
+  ['uniform','համազգեստ','Students wear a uniform at school.'],
+  ['vest','ժilет','He wore a vest over his shirt.'],
+  ['coat','վերարկու','She put on her coat and left.'],
+];
+const personality = [
+  ['kind','բարի','She is always kind to everyone.'],
+  ['friendly','ընկերական','He is very friendly and easy to talk to.'],
+  ['polite','քաղաքավարի','Always be polite to your teachers.'],
+  ['honest','ազնիվ','An honest person tells the truth.'],
+  ['clever','խելացի','She is a very clever student.'],
+  ['smart','խելոք','He gives smart answers in class.'],
+  ['funny','զվարճալի','My brother is so funny — he makes everyone laugh.'],
+  ['patient','համբերատար','A good teacher is always patient.'],
+  ['helpful','օգտակար / օժանդակ','She is very helpful when I have problems.'],
+  ['generous','առատաձեռն','He is generous — he always shares his food.'],
+  ['shy','ամաչկոտ','Tom is brave but sometimes shy.'],
+  ['quiet','հանգիստ / լուռ','She is a quiet person — she never shouts.'],
+  ['lazy','ծույլ','He is lazy — he never does his homework.'],
+  ['rude','կոպիտ','It is rude to interrupt people.'],
+  ['selfish','եսասեր','Don\'t be selfish — share with others.'],
+  ['talkative','շատախոս','My cousin is very talkative.'],
+  ['serious','լուրջ','He is always serious at work.'],
+  ['brave','համարձակ','She was brave enough to speak in public.'],
+  ['calm','հանգիստ','Stay calm — everything is okay.'],
+  ['nervous','նյարդային','I feel nervous before exams.'],
+];
+// [base, past simple, past participle, armenian, example, common?]
+const irregularVerbs = [
+  ['be','was / were','been','լինել','She was tired yesterday.',true],
+  ['become','became','become','դառնալ','He became a doctor.',true],
+  ['begin','began','begun','սկսել','They began the lesson.',true],
+  ['bite','bit','bitten','կծել','The dog bit my hand.',false],
+  ['blow','blew','blown','փչել','The wind blew strongly.',false],
+  ['break','broke','broken','կոտրել','I broke my phone.',true],
+  ['bring','brought','brought','բերել','She brought flowers.',true],
+  ['build','built','built','կառուցել','They built a house.',true],
+  ['buy','bought','bought','գնել','I bought a new bag.',true],
+  ['catch','caught','caught','բռնել','He caught the ball.',true],
+  ['choose','chose','chosen','ընտրել','She chose a red dress.',true],
+  ['come','came','come','գալ','They came home late.',true],
+  ['cost','cost','cost','արժել','The book cost 5 dollars.',true],
+  ['cut','cut','cut','կտրել','He cut the bread.',true],
+  ['do','did','done','անել','I did my homework.',true],
+  ['draw','drew','drawn','նկարել','She drew a picture.',false],
+  ['drink','drank','drunk','խմել','We drank tea.',true],
+  ['drive','drove','driven','վարել','He drove to work.',true],
+  ['eat','ate','eaten','ուտել','I ate breakfast.',true],
+  ['fall','fell','fallen','ընկնել','She fell on the ice.',true],
+  ['feel','felt','felt','զգալ','I felt tired.',true],
+  ['fight','fought','fought','կռվել','They fought over it.',false],
+  ['find','found','found','գտնել','She found her keys.',true],
+  ['fly','flew','flown','թռչել','The bird flew away.',false],
+  ['forget','forgot','forgotten','մոռանալ','I forgot his name.',true],
+  ['get','got','got','ստանալ','He got a new job.',true],
+  ['give','gave','given','տալ','She gave me a gift.',true],
+  ['go','went','gone','գնալ','We went to school.',true],
+  ['grow','grew','grown','աճել','The plant grew fast.',false],
+  ['have','had','had','ունենալ','I had a dog.',true],
+  ['hear','heard','heard','լսել','Did you hear that?',true],
+  ['hold','held','held','բռնել','She held the baby.',false],
+  ['hurt','hurt','hurt','ցավ տալ','I hurt my knee.',true],
+  ['keep','kept','kept','պահել','She kept the letter.',false],
+  ['know','knew','known','իմանալ','He knew the answer.',true],
+  ['learn','learnt','learnt','սովորել','We learnt new words.',true],
+  ['leave','left','left','հեռանալ / թողնել','He left early.',true],
+  ['lend','lent','lent','փոխ տալ','I lent him my pen.',false],
+  ['lose','lost','lost','կորցնել','She lost her bag.',true],
+  ['make','made','made','պատրաստել','I made breakfast.',true],
+  ['mean','meant','meant','նշանակել','What did it mean?',false],
+  ['meet','met','met','հանդիպել','We met at school.',true],
+  ['pay','paid','paid','վճարել','He paid the bill.',true],
+  ['put','put','put','դնել','Put your bag here.',true],
+  ['read','read','read','կարդալ','I read a book.',true],
+  ['ride','rode','ridden','հեծնել','She rode her bike.',false],
+  ['ring','rang','rung','զանգել','He rang the bell.',false],
+  ['run','ran','run','վազել','They ran fast.',true],
+  ['say','said','said','ասել','She said goodbye.',true],
+  ['see','saw','seen','տեսնել','I saw him yesterday.',true],
+  ['sell','sold','sold','վաճառել','He sold his car.',true],
+  ['send','sent','sent','ուղարկել','She sent a letter.',true],
+  ['shoot','shot','shot','կրակել','He shot the goal.',false],
+  ['show','showed','shown','ցույց տալ','She showed me.',false],
+  ['sing','sang','sung','երգել','They sang a song.',false],
+  ['sit','sat','sat','նստել','She sat near me.',true],
+  ['sleep','slept','slept','քնել','I slept at 10.',true],
+  ['speak','spoke','spoken','խոսել','He spoke English.',true],
+  ['spend','spent','spent','ծախսել / անցկացնել','We spent the day.',true],
+  ['stand','stood','stood','կանգնել','She stood up.',true],
+  ['steal','stole','stolen','գողանալ','He stole the bag.',false],
+  ['swim','swam','swum','լողալ','I swam in the sea.',false],
+  ['take','took','taken','վերցնել','She took a photo.',true],
+  ['teach','taught','taught','դասավանդել','He taught English.',true],
+  ['tell','told','told','ասել','She told a story.',true],
+  ['think','thought','thought','մտածել','I thought about it.',true],
+  ['throw','threw','thrown','նետել','He threw the ball.',false],
+  ['understand','understood','understood','հասկանալ','I understood.',true],
+  ['wake','woke','woken','արթնանալ','I woke up early.',true],
+  ['wear','wore','worn','հագնել','She wore a dress.',true],
+  ['win','won','won','հաղթել','Our team won.',false],
+  ['write','wrote','written','գրել','I wrote a letter.',true],
+  ['arise','arose','arisen','ծագել','A problem arose.',false],
+  ['awake','awoke','awoken','արթնանալ','She awoke at dawn.',false],
+  ['bear','bore','borne','կրել / հանդուրժել','She bore the pain.',false],
+  ['beat','beat','beaten','հաղթել / տրել','He beat the record.',false],
+  ['bend','bent','bent','ծրել','She bent the wire.',false],
+  ['bind','bound','bound','կապել','He bound the papers.',false],
+  ['bleed','bled','bled','արյունահոսել','He bled a lot.',false],
+  ['burn','burnt','burnt','այրել / վարվել','The house burnt down.',true],
+  ['burst','burst','burst','պայթել','The pipe burst.',false],
+  ['cast','cast','cast','նետել / դզուլել','He cast the fishing net.',false],
+  ['creep','crept','crept','սողալ','The cat crept slowly.',false],
+  ['deal','dealt','dealt','զբաղվել','He dealt with the problem.',true],
+  ['dig','dug','dug','փորել','They dug a deep hole.',false],
+  ['dream','dreamt','dreamt','երազնել','I dreamt about you.',true],
+  ['feed','fed','fed','կերակրել','She fed the baby.',true],
+  ['flee','fled','fled','փախչել','They fled the city.',false],
+  ['forbid','forbade','forbidden','արգելել','Smoking is forbidden here.',false],
+  ['freeze','froze','frozen','սարել / սարանալ','It froze overnight.',false],
+  ['hang','hung','hung','կախել','He hung the picture.',false],
+  ['hide','hid','hidden','թախնել / թախնվել','He hid behind the door.',false],
+  ['hit','hit','hit','խպել / հարվացել','She hit the ball hard.',true],
+  ['kneel','knelt','knelt','ծունկեղել','She knelt to pray.',false],
+  ['lay','laid','laid','կախել','He laid the book down.',false],
+  ['lead','led','led','ղեկավարել / տանել','She led the team.',true],
+  ['leap','leapt','leapt','ցաթխել','The cat leapt onto the table.',false],
+  ['let','let','let','թույլատրել / տալ','Let me help you.',true],
+  ['light','lit','lit','վարրել / լուսավորել','She lit a candle.',true],
+  ['quit','quit','quit','լխել','He quit his job.',true],
+  ['set','set','set','դնել / սահմանել','She set the table.',true],
+  ['shake','shook','shaken','ցացրել','He shook my hand.',true],
+  ['shed','shed','shed','թախատացել','The dog shed fur.',false],
+  ['shrink','shrank','shrunk','կնանել','The shirt shrank.',false],
+  ['shut','shut','shut','կոգել','Please shut the door.',true],
+  ['slide','slid','slid','սահել','He slid on the ice.',false],
+  ['smell','smelt','smelt','հոթերել','The food smelt great.',true],
+  ['spell','spelt','spelt','տերադրոխոսկալել','How do you spell it?',true],
+  ['spill','spilt','spilt','լել','She spilt the coffee.',false],
+  ['split','split','split','կտրել','He split the wood.',false],
+  ['spread','spread','spread','տարադարել','She spread butter on bread.',true],
+  ['stick','stuck','stuck','կպել / մնալ','The stamp stuck.',false],
+  ['sting','stung','stung','կցախել','A bee stung me.',false],
+  ['strike','struck','struck','խպել / հարվացել','He struck a match.',false],
+  ['sweep','swept','swept','մազրել','She swept the floor.',false],
+  ['swing','swung','swung','թաթանել','The child swung high.',false],
+  ['tear','tore','torn','պատրել','She tore the letter.',false],
+  ['weep','wept','wept','լալ','She wept with joy.',false],
+  ['wind','wound','wound','խուզարել','He wound the clock.',false],
+  ['withdraw','withdrew','withdrawn','դուրսկել / կասխել','She withdrew cash.',true],
+  ['wring','wrung','wrung','խորել','She wrung the wet cloth.',false],
+  // Additional irregular verbs
+  ['abide','abode','abode','մնալ / հանդուրժել','He abode by the rules.',false],
+  ['alight','alit','alit','իջնել','She alit from the bus.',false],
+  ['bid','bade','bidden','հրամայել / հրավիրել','He bade her farewell.',false],
+  ['breed','bred','bred','բուծել','They bred horses.',false],
+  ['broadcast','broadcast','broadcast','հեռարձակել','The news was broadcast live.',false],
+  ['chide','chid','chidden','հանդիմանել','He chid the child gently.',false],
+  ['cleave','clove','cloven','ճեղքել','He cleaved the log in two.',false],
+  ['cling','clung','clung','կպչել','She clung to the rope.',false],
+  ['clothe','clad','clad','հագնել / հագցնել','She clad herself warmly.',false],
+  ['crow','crew','crowed','կանչել (աքաղաղ)','The rooster crew at dawn.',false],
+  ['dare','durst','dared','համարձակվել','He durst not speak.',false],
+  ['dwell','dwelt','dwelt','բնակվել','They dwelt in the forest.',false],
+  ['engrave','engraved','engraven','փորագրել','He engraved his name.',false],
+  ['fling','flung','flung','նետել','He flung the stone.',false],
+  ['forbear','forbore','forborne','զսպվել','She forbore from complaining.',false],
+  ['forecast','forecast','forecast','կանխատեսել','He forecast rain.',false],
+  ['forego','forewent','foregone','հրաժարվել','She foregoing the reward.',false],
+  ['foresee','foresaw','foreseen','կանխատեսել','He foresaw the problem.',false],
+  ['forsake','forsook','forsaken','թողնել / հրաժարվել','He forsook his old habits.',false],
+  ['grind','ground','ground','աղալ','He ground the coffee.',false],
+  ['hamstring','hamstrung','hamstrung','կաղացնել','The injury hamstrung him.',false],
+  ['handwrite','handwrote','handwritten','ձեռագրել','She handwrote the letter.',false],
+  ['heave','hove','hoven','վեր քաշել','He hove the anchor.',false],
+  ['hew','hewed','hewn','կոտրել / կտրել','He hewed the wood.',false],
+  ['inlay','inlaid','inlaid','ներդնել','She inlaid the tiles.',false],
+  ['input','input','input','մուտքագրել','He input the data.',false],
+  ['interweave','interwove','interwoven','հյուսել','She interwove the threads.',false],
+  ['knit','knit','knit','հյուսել','She knit a scarf.',false],
+  ['laden','laded','laden','բեռնել','The ship was laden.',false],
+  ['lie','lay','lain','պառկել','She lay on the sofa.',false],
+  ['mislay','mislaid','mislaid','կորցնել','He mislaid his keys.',false],
+  ['mislead','misled','misled','մոլորեցնել','She misled him.',false],
+  ['misspell','misspelt','misspelt','սխալ գրել','He misspelt the word.',false],
+  ['mistake','mistook','mistaken','սխալվել','She mistook him for his brother.',false],
+  ['misunderstand','misunderstood','misunderstood','թյուրիմանալ','He misunderstood the question.',false],
+  ['outbid','outbid','outbid','ավել գնով հաղթել','She outbid everyone.',false],
+  ['outdo','outdid','outdone','գերազանցել','He outdid himself.',false],
+  ['outgrow','outgrew','outgrown','մեծ դառնալ','She outgrew her clothes.',false],
+  ['outrun','outran','outrun','արագ վազել','He outran them all.',false],
+  ['overcome','overcame','overcome','հաղթահարել','She overcame her fear.',false],
+  ['overdo','overdid','overdone','չափազանցել','He overdid the salt.',false],
+  ['overhear','overheard','overheard','պատահաբար լսել','She overheard the conversation.',false],
+  ['overtake','overtook','overtaken','անցնել / հասնել','He overtook the car.',false],
+  ['overthrow','overthrew','overthrown','տապալել','They overthrew the king.',false],
+  ['plead','pled','pled','հայցել','She pled innocent.',false],
+  ['prove','proved','proven','ապացուցել','He proved his point.',false],
+  ['rebuild','rebuilt','rebuilt','վերակառուցել','They rebuilt the house.',false],
+  ['redo','redid','redone','վերանել','She redid her work.',false],
+  ['relay','relaid','relaid','վերադնել','He relaid the carpet.',false],
+  ['remake','remade','remade','վերաստեղծել','She remade the dress.',false],
+  ['rend','rent','rent','պատռել','He rent his clothes.',false],
+  ['repay','repaid','repaid','հատուցել','She repaid the loan.',false],
+  ['rewrite','rewrote','rewritten','վերաշարադրել','He rewrote the report.',false],
+  ['rid','rid','rid','ազատվել','She rid herself of the habit.',false],
+  ['rise','rose','risen','բարձրանալ','The sun rose at 6.',false],
+  ['saw','sawed','sawn','սղոցել','He sawed the wood.',false],
+  ['seek','sought','sought','փնտրել','She sought help.',false],
+  ['sew','sewed','sewn','կարել','She sewed a button.',false],
+  ['shine','shone','shone','փայլել','The sun shone brightly.',false],
+  ['shoe','shod','shod','կոշկակարել','He shod the horse.',false],
+  ['slay','slew','slain','սպանել','He slew the dragon.',false],
+  ['sow','sowed','sown','ցանել','She sowed the seeds.',false],
+  ['spin','spun','spun','մանել / պտտվել','She spun the wheel.',false],
+  ['spit','spat','spat','թքել','He spat on the ground.',false],
+  ['spoil','spoilt','spoilt','փչացնել','The rain spoilt the picnic.',false],
+  ['spring','sprang','sprung','թռչել / ծնվել','He sprang to his feet.',false],
+  ['stave','stove','stoven','փշրել','He stove in the barrel.',false],
+  ['strew','strewed','strewn','ցրել','She strewed flowers on the path.',false],
+  ['stride','strode','stridden','քայլել','He strode across the room.',false],
+  ['strive','strove','striven','ձգտել','She strove to succeed.',false],
+  ['swear','swore','sworn','երդվել / հայհոյել','He swore an oath.',false],
+  ['swell','swelled','swollen','ուռել','Her ankle swelled up.',false],
+  ['thrive','throve','thriven','ծաղկել / հաջողվել','The business throve.',false],
+  ['tread','trod','trodden','ոտնատակ տալ','He trod on the grass.',false],
+  ['typewrite','typewrote','typewritten','մեքենագրել','She typewrote the letter.',false],
+  ['unbind','unbound','unbound','արձակել','He unbound the prisoner.',false],
+  ['undercut','undercut','undercut','ցածր գնով մրցել','They undercut their rivals.',false],
+  ['undergo','underwent','undergone','ենթարկվել','She underwent surgery.',false],
+  ['undertake','undertook','undertaken','ձեռնամուխ լինել','She undertook the project.',false],
+  ['undo','undid','undone','արձակել / չեղարկել','He undid the knot.',false],
+  ['unwind','unwound','unwound','արձակել / հանգստանալ','She unwound after work.',false],
+  ['uphold','upheld','upheld','պաշտպանել','The court upheld the law.',false],
+  ['upset','upset','upset','վրդովել','The news upset her.',false],
+  ['wed','wed','wed','ամուսնանալ','They wed in June.',false],
+  ['withhold','withheld','withheld','պահել / չտրամադրել','He withheld the information.',false],
+  ['withstand','withstood','withstood','դիմակայել','She withstood the pressure.',false],
+  ['work','wrought','wrought','կռել (հնաոճ / մետաղ)','He wrought iron.',false],
+];
+const places = [
+  ['bakery','հացի խանութ'],
+  ['bank','բանկ'],
+  ['barber shop','վարսավիրանոց'],
+  ['bookstore','գրախանութ'],
+  ['bus station','ավտոբուսի կայարան'],
+  ['clinic','կլինիկա'],
+  ['coffee shop','սրչարան'],
+  ['clothing store','հագուստի խանութ'],
+  ['drugstore / pharmacy','դեղատուն'],
+  ['gas station','բենզալցակայան'],
+  ['grocery store','մթերային խանութ'],
+  ['hair salon','վարսավիրանոց'],
+  ['hospital','հիվանդանոց'],
+  ['hotel','հյուրանոց'],
+  ['laundromat','լվածքատուն'],
+  ['library','գրադարան'],
+  ['movie theater','կինոթեաթրոն'],
+  ['park','զբոսայգի'],
+  ['pet store','կենդանիների խանութ'],
+  ['post office','փոստի գրասենակ'],
+  ['restaurant','ռեստորան'],
+  ['school','դպրոց'],
+  ['supermarket','սուպերմարկետ'],
+  ['train station','երկաթուղային կայարան'],
+  ['travel agency','թուրիստական գործակալություն'],
+  ['jewelry store','զարդերի խանութ'],
+  ['nail salon','մատնահարդարման սալոն'],
+  ['shoe store','կոշիկի խանութ'],
+  ['toy store','խաղալիկների խանութ'],
+  ['shopping mall','մոլ'],
+];
+const jobs = [
+  ['accountant','հաշվապահ'],
+  ['architect','ճարտարապետ'],
+  ['artist','նկարիչ / արտիստ'],
+  ['baker','հացթուխ'],
+  ['barber','վարսավիր'],
+  ['carpenter','հյուսն'],
+  ['chef / cook','խոհարար'],
+  ['cashier','դրամարկղապահ'],
+  ['delivery person','առակիչ'],
+  ['engineer','ինժեներ'],
+  ['farmer','հողագորց'],
+  ['firefighter','հրշեջ'],
+  ['hairdresser','վարսավիր / վարսավկուհի'],
+  ['journalist','լրագրող'],
+  ['lawyer','իրավաբան'],
+  ['mechanic','մեխանիկոս'],
+  ['musician','երաժշտ'],
+  ['nurse','բուժիչ'],
+  ['painter','նկարիչ'],
+  ['pharmacist','դեղաբան'],
+  ['photographer','լուսանկարիչ'],
+  ['pilot','փիլոտ'],
+  ['police officer','ոստիկան'],
+  ['receptionist','ընդունիչ'],
+  ['secretary','քարթուղար'],
+  ['security guard','պահակ'],
+  ['tailor','կարիչ'],
+  ['teacher / instructor','ուսուցիչ'],
+  ['translator','թարգմանիչ'],
+  ['veterinarian','կենդանաբուժիչ'],
+  ['waiter / waitress','սպասարկող / սպասարկուհի'],
+  ['welder','եռակիչ'],
+];
+
+// ─── RENDER FUNCTIONS ──────────────────────────────
+
+function renderVocabGrid(id, data) {
+  const g = document.getElementById(id);
+  g.innerHTML = data.map(([e,a,ex]) =>
+    `<div class="vocab-card"><div class="v-en">${e}</div><div class="v-am">${a}</div>${ex ? `<div class="v-ex">${ex}</div>` : ''}</div>`
+  ).join('');
+}
+function renderOpp(id, data) {
+  const g = document.getElementById(id);
+  g.innerHTML = data.map(([a,b]) =>
+    `<div class="opp-pair"><div class="opp-word">${a}</div><div class="opp-divider">vs</div><div class="opp-word right">${b}</div></div>`
+  ).join('');
+}
+let irrFilter = 'all';
+let irrSearch = '';
+let irrSortCol = 0;
+let irrSortAsc = true;
+
+function renderIrr() {
+  let rows = irregularVerbs.filter(([base, past, pp, arm]) => {
+    const matchFilter =
+      irrFilter === 'all' ||
+      (irrFilter === 'common' && irregularVerbs.find(v => v[0] === base)?.[5]) ||
+      (irrFilter === 'a-f' && base[0] >= 'a' && base[0] <= 'f') ||
+      (irrFilter === 'g-m' && base[0] >= 'g' && base[0] <= 'm') ||
+      (irrFilter === 'n-z' && base[0] >= 'n' && base[0] <= 'z');
+    if (!matchFilter) return false;
+    if (irrSearch === '') return true;
+    const s = irrSearch.toLowerCase();
+    return base.includes(s) || past.includes(s) || pp.includes(s) || arm.includes(s);
+  });
+
+  // filter common separately (needs the 6th field)
+  if (irrFilter === 'common') {
+    rows = irregularVerbs.filter(([base, past, pp, arm,, common]) => {
+      if (!common) return false;
+      if (irrSearch === '') return true;
+      const s = irrSearch.toLowerCase();
+      return base.includes(s) || past.includes(s) || pp.includes(s) || arm.includes(s);
+    });
+  }
+
+  // Sort
+  rows = [...rows].sort((a, b) => {
+    const av = a[irrSortCol] || '';
+    const bv = b[irrSortCol] || '';
+    return irrSortAsc ? av.localeCompare(bv) : bv.localeCompare(av);
+  });
+
+  const tbody = document.getElementById('irr-tbody');
+  tbody.innerHTML = rows.map(([base, past, pp, arm, ex, common]) =>
+    `<tr>
+      <td class="col-base">${base}${common ? ' <span style="font-family:var(--mono);font-size:9px;background:var(--gold);color:var(--text);padding:1px 5px;">★</span>' : ''}</td>
+      <td class="col-past">${past}</td>
+      <td class="col-pp">${pp}</td>
+      <td class="col-arm">${arm}</td>
+      <td class="col-ex">${ex}</td>
+    </tr>`
+  ).join('');
+  document.getElementById('irr-count').textContent = `Showing ${rows.length} of ${irregularVerbs.length} verbs — ★ = most common`;
+
+  // Update header sort indicators
+  [0,1,2].forEach(i => {
+    const th = document.getElementById('th-' + i);
+    const arrow = th.querySelector('.sort-arrow');
+    if (i === irrSortCol) {
+      th.classList.add('sorted');
+      arrow.textContent = irrSortAsc ? '↑' : '↓';
+    } else {
+      th.classList.remove('sorted');
+      arrow.textContent = '↕';
+    }
+  });
+}
+
+function sortIrr(col) {
+  if (irrSortCol === col) {
+    irrSortAsc = !irrSortAsc;
+  } else {
+    irrSortCol = col;
+    irrSortAsc = true;
+  }
+  renderIrr();
+}
+
+function filterIrr(f, btn) {
+  irrFilter = f;
+  document.querySelectorAll('.irr-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('irr-search').value = '';
+  irrSearch = '';
+  renderIrr();
+}
+
+function searchIrr(val) {
+  irrSearch = val.toLowerCase();
+  renderIrr();
+}
+function renderPlaces() {
+  document.getElementById('places-list').innerHTML = places.map(([en, am]) =>
+    `<div class="place-item"><span class="p-en">${en}</span><span class="p-am">${am}</span></div>`).join('');
+  document.getElementById('jobs-list').innerHTML = jobs.map(([en,am]) =>
+    `<div class="place-item"><span class="p-en">${en}</span><span class="p-am">${am}</span></div>`).join('');
+}
+
+renderVocabGrid('act-grid', activities);
+renderVocabGrid('fam-grid', family);
+renderOpp('opp-grid', opposites);
+renderVocabGrid('cloth-grid', clothing);
+renderVocabGrid('pers-grid', personality);
+renderIrr();
+renderPlaces();
+
+// ─── NAV ───────────────────────────────────────────
+
+function showSection(id, btn) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── VOCAB TABS ────────────────────────────────────
+
+function showVocab(id, btn) {
+  document.querySelectorAll('.vocab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.vtab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ─── QUIZ ──────────────────────────────────────────
+
+const questions = [
+  { q: 'She ___ a teacher.', hint: 'To be — he/she/it', opts: ['am','is','are','be'], ans: 1 },
+  { q: 'I ___ coffee every morning.', hint: 'Present Simple — I', opts: ['drink','drinks','am drinking','drinked'], ans: 0 },
+  { q: 'He ___ tennis on Sundays.', hint: 'Present Simple — he/she/it', opts: ['play','playes','plays','is play'], ans: 2 },
+  { q: 'She ___ TV right now.', hint: 'Present Continuous — she', opts: ['watch','watches','is watching','was watching'], ans: 2 },
+  { q: 'I ___ to the shop yesterday.', hint: 'Past Simple — go (irregular)', opts: ['go','goes','goed','went'], ans: 3 },
+  { q: 'They ___ here last night.', hint: 'Past Simple of "be" — they', opts: ['was','were','are','be'], ans: 1 },
+  { q: 'She ___ got a dog.', hint: 'Have got — she', opts: ['have','has','had','haves'], ans: 1 },
+  { q: 'There ___ a park near my house.', hint: 'There is / There are — singular', opts: ['are','is','have','be'], ans: 1 },
+  { q: '___ you swim when you were five?', hint: 'Past ability — could', opts: ['Can','Do','Could','Were'], ans: 2 },
+  { q: 'I like ___ books in the evening.', hint: 'like + verb-ing', opts: ['read','reads','reading','to reading'], ans: 2 },
+  { q: 'She ___ eat meat. She is vegetarian.', hint: 'Present Simple negative — she', opts: ["don't","doesn't","isn't","aren't"], ans: 1 },
+  { q: '___ they playing football now?', hint: 'Present Continuous question — they', opts: ['Do','Does','Are','Is'], ans: 2 },
+  { q: 'I always ___ up at 7 o\'clock.', hint: 'Adverb of frequency position', opts: ['get','gets','getting','got'], ans: 0 },
+  { q: 'This is ___ book. (belonging to me)', hint: 'Possessive determiner — I', opts: ['me','my','mine','I\'s'], ans: 1 },
+  { q: 'She is a ___ driver. (careful)', hint: 'Adjective or adverb?', opts: ['carefully','careful','care','careless'], ans: 1 },
+];
+
+let qi = 0, score = 0, answered = false;
+const shuffled = [...questions].sort(() => Math.random()-0.5);
+
+function loadQ() {
+  const q = shuffled[qi % shuffled.length];
+  answered = false;
+  document.getElementById('quiz-q').textContent = q.q;
+  document.getElementById('quiz-hint').textContent = 'Hint: ' + q.hint;
+  document.getElementById('quiz-fb').textContent = '';
+  document.getElementById('quiz-fb').className = 'quiz-feedback';
+  document.getElementById('total').textContent = qi;
+  document.getElementById('quiz-prog').style.width = ((qi / questions.length) * 100) + '%';
+
+  const opts = document.getElementById('quiz-opts');
+  opts.innerHTML = q.opts.map((o,i) =>
+    `<button class="quiz-opt" onclick="answer(${i})">${o}</button>`
+  ).join('');
+}
+
+function answer(i) {
+  if (answered) return;
+  answered = true;
+  const q = shuffled[qi % shuffled.length];
+  const btns = document.querySelectorAll('.quiz-opt');
+  btns.forEach(b => b.disabled = true);
+  if (i === q.ans) {
+    btns[i].classList.add('correct');
+    score++;
+    document.getElementById('score').textContent = score;
+    document.getElementById('quiz-fb').textContent = '✓ Correct!';
+    document.getElementById('quiz-fb').className = 'quiz-feedback ok';
+  } else {
+    btns[i].classList.add('wrong');
+    btns[q.ans].classList.add('correct');
+    document.getElementById('quiz-fb').textContent = '✗ The correct answer is: ' + q.opts[q.ans];
+    document.getElementById('quiz-fb').className = 'quiz-feedback err';
+  }
+}
+
+function nextQ() {
+  qi++;
+  loadQ();
+}
+
+loadQ();
+</script>
+</body>
+</html>
