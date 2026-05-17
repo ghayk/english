@@ -1864,19 +1864,34 @@
   <div class="section-kicker"><span>09 /</span> Test Yourself</div>
   <h2 class="section-title" data-en="Quiz" data-am="Թեստ">Quiz</h2>
 
-  <div class="quiz-wrap">
-    <div class="quiz-header">
-      <h3 id="quiz-title">Grammar Quiz</h3>
-      <div class="quiz-score">Score: <span id="score">0</span> / <span id="total">0</span></div>
+  <div class="qmode-tabs">
+    <button class="qmode-tab active" onclick="showQuizView('practice', this)">▶ Practice</button>
+    <button class="qmode-tab" onclick="showQuizView('list', this)">≡ All Questions</button>
+  </div>
+
+  <div id="quiz-practice" class="quiz-view">
+    <div class="quiz-wrap">
+      <div class="quiz-header">
+        <h3 id="quiz-title">Grammar Quiz</h3>
+        <div class="quiz-score">Score: <span id="score">0</span> / <span id="total">0</span></div>
+      </div>
+      <div class="quiz-body">
+        <div class="quiz-q" id="quiz-q">Loading…</div>
+        <div class="quiz-hint" id="quiz-hint"></div>
+        <div class="quiz-options" id="quiz-opts"></div>
+        <div class="quiz-feedback" id="quiz-fb"></div>
+        <button class="quiz-next" id="quiz-next" onclick="nextQ()">Next question →</button>
+        <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-prog"></div></div>
+      </div>
     </div>
-    <div class="quiz-body">
-      <div class="quiz-q" id="quiz-q">Loading…</div>
-      <div class="quiz-hint" id="quiz-hint"></div>
-      <div class="quiz-options" id="quiz-opts"></div>
-      <div class="quiz-feedback" id="quiz-fb"></div>
-      <button class="quiz-next" id="quiz-next" onclick="nextQ()">Next question →</button>
-      <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-prog"></div></div>
+  </div>
+
+  <div id="quiz-list" class="quiz-view" style="display:none;">
+    <div class="qlist-toolbar">
+      <span id="qlist-stats" class="qlist-stats"></span>
+      <button class="qlist-reset" onclick="resetQuizHistory()">Clear history</button>
     </div>
+    <div id="qlist-panel"></div>
   </div>
 </div>
 

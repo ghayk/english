@@ -737,50 +737,90 @@ function showVocab(id, btn) {
 // ─── QUIZ ──────────────────────────────────────────
 
 const questions = [
-  { q: 'She ___ a teacher.', hint: 'To be — he/she/it', opts: ['am','is','are','be'], ans: 1 },
-  { q: 'I ___ coffee every morning.', hint: 'Present Simple — I', opts: ['drink','drinks','am drinking','drinked'], ans: 0 },
-  { q: 'He ___ tennis on Sundays.', hint: 'Present Simple — he/she/it', opts: ['play','playes','plays','is play'], ans: 2 },
-  { q: 'She ___ TV right now.', hint: 'Present Continuous — she', opts: ['watch','watches','is watching','was watching'], ans: 2 },
-  { q: 'I ___ to the shop yesterday.', hint: 'Past Simple — go (irregular)', opts: ['go','goes','goed','went'], ans: 3 },
-  { q: 'They ___ here last night.', hint: 'Past Simple of "be" — they', opts: ['was','were','are','be'], ans: 1 },
-  { q: 'She ___ got a dog.', hint: 'Have got — she', opts: ['have','has','had','haves'], ans: 1 },
-  { q: 'There ___ a park near my house.', hint: 'There is / There are — singular', opts: ['are','is','have','be'], ans: 1 },
-  { q: '___ you swim when you were five?', hint: 'Past ability — could', opts: ['Can','Do','Could','Were'], ans: 2 },
-  { q: 'I like ___ books in the evening.', hint: 'like + verb-ing', opts: ['read','reads','reading','to reading'], ans: 2 },
-  { q: 'She ___ eat meat. She is vegetarian.', hint: 'Present Simple negative — she', opts: ["don't","doesn't","isn't","aren't"], ans: 1 },
-  { q: '___ they playing football now?', hint: 'Present Continuous question — they', opts: ['Do','Does','Are','Is'], ans: 2 },
-  { q: 'I always ___ up at 7 o\'clock.', hint: 'Adverb of frequency position', opts: ['get','gets','getting','got'], ans: 0 },
-  { q: 'This is ___ book. (belonging to me)', hint: 'Possessive determiner — I', opts: ['me','my','mine','I\'s'], ans: 1 },
-  { q: 'She is a ___ driver. (careful)', hint: 'Adjective or adverb?', opts: ['carefully','careful','care','careless'], ans: 1 },
-  // Present Perfect
-  { q: 'She ___ to Paris three times.', hint: 'Present Perfect — she', opts: ['go','went','has gone','have gone'], ans: 2 },
-  { q: 'I ___ never eaten sushi.', hint: 'Present Perfect with "never"', opts: ['have','has','had','am'], ans: 0 },
-  { q: 'She ___ English for two years.', hint: 'Present Perfect with "for"', opts: ['study','studied','has studied','is studying'], ans: 2 },
-  { q: 'I haven\'t seen him ___ last week.', hint: 'Present Perfect time reference', opts: ['for','since','ago','in'], ans: 1 },
-  { q: 'Have you ___ been to London?', hint: 'Present Perfect with "ever"', opts: ['never','already','ever','just'], ans: 2 },
-  { q: 'She has already ___ her homework.', hint: 'Present Perfect + past participle of "finish"', opts: ['finish','finishing','finished','finishes'], ans: 2 },
-  // Irregular verbs
-  { q: 'What is the past simple of "buy"?', hint: 'Irregular verb', opts: ['buyed','bought','buys','boughted'], ans: 1 },
-  { q: 'What is the past participle of "write"?', hint: 'write / wrote / ?', opts: ['writed','wrote','written','writ'], ans: 2 },
-  { q: 'She has never ___ to Japan. (be)', hint: 'Past participle of "be"', opts: ['be','being','been','went'], ans: 2 },
-  { q: 'He ___ the dishes yesterday. (wash)', hint: 'Past Simple — regular verb', opts: ['wash','washes','washed','washing'], ans: 2 },
-  // Comparatives & superlatives
-  { q: 'I am ___ than my brother. (tall)', hint: 'Comparative adjective', opts: ['tall','taller','tallest','more tall'], ans: 1 },
-  { q: 'Everest is the ___ mountain in the world. (high)', hint: 'Superlative adjective', opts: ['higher','most high','highest','more high'], ans: 2 },
-  { q: 'She is the ___ student in the class. (good)', hint: 'Superlative of "good" is irregular', opts: ['better','gooder','best','most good'], ans: 2 },
-  // Articles & quantifiers
-  { q: 'I have ___ umbrella in my bag.', hint: 'Article before vowel sound', opts: ['a','an','the','-'], ans: 1 },
-  { q: 'How ___ apples are there?', hint: 'Countable noun quantifier', opts: ['much','many','few','little'], ans: 1 },
-  { q: 'How ___ water do you drink?', hint: 'Uncountable noun quantifier', opts: ['much','many','few','a lot'], ans: 0 },
-  // Mixed grammar
-  { q: 'The book is ___ the table. (on top)', hint: 'Preposition of place', opts: ['in','at','on','between'], ans: 2 },
-  { q: '___ is your name?', hint: 'Question word for a name/thing', opts: ['Who','What','Where','When'], ans: 1 },
-  { q: 'I am going ___ visit my grandmother.', hint: 'be going to + infinitive', opts: ['for','at','to','in'], ans: 2 },
-  { q: 'They ___ dinner when I called.', hint: 'Past Continuous — activity in progress', opts: ['have','had','was having','were having'], ans: 3 },
-  { q: 'I ___ like to order a coffee, please.', hint: 'Polite request', opts: ['will','would','should','can'], ans: 1 },
-  { q: '___ there a post office near here?', hint: 'There is — question form', opts: ['Are','Is','Has','Have'], ans: 1 },
-  { q: 'The children ___ in the garden now.', hint: 'Present Continuous — they', opts: ['is playing','are playing','plays','played'], ans: 1 },
+  // ── To Be ──
+  { type: 'To Be', q: 'She ___ a teacher.', hint: 'To be — he/she/it', opts: ['am','is','are','be'], ans: 1 },
+  { type: 'To Be', q: 'He ___ born in 1990.', hint: 'Past form of "be" — he/she/it', opts: ['is','was','were','has'], ans: 1 },
+  // ── Present Simple ──
+  { type: 'Present Simple', q: 'I ___ coffee every morning.', hint: 'Present Simple — I', opts: ['drink','drinks','am drinking','drinked'], ans: 0 },
+  { type: 'Present Simple', q: 'He ___ tennis on Sundays.', hint: 'Present Simple — he/she/it (+s)', opts: ['play','playes','plays','is play'], ans: 2 },
+  { type: 'Present Simple', q: 'She ___ eat meat. She is vegetarian.', hint: 'Negative — he/she/it', opts: ["don't","doesn't","isn't","aren't"], ans: 1 },
+  { type: 'Present Simple', q: 'He usually ___ to bed at 10 pm.', hint: 'Present Simple — he/she/it', opts: ['go','goes','went','going'], ans: 1 },
+  { type: 'Present Simple', q: 'I like ___ books in the evening.', hint: 'like + verb-ing', opts: ['read','reads','reading','to reading'], ans: 2 },
+  // ── Present Continuous ──
+  { type: 'Present Continuous', q: 'She ___ TV right now.', hint: 'Present Continuous — she', opts: ['watch','watches','is watching','was watching'], ans: 2 },
+  { type: 'Present Continuous', q: '___ they playing football now?', hint: 'Present Continuous question — they', opts: ['Do','Does','Are','Is'], ans: 2 },
+  { type: 'Present Continuous', q: 'The children ___ in the garden now.', hint: 'Present Continuous — they', opts: ['is playing','are playing','plays','played'], ans: 1 },
+  // ── Past Simple ──
+  { type: 'Past Simple', q: 'I ___ to the shop yesterday.', hint: 'Past Simple — go (irregular)', opts: ['go','goes','goed','went'], ans: 3 },
+  { type: 'Past Simple', q: 'They ___ here last night.', hint: 'Past Simple of "be" — they', opts: ['was','were','are','be'], ans: 1 },
+  { type: 'Past Simple', q: 'He ___ the dishes yesterday.', hint: 'Past Simple — regular verb (+ed)', opts: ['wash','washes','washed','washing'], ans: 2 },
+  { type: 'Past Simple', q: 'She ___ to work by bus yesterday.', hint: 'Past Simple — irregular verb', opts: ['go','goes','went','gone'], ans: 2 },
+  // ── Past Continuous ──
+  { type: 'Past Continuous', q: 'They ___ dinner when I called.', hint: 'Past Continuous — in progress', opts: ['have','had','was having','were having'], ans: 3 },
+  { type: 'Past Continuous', q: '___ the children playing when you arrived?', hint: 'Past Continuous — question (they)', opts: ['Were','Was','Are','Did'], ans: 0 },
+  // ── Present Perfect ──
+  { type: 'Present Perfect', q: 'She ___ to Paris three times.', hint: 'Present Perfect — she', opts: ['go','went','has gone','have gone'], ans: 2 },
+  { type: 'Present Perfect', q: 'I ___ never eaten sushi.', hint: 'Present Perfect with "never"', opts: ['have','has','had','am'], ans: 0 },
+  { type: 'Present Perfect', q: 'She ___ English for two years.', hint: 'Present Perfect with "for"', opts: ['study','studied','has studied','is studying'], ans: 2 },
+  { type: 'Present Perfect', q: "I haven't seen him ___ last week.", hint: 'Present Perfect — point in time vs duration', opts: ['for','since','ago','in'], ans: 1 },
+  { type: 'Present Perfect', q: 'Have you ___ been to London?', hint: 'Present Perfect with "ever"', opts: ['never','already','ever','just'], ans: 2 },
+  { type: 'Present Perfect', q: 'She has already ___ her homework.', hint: 'Past participle of "finish"', opts: ['finish','finishing','finished','finishes'], ans: 2 },
+  { type: 'Present Perfect', q: 'She has never ___ to Japan.', hint: 'Past participle of "be"', opts: ['be','being','been','went'], ans: 2 },
+  { type: 'Present Perfect', q: 'I have lived here ___ 2020.', hint: 'Present Perfect — point in time', opts: ['for','since','ago','in'], ans: 1 },
+  { type: 'Present Perfect', q: 'They have worked there ___ ten years.', hint: 'Present Perfect — duration', opts: ['for','since','ago','already'], ans: 0 },
+  { type: 'Present Perfect', q: 'She has ___ finished the report.', hint: 'Signal word meaning "a short time ago"', opts: ['yet','since','just','for'], ans: 2 },
+  // ── Irregular Verbs ──
+  { type: 'Irregular Verbs', q: 'What is the past simple of "buy"?', hint: 'Irregular verb', opts: ['buyed','bought','buys','boughted'], ans: 1 },
+  { type: 'Irregular Verbs', q: 'What is the past participle of "write"?', hint: 'write → wrote → ?', opts: ['writed','wrote','written','writ'], ans: 2 },
+  { type: 'Irregular Verbs', q: 'What is the past simple of "see"?', hint: 'Irregular verb', opts: ['seed','sawn','seen','saw'], ans: 3 },
+  { type: 'Irregular Verbs', q: 'What is the past simple of "take"?', hint: 'Irregular verb', opts: ['taked','took','taken','takes'], ans: 1 },
+  { type: 'Irregular Verbs', q: 'What is the past participle of "eat"?', hint: 'eat → ate → ?', opts: ['eated','eaten','ate','aten'], ans: 1 },
+  // ── Comparatives ──
+  { type: 'Comparatives', q: 'I am ___ than my brother. (tall)', hint: 'Comparative adjective — short word', opts: ['tall','taller','tallest','more tall'], ans: 1 },
+  { type: 'Comparatives', q: 'He is ___ than I thought. (nice)', hint: 'Comparative adjective', opts: ['nice','nicer','nicest','more nicer'], ans: 1 },
+  { type: 'Comparatives', q: 'She runs ___ than her brother. (fast)', hint: 'Comparative adverb', opts: ['fast','faster','fastest','more fast'], ans: 1 },
+  // ── Superlatives ──
+  { type: 'Superlatives', q: 'Everest is the ___ mountain in the world. (high)', hint: 'Superlative adjective', opts: ['higher','most high','highest','more high'], ans: 2 },
+  { type: 'Superlatives', q: 'She is the ___ student in the class. (good)', hint: 'Superlative of "good" is irregular', opts: ['better','gooder','best','most good'], ans: 2 },
+  // ── Articles ──
+  { type: 'Articles', q: 'I have ___ umbrella in my bag.', hint: 'Article before a vowel sound', opts: ['a','an','the','-'], ans: 1 },
+  { type: 'Articles', q: 'I need ___ information about this.', hint: 'Uncountable noun — use "some"', opts: ['a','an','some','many'], ans: 2 },
+  // ── Quantifiers ──
+  { type: 'Quantifiers', q: 'How ___ apples are there?', hint: 'Countable noun quantifier', opts: ['much','many','few','little'], ans: 1 },
+  { type: 'Quantifiers', q: 'How ___ water do you drink?', hint: 'Uncountable noun quantifier', opts: ['much','many','few','a lot'], ans: 0 },
+  { type: 'Quantifiers', q: 'How ___ time do we have?', hint: 'Uncountable noun quantifier', opts: ['many','much','a lot','few'], ans: 1 },
+  // ── Prepositions ──
+  { type: 'Prepositions', q: 'The book is ___ the table. (on top)', hint: 'Preposition of place', opts: ['in','at','on','between'], ans: 2 },
+  { type: 'Prepositions', q: "The film starts ___ 8 o'clock.", hint: 'Preposition of time — exact time', opts: ['in','on','at','by'], ans: 2 },
+  // ── Question Words ──
+  { type: 'Question Words', q: '___ is your name?', hint: 'Question word for a name/thing', opts: ['Who','What','Where','When'], ans: 1 },
+  // ── There is / There are ──
+  { type: 'There is / There are', q: 'There ___ a park near my house.', hint: 'Singular noun', opts: ['are','is','have','be'], ans: 1 },
+  { type: 'There is / There are', q: '___ there a post office near here?', hint: 'Question form — singular', opts: ['Are','Is','Has','Have'], ans: 1 },
+  { type: 'There is / There are', q: 'There ___ many books on the shelf.', hint: 'Plural noun', opts: ['is','are','was','be'], ans: 1 },
+  // ── Have Got ──
+  { type: 'Have Got', q: 'She ___ got a dog.', hint: 'Have got — he/she/it', opts: ['have','has','had','haves'], ans: 1 },
+  // ── Be Going To ──
+  { type: 'Be Going To', q: 'I am going ___ visit my grandmother.', hint: 'be going to + infinitive', opts: ['for','at','to','in'], ans: 2 },
+  { type: 'Be Going To', q: 'She ___ going to study tonight.', hint: 'be going to — he/she/it', opts: ['am','is','are','be'], ans: 1 },
+  // ── Would Like ──
+  { type: 'Would Like', q: 'I ___ like to order a coffee, please.', hint: 'Polite request — same for all subjects', opts: ['will','would','should','can'], ans: 1 },
+  // ── Modals ──
+  { type: 'Modals', q: '___ you swim when you were five?', hint: 'Past ability', opts: ['Can','Do','Could','Were'], ans: 2 },
+  { type: 'Modals', q: 'I ___ play chess very well.', hint: 'Present ability', opts: ['can','could','should','would'], ans: 0 },
+  { type: 'Modals', q: "You ___ eat more vegetables. It's good for you.", hint: 'Advice — modal verb', opts: ['must','should','can\'t','will'], ans: 1 },
+  { type: 'Modals', q: 'She ___ speak Armenian fluently.', hint: 'Ability — she', opts: ['can','could','should','is'], ans: 0 },
+  { type: 'Modals', q: 'I ___ get up early tomorrow. My flight is at 6.', hint: 'Strong obligation/necessity', opts: ['can','would','must','might'], ans: 2 },
+  // ── Adverbs of Frequency ──
+  { type: 'Adverbs of Frequency', q: "I always ___ up at 7 o'clock.", hint: 'Adverb of frequency — position after subject', opts: ['get','gets','getting','got'], ans: 0 },
+  // ── Possessives ──
+  { type: 'Possessives', q: 'This is ___ book. (belonging to me)', hint: 'Possessive determiner — I', opts: ['me','my','mine',"I's"], ans: 1 },
+  // ── Adjectives ──
+  { type: 'Adjectives', q: 'She is a ___ driver. (careful)', hint: 'Adjective before noun, not adverb', opts: ['carefully','careful','care','careless'], ans: 1 },
+  { type: 'Adjectives', q: "The coffee is ___ hot. I can't drink it.", hint: 'Adverb intensifier before adjective', opts: ['very','much','many','a lot'], ans: 0 },
 ];
+
+let quizHistory = JSON.parse(localStorage.getItem('quizHistory') || '{}');
 
 let qi = 0, score = 0, answered = false;
 const shuffled = [...questions].sort(() => Math.random()-0.5);
@@ -807,7 +847,8 @@ function answer(i) {
   const q = shuffled[qi % shuffled.length];
   const btns = document.querySelectorAll('.quiz-opt');
   btns.forEach(b => b.disabled = true);
-  if (i === q.ans) {
+  const correct = i === q.ans;
+  if (correct) {
     btns[i].classList.add('correct');
     score++;
     document.getElementById('score').textContent = String(score);
@@ -819,11 +860,54 @@ function answer(i) {
     document.getElementById('quiz-fb').textContent = '✗ The correct answer is: ' + q.opts[q.ans];
     document.getElementById('quiz-fb').className = 'quiz-feedback err';
   }
+  quizHistory[q.q] = { correct, ts: Date.now() };
+  localStorage.setItem('quizHistory', JSON.stringify(quizHistory));
 }
 
 function nextQ() {
   qi++;
   loadQ();
+}
+
+// ─── QUIZ LIST VIEW ────────────────────────────────
+
+function showQuizView(view, btn) {
+  document.querySelectorAll('.quiz-view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.qmode-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('quiz-' + view).style.display = 'block';
+  btn.classList.add('active');
+  if (view === 'list') renderQuizList();
+}
+
+function renderQuizList() {
+  const answered = Object.keys(quizHistory).length;
+  const correct = Object.values(quizHistory).filter(h => h.correct).length;
+  document.getElementById('qlist-stats').textContent =
+    correct + ' correct · ' + (answered - correct) + ' wrong · ' + (questions.length - answered) + ' not tried';
+
+  const types = [...new Set(questions.map(q => q.type))];
+  document.getElementById('qlist-panel').innerHTML = types.map(type => {
+    const qs = questions.filter(q => q.type === type);
+    const typeCorrect = qs.filter(q => quizHistory[q.q] && quizHistory[q.q].correct).length;
+    const items = qs.map(q => {
+      const h = quizHistory[q.q];
+      const status = !h ? 'none' : h.correct ? 'ok' : 'err';
+      const icon = status === 'ok' ? '✓' : status === 'err' ? '✗' : '○';
+      return '<div class="qitem"><span class="qstatus ' + status + '">' + icon + '</span>' +
+        '<div><div class="qitem-q">' + q.q + '</div>' +
+        '<div class="qitem-hint">' + q.hint + '</div></div></div>';
+    }).join('');
+    return '<div class="qtype-group">' +
+      '<div class="qtype-header"><span>' + type + '</span>' +
+      '<span class="qtype-progress">' + typeCorrect + ' / ' + qs.length + '</span></div>' +
+      items + '</div>';
+  }).join('');
+}
+
+function resetQuizHistory() {
+  quizHistory = {};
+  localStorage.removeItem('quizHistory');
+  renderQuizList();
 }
 
 loadQ();
