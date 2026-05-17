@@ -880,28 +880,39 @@ function showQuizView(view, btn) {
 }
 
 function renderQuizList() {
-  const answered = Object.keys(quizHistory).length;
+  const total = questions.length;
   const correct = Object.values(quizHistory).filter(h => h.correct).length;
+  const wrong = Object.values(quizHistory).filter(h => !h.correct).length;
   document.getElementById('qlist-stats').textContent =
-    correct + ' correct · ' + (answered - correct) + ' wrong · ' + (questions.length - answered) + ' not tried';
+    correct + ' correct · ' + wrong + ' wrong · ' + (total - correct - wrong) + ' not tried';
 
-  const types = [...new Set(questions.map(q => q.type))];
-  document.getElementById('qlist-panel').innerHTML = types.map(type => {
-    const qs = questions.filter(q => q.type === type);
-    const typeCorrect = qs.filter(q => quizHistory[q.q] && quizHistory[q.q].correct).length;
-    const items = qs.map(q => {
-      const h = quizHistory[q.q];
-      const status = !h ? 'none' : h.correct ? 'ok' : 'err';
-      const icon = status === 'ok' ? '✓' : status === 'err' ? '✗' : '○';
-      return '<div class="qitem"><span class="qstatus ' + status + '">' + icon + '</span>' +
-        '<div><div class="qitem-q">' + q.q + '</div>' +
-        '<div class="qitem-hint">' + q.hint + '</div></div></div>';
-    }).join('');
-    return '<div class="qtype-group">' +
-      '<div class="qtype-header"><span>' + type + '</span>' +
-      '<span class="qtype-progress">' + typeCorrect + ' / ' + qs.length + '</span></div>' +
-      items + '</div>';
+  document.getElementById('qlist-panel').innerHTML = questions.map((q, i) => {
+    const h = quizHistory[q.q];
+    const status = !h ? 'none' : h.correct ? 'ok' : 'err';
+    const icon = status === 'ok' ? '✓' : status === 'err' ? '✗' : '○';
+    return '<div class="qnum-item ' + status + '" onclick="goToQuestion(' + i + ')">' +
+      '<span class="qnum-badge">' + (i + 1) + '</span>' +
+      '<div class="qnum-body">' +
+        '<div class="qnum-q">' + q.q + '</div>' +
+        '<div class="qnum-meta"><span class="qnum-type">' + q.type + '</span>' +
+        '<span class="qnum-hint">' + q.hint + '</span></div>' +
+      '</div>' +
+      '<span class="qnum-status ' + status + '">' + icon + '</span>' +
+      '</div>';
   }).join('');
+}
+
+function goToQuestion(idx) {
+  const q = questions[idx];
+  let si = shuffled.findIndex(sq => sq.q === q.q);
+  if (si === -1) { shuffled.unshift(q); si = 0; }
+  qi = si;
+  answered = false;
+  document.querySelectorAll('.quiz-view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.qmode-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('quiz-practice').style.display = 'block';
+  document.querySelector('.qmode-tab').classList.add('active');
+  loadQ();
 }
 
 function resetQuizHistory() {

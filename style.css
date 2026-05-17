@@ -817,50 +817,55 @@ table.mini .q   { color: var(--violet); font-weight: 500; font-family: var(--mon
 }
 .qlist-reset:hover { color: var(--red); border-color: rgba(255,71,87,0.4); background: rgba(255,71,87,0.06); }
 
-.qtype-group { margin-bottom: 24px; }
-.qtype-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 14px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  font-family: var(--mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .13em;
-  color: var(--cyan);
-  margin-bottom: 1px;
-}
-.qtype-progress {
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0;
-}
-.qitem {
+.qnum-item {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 11px 14px;
+  padding: 12px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-top: none;
+  cursor: pointer;
   transition: background .12s;
+  border-left: 3px solid transparent;
 }
-.qitem:hover { background: var(--surface2); }
-.qstatus {
+.qnum-item:first-child { border-top: 1px solid var(--border); }
+.qnum-item:hover { background: var(--surface2); }
+.qnum-item.ok  { border-left-color: var(--green); }
+.qnum-item.err { border-left-color: var(--red); }
+.qnum-badge {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 11px;
+  color: var(--dim);
+  min-width: 26px;
+  padding-top: 2px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.qnum-body { flex: 1; min-width: 0; }
+.qnum-q { font-size: 13px; color: var(--text); margin-bottom: 4px; }
+.qnum-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.qnum-type {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--cyan);
+  padding: 2px 7px;
+  background: var(--cyan-dim);
+  flex-shrink: 0;
+}
+.qnum-hint { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+.qnum-status {
+  font-family: var(--mono);
+  font-size: 14px;
   font-weight: 700;
   flex-shrink: 0;
-  width: 18px;
   padding-top: 1px;
 }
-.qstatus.ok  { color: var(--green); }
-.qstatus.err { color: var(--red); }
-.qstatus.none { color: var(--dim); }
-.qitem-q { font-size: 13px; color: var(--text); margin-bottom: 3px; }
-.qitem-hint { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: .04em; }
+.qnum-status.ok   { color: var(--green); }
+.qnum-status.err  { color: var(--red); }
+.qnum-status.none { color: var(--dim); }
 
 /* ─── QUIZ ─── */
 .quiz-wrap {
