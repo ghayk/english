@@ -820,23 +820,48 @@ const questions = [
   { type: 'Adjectives', q: "The coffee is ___ hot. I can't drink it.", hint: 'Adverb intensifier before adjective', opts: ['very','much','many','a lot'], ans: 0 },
 ];
 
-let quizHistory = JSON.parse(localStorage.getItem('quizHistory') || '{}');
+const QUIZ_SIZE = 10;
+const quizSets = [];
+for (let i = 0; i < questions.length; i += QUIZ_SIZE) {
+  quizSets.push(questions.slice(i, i + QUIZ_SIZE));
+}
 
+let quizHistory = JSON.parse(localStorage.getItem('quizHistory') || '{}');
+let quizResults = JSON.parse(localStorage.getItem('quizResults') || '{}');
+
+let activeSet = null;
+let setQi = 0, setScore = 0;
 let qi = 0, score = 0, answered = false;
-const shuffled = [...questions].sort(() => Math.random()-0.5);
+const shuffled = [...questions].sort(() => Math.random() - 0.5);
 
 function loadQ() {
-  const q = shuffled[qi % shuffled.length];
   answered = false;
+  let q, progPct;
+
+  if (activeSet !== null) {
+    if (setQi >= quizSets[activeSet].length) { showQuizComplete(); return; }
+    q = quizSets[activeSet][setQi];
+    document.getElementById('quiz-title').textContent = 'Quiz ' + (activeSet + 1);
+    document.getElementById('quiz-mode-label').textContent = 'Q';
+    document.getElementById('score').textContent = String(setQi + 1);
+    document.getElementById('total').textContent = String(quizSets[activeSet].length);
+    progPct = (setQi / quizSets[activeSet].length) * 100;
+  } else {
+    q = shuffled[qi % shuffled.length];
+    document.getElementById('quiz-title').textContent = 'Grammar Quiz';
+    document.getElementById('quiz-mode-label').textContent = 'Score:';
+    document.getElementById('score').textContent = String(score);
+    document.getElementById('total').textContent = String(qi);
+    progPct = (qi / questions.length) * 100;
+  }
+
   document.getElementById('quiz-q').textContent = q.q;
   document.getElementById('quiz-hint').textContent = 'Hint: ' + q.hint;
   document.getElementById('quiz-fb').textContent = '';
   document.getElementById('quiz-fb').className = 'quiz-feedback';
-  document.getElementById('total').textContent = String(qi);
-  document.getElementById('quiz-prog').style.width = ((qi / questions.length) * 100) + '%';
+  document.getElementById('quiz-prog').style.width = progPct + '%';
 
-  const opts = document.getElementById('quiz-opts');
-  opts.innerHTML = q.opts.map((o,i) =>
+  document.getElementById('quiz-opts').innerHTML = q.opts.map((o, i) =>
     `<button class="quiz-opt" onclick="answer(${i})">${o}</button>`
   ).join('');
 }
@@ -844,14 +869,14 @@ function loadQ() {
 function answer(i) {
   if (answered) return;
   answered = true;
-  const q = shuffled[qi % shuffled.length];
+  const q = activeSet !== null ? quizSets[activeSet][setQi] : shuffled[qi % shuffled.length];
   const btns = document.querySelectorAll('.quiz-opt');
   btns.forEach(b => b.disabled = true);
   const correct = i === q.ans;
   if (correct) {
     btns[i].classList.add('correct');
-    score++;
-    document.getElementById('score').textContent = String(score);
+    if (activeSet !== null) setScore++;
+    else { score++; document.getElementById('score').textContent = String(score); }
     document.getElementById('quiz-fb').textContent = '✓ Correct!';
     document.getElementById('quiz-fb').className = 'quiz-feedback ok';
   } else {
@@ -865,49 +890,28 @@ function answer(i) {
 }
 
 function nextQ() {
-  qi++;
+  if (activeSet !== null) {
+    setQi++;
+    if (setQi >= quizSets[activeSet].length) {
+      quizResults[activeSet] = { score: setScore, total: quizSets[activeSet].length, ts: Date.now() };
+      localStorage.setItem('quizResults', JSON.stringify(quizResults));
+      showQuizComplete();
+      return;
+    }
+  } else {
+    qi++;
+  }
   loadQ();
 }
 
-// ─── QUIZ LIST VIEW ────────────────────────────────
+// ─── QUIZ SET FUNCTIONS ────────────────────────────
 
-function showQuizView(view, btn) {
-  document.querySelectorAll('.quiz-view').forEach(v => v.style.display = 'none');
-  document.querySelectorAll('.qmode-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('quiz-' + view).style.display = 'block';
-  btn.classList.add('active');
-  if (view === 'list') renderQuizList();
-}
-
-function renderQuizList() {
-  const total = questions.length;
-  const correct = Object.values(quizHistory).filter(h => h.correct).length;
-  const wrong = Object.values(quizHistory).filter(h => !h.correct).length;
-  document.getElementById('qlist-stats').textContent =
-    correct + ' correct · ' + wrong + ' wrong · ' + (total - correct - wrong) + ' not tried';
-
-  document.getElementById('qlist-panel').innerHTML = questions.map((q, i) => {
-    const h = quizHistory[q.q];
-    const status = !h ? 'none' : h.correct ? 'ok' : 'err';
-    const icon = status === 'ok' ? '✓' : status === 'err' ? '✗' : '○';
-    return '<div class="qnum-item ' + status + '" onclick="goToQuestion(' + i + ')">' +
-      '<span class="qnum-badge">' + (i + 1) + '</span>' +
-      '<div class="qnum-body">' +
-        '<div class="qnum-q">' + q.q + '</div>' +
-        '<div class="qnum-meta"><span class="qnum-type">' + q.type + '</span>' +
-        '<span class="qnum-hint">' + q.hint + '</span></div>' +
-      '</div>' +
-      '<span class="qnum-status ' + status + '">' + icon + '</span>' +
-      '</div>';
-  }).join('');
-}
-
-function goToQuestion(idx) {
-  const q = questions[idx];
-  let si = shuffled.findIndex(sq => sq.q === q.q);
-  if (si === -1) { shuffled.unshift(q); si = 0; }
-  qi = si;
-  answered = false;
+function startQuiz(setIdx) {
+  activeSet = setIdx;
+  setQi = 0;
+  setScore = 0;
+  document.getElementById('quiz-active').style.display = 'block';
+  document.getElementById('quiz-complete').style.display = 'none';
   document.querySelectorAll('.quiz-view').forEach(v => v.style.display = 'none');
   document.querySelectorAll('.qmode-tab').forEach(b => b.classList.remove('active'));
   document.getElementById('quiz-practice').style.display = 'block';
@@ -915,9 +919,75 @@ function goToQuestion(idx) {
   loadQ();
 }
 
+function showQuizComplete() {
+  const total = quizSets[activeSet].length;
+  const pct = setScore / total;
+  document.getElementById('quiz-active').style.display = 'none';
+  document.getElementById('quiz-complete').style.display = 'block';
+  document.getElementById('qc-title').textContent = 'Quiz ' + (activeSet + 1) + ' Complete';
+  document.getElementById('qc-score-num').textContent = setScore + ' / ' + total;
+  document.getElementById('qc-msg').textContent =
+    pct === 1 ? 'Perfect score!' : pct >= 0.7 ? 'Great job!' : pct >= 0.5 ? 'Good effort!' : 'Keep practising!';
+}
+
+function retryActiveQuiz() {
+  setQi = 0;
+  setScore = 0;
+  document.getElementById('quiz-active').style.display = 'block';
+  document.getElementById('quiz-complete').style.display = 'none';
+  loadQ();
+}
+
+function backToList() {
+  activeSet = null;
+  document.getElementById('quiz-active').style.display = 'block';
+  document.getElementById('quiz-complete').style.display = 'none';
+  document.querySelectorAll('.quiz-view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.qmode-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('quiz-list').style.display = 'block';
+  document.querySelectorAll('.qmode-tab')[1].classList.add('active');
+  renderQuizList();
+}
+
+function showQuizView(view, btn) {
+  document.querySelectorAll('.quiz-view').forEach(v => v.style.display = 'none');
+  document.querySelectorAll('.qmode-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('quiz-' + view).style.display = 'block';
+  btn.classList.add('active');
+  if (view === 'list') renderQuizList();
+  if (view === 'practice') {
+    activeSet = null;
+    document.getElementById('quiz-active').style.display = 'block';
+    document.getElementById('quiz-complete').style.display = 'none';
+  }
+}
+
+function renderQuizList() {
+  const completed = Object.keys(quizResults).length;
+  document.getElementById('qlist-stats').textContent =
+    completed + ' / ' + quizSets.length + ' quizzes completed';
+
+  document.getElementById('qlist-panel').innerHTML = quizSets.map((set, i) => {
+    const res = quizResults[i];
+    const pct = res ? res.score / res.total : null;
+    const scoreText = res ? res.score + ' / ' + res.total : '—';
+    const cls = !res ? '' : pct >= 0.7 ? 'ok' : pct >= 0.5 ? 'mid' : 'err';
+    const qStart = i * QUIZ_SIZE + 1;
+    const qEnd = Math.min((i + 1) * QUIZ_SIZE, questions.length);
+    return '<div class="qset-item ' + cls + '" onclick="startQuiz(' + i + ')">' +
+      '<div class="qset-num">Quiz ' + (i + 1) + '</div>' +
+      '<div class="qset-range">Q' + qStart + ' – Q' + qEnd + ' &nbsp;·&nbsp; ' + set.length + ' questions</div>' +
+      '<div class="qset-score ' + cls + '">' + scoreText + '</div>' +
+      '<div class="qset-arrow">▶</div>' +
+      '</div>';
+  }).join('');
+}
+
 function resetQuizHistory() {
   quizHistory = {};
+  quizResults = {};
   localStorage.removeItem('quizHistory');
+  localStorage.removeItem('quizResults');
   renderQuizList();
 }
 
