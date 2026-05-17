@@ -1323,13 +1323,6 @@ body.light .header-right {
 }
 body.light .irr-table tbody tr:nth-child(even) { background: rgba(0,0,0,0.02); }
 
-/* ─── HIDE ARMENIAN ─── */
-body.hide-am .v-am,
-body.hide-am .p-am,
-body.hide-am .col-arm,
-body.hide-am .topic-arm,
-body.hide-am .vi-am,
-body.hide-am .vi-sep { display: none; }
 
 /* ─── ANIMATIONS ─── */
 @keyframes fadeUp {

@@ -42,19 +42,19 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <button class="nav-btn active" onclick="showSection('grammar',this)">Grammar</button>
-    <button class="nav-btn" onclick="showSection('tenses',this)">Tenses</button>
-    <button class="nav-btn" onclick="showSection('vocabulary',this)">Vocabulary</button>
-    <button class="nav-btn" onclick="showSection('time',this)">Time</button>
-    <button class="nav-btn" onclick="showSection('phrases',this)">Phrases</button>
-    <button class="nav-btn" onclick="showSection('verbs',this)">Irregular Verbs</button>
-    <button class="nav-btn" onclick="showSection('places',this)">Places & Jobs</button>
-    <button class="nav-btn" onclick="showSection('lessons',this)">Lessons</button>
-    <button class="nav-btn" onclick="showSection('quiz',this)">Quiz</button>
+    <button class="nav-btn active" onclick="showSection('grammar',this)" data-en="Grammar" data-am="Քերականություն">Grammar</button>
+    <button class="nav-btn" onclick="showSection('tenses',this)" data-en="Tenses" data-am="Ժամանակաձև">Tenses</button>
+    <button class="nav-btn" onclick="showSection('vocabulary',this)" data-en="Vocabulary" data-am="Բառապաշար">Vocabulary</button>
+    <button class="nav-btn" onclick="showSection('time',this)" data-en="Time" data-am="Ժամ">Time</button>
+    <button class="nav-btn" onclick="showSection('phrases',this)" data-en="Phrases" data-am="Արտահայտություններ">Phrases</button>
+    <button class="nav-btn" onclick="showSection('verbs',this)" data-en="Irregular Verbs" data-am="Անկանոն բայեր">Irregular Verbs</button>
+    <button class="nav-btn" onclick="showSection('places',this)" data-en="Places &amp; Jobs" data-am="Վայրեր և մասնագ.">Places &amp; Jobs</button>
+    <button class="nav-btn" onclick="showSection('lessons',this)" data-en="Lessons" data-am="Դասեր">Lessons</button>
+    <button class="nav-btn" onclick="showSection('quiz',this)" data-en="Quiz" data-am="Թեստ">Quiz</button>
   </div>
   <div class="nav-controls">
     <button class="ctrl-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☾</button>
-    <button class="ctrl-btn" id="lang-toggle" onclick="toggleLang()" title="Toggle Armenian/English">ՀԱ</button>
+    <button class="ctrl-btn" id="lang-toggle" onclick="toggleLang()" title="Toggle Armenian/English">EN</button>
   </div>
 </nav>
 
@@ -63,7 +63,7 @@
 <!-- ═══ GRAMMAR ═══ -->
 <div id="grammar" class="page-section active">
   <div class="section-kicker"><span>01 /</span> Core Rules</div>
-  <h2 class="section-title">Grammar</h2>
+  <h2 class="section-title" data-en="Grammar" data-am="Քերականություն">Grammar</h2>
 
   <div class="grammar-grid">
 
@@ -186,7 +186,7 @@
 <!-- ═══ TENSES ═══ -->
 <div id="tenses" class="page-section">
   <div class="section-kicker"><span>02 /</span> When to Use</div>
-  <h2 class="section-title">Tenses</h2>
+  <h2 class="section-title" data-en="Tenses" data-am="Ժամանակաձևեր">Tenses</h2>
 
   <div class="tense-comparison">
     <div class="tense-col">
@@ -269,7 +269,7 @@
 <!-- ═══ VOCABULARY ═══ -->
 <div id="vocabulary" class="page-section">
   <div class="section-kicker"><span>03 /</span> Word Bank</div>
-  <h2 class="section-title">Vocabulary</h2>
+  <h2 class="section-title" data-en="Vocabulary" data-am="Բառապաշար">Vocabulary</h2>
 
   <div class="vocab-tabs">
     <button class="vtab active" onclick="showVocab('activities',this)">Activities</button>
@@ -307,7 +307,7 @@
 <!-- ═══ TIME ═══ -->
 <div id="time" class="page-section">
   <div class="section-kicker"><span>04 /</span> Telling the Time</div>
-  <h2 class="section-title">Time</h2>
+  <h2 class="section-title" data-en="Time" data-am="Ժամ">Time</h2>
 
   <div class="time-grid">
     <div class="time-card"><div class="time-clock">3:00</div><div class="time-say">three o'clock</div></div>
@@ -352,7 +352,7 @@
 <!-- ═══ PHRASES ═══ -->
 <div id="phrases" class="page-section">
   <div class="section-kicker"><span>05 /</span> Communication</div>
-  <h2 class="section-title">Phrases</h2>
+  <h2 class="section-title" data-en="Phrases" data-am="Արտահայտություններ">Phrases</h2>
 
   <div class="phrase-list">
     <div class="phrase-item"><span class="phrase-en">Hello / Hi · Good morning / Good afternoon / Good evening</span><span class="phrase-tag tag-greeting">Greeting</span></div>
@@ -384,7 +384,7 @@
 <!-- ═══ IRREGULAR VERBS ═══ -->
 <div id="verbs" class="page-section">
   <div class="section-kicker"><span>06 /</span> Must Memorise</div>
-  <h2 class="section-title">Irregular Verbs</h2>
+  <h2 class="section-title" data-en="Irregular Verbs" data-am="Անկանոն բայեր">Irregular Verbs</h2>
 
   <div class="irr-filter-row">
     <button class="irr-filter active" onclick="filterIrr('all',this)">All</button>
@@ -414,7 +414,7 @@
 <!-- ═══ PLACES & JOBS ═══ -->
 <div id="places" class="page-section">
   <div class="section-kicker"><span>07 /</span> Around Town</div>
-  <h2 class="section-title">Places & Occupations</h2>
+  <h2 class="section-title" data-en="Places &amp; Occupations" data-am="Վայրեր և մասնագիտություններ">Places &amp; Occupations</h2>
 
   <div class="two-col">
     <div class="list-block">
@@ -431,7 +431,7 @@
 <!-- ═══ LESSONS ═══ -->
 <div id="lessons" class="page-section">
   <div class="section-kicker"><span>08 /</span> Course Timeline</div>
-  <h2 class="section-title">Lessons</h2>
+  <h2 class="section-title" data-en="Lessons" data-am="Դասեր">Lessons</h2>
 
   <div class="lessons-intro">
     A chronological record of every live session — <strong>February through May 2026</strong>. Each card lists the date, topics covered, key examples, and homework links. Detailed grammar tables live in the <strong>Grammar</strong> and <strong>Tenses</strong> sections.
@@ -1862,7 +1862,7 @@
 <!-- ═══ QUIZ ═══ -->
 <div id="quiz" class="page-section">
   <div class="section-kicker"><span>09 /</span> Test Yourself</div>
-  <h2 class="section-title">Quiz</h2>
+  <h2 class="section-title" data-en="Quiz" data-am="Թեստ">Quiz</h2>
 
   <div class="quiz-wrap">
     <div class="quiz-header">

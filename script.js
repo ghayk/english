@@ -708,9 +708,12 @@ function toggleTheme() {
 }
 
 function toggleLang() {
-  const hideAm = document.body.classList.toggle('hide-am');
-  document.getElementById('lang-toggle').textContent = hideAm ? 'EN' : 'ՀԱ';
-  localStorage.setItem('lang', hideAm ? 'en' : 'am');
+  const isAm = document.body.classList.toggle('lang-am');
+  document.getElementById('lang-toggle').textContent = isAm ? 'ՀԱ' : 'EN';
+  document.querySelectorAll('[data-am]').forEach(el => {
+    el.textContent = isAm ? el.dataset.am : el.dataset.en;
+  });
+  localStorage.setItem('lang', isAm ? 'am' : 'en');
 }
 
 // ─── NAV ───────────────────────────────────────────
@@ -831,7 +834,10 @@ if (localStorage.getItem('theme') === 'light') {
   document.body.classList.add('light');
   document.getElementById('theme-toggle').textContent = '☀';
 }
-if (localStorage.getItem('lang') === 'en') {
-  document.body.classList.add('hide-am');
-  document.getElementById('lang-toggle').textContent = 'EN';
+if (localStorage.getItem('lang') === 'am') {
+  document.body.classList.add('lang-am');
+  document.getElementById('lang-toggle').textContent = 'ՀԱ';
+  document.querySelectorAll('[data-am]').forEach(el => {
+    el.textContent = el.dataset.am;
+  });
 }
