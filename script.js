@@ -699,6 +699,20 @@ renderVocabGrid('gen-grid', general);
 renderIrr();
 renderPlaces();
 
+// ─── THEME & LANGUAGE TOGGLES ──────────────────────
+
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light');
+  document.getElementById('theme-toggle').textContent = isLight ? '☀' : '☾';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+
+function toggleLang() {
+  const hideAm = document.body.classList.toggle('hide-am');
+  document.getElementById('lang-toggle').textContent = hideAm ? 'EN' : 'ՀԱ';
+  localStorage.setItem('lang', hideAm ? 'en' : 'am');
+}
+
 // ─── NAV ───────────────────────────────────────────
 
 function showSection(id, btn) {
@@ -735,6 +749,34 @@ const questions = [
   { q: 'I always ___ up at 7 o\'clock.', hint: 'Adverb of frequency position', opts: ['get','gets','getting','got'], ans: 0 },
   { q: 'This is ___ book. (belonging to me)', hint: 'Possessive determiner — I', opts: ['me','my','mine','I\'s'], ans: 1 },
   { q: 'She is a ___ driver. (careful)', hint: 'Adjective or adverb?', opts: ['carefully','careful','care','careless'], ans: 1 },
+  // Present Perfect
+  { q: 'She ___ to Paris three times.', hint: 'Present Perfect — she', opts: ['go','went','has gone','have gone'], ans: 2 },
+  { q: 'I ___ never eaten sushi.', hint: 'Present Perfect with "never"', opts: ['have','has','had','am'], ans: 0 },
+  { q: 'She ___ English for two years.', hint: 'Present Perfect with "for"', opts: ['study','studied','has studied','is studying'], ans: 2 },
+  { q: 'I haven\'t seen him ___ last week.', hint: 'Present Perfect time reference', opts: ['for','since','ago','in'], ans: 1 },
+  { q: 'Have you ___ been to London?', hint: 'Present Perfect with "ever"', opts: ['never','already','ever','just'], ans: 2 },
+  { q: 'She has already ___ her homework.', hint: 'Present Perfect + past participle of "finish"', opts: ['finish','finishing','finished','finishes'], ans: 2 },
+  // Irregular verbs
+  { q: 'What is the past simple of "buy"?', hint: 'Irregular verb', opts: ['buyed','bought','buys','boughted'], ans: 1 },
+  { q: 'What is the past participle of "write"?', hint: 'write / wrote / ?', opts: ['writed','wrote','written','writ'], ans: 2 },
+  { q: 'She has never ___ to Japan. (be)', hint: 'Past participle of "be"', opts: ['be','being','been','went'], ans: 2 },
+  { q: 'He ___ the dishes yesterday. (wash)', hint: 'Past Simple — regular verb', opts: ['wash','washes','washed','washing'], ans: 2 },
+  // Comparatives & superlatives
+  { q: 'I am ___ than my brother. (tall)', hint: 'Comparative adjective', opts: ['tall','taller','tallest','more tall'], ans: 1 },
+  { q: 'Everest is the ___ mountain in the world. (high)', hint: 'Superlative adjective', opts: ['higher','most high','highest','more high'], ans: 2 },
+  { q: 'She is the ___ student in the class. (good)', hint: 'Superlative of "good" is irregular', opts: ['better','gooder','best','most good'], ans: 2 },
+  // Articles & quantifiers
+  { q: 'I have ___ umbrella in my bag.', hint: 'Article before vowel sound', opts: ['a','an','the','-'], ans: 1 },
+  { q: 'How ___ apples are there?', hint: 'Countable noun quantifier', opts: ['much','many','few','little'], ans: 1 },
+  { q: 'How ___ water do you drink?', hint: 'Uncountable noun quantifier', opts: ['much','many','few','a lot'], ans: 0 },
+  // Mixed grammar
+  { q: 'The book is ___ the table. (on top)', hint: 'Preposition of place', opts: ['in','at','on','between'], ans: 2 },
+  { q: '___ is your name?', hint: 'Question word for a name/thing', opts: ['Who','What','Where','When'], ans: 1 },
+  { q: 'I am going ___ visit my grandmother.', hint: 'be going to + infinitive', opts: ['for','at','to','in'], ans: 2 },
+  { q: 'They ___ dinner when I called.', hint: 'Past Continuous — activity in progress', opts: ['have','had','was having','were having'], ans: 3 },
+  { q: 'I ___ like to order a coffee, please.', hint: 'Polite request', opts: ['will','would','should','can'], ans: 1 },
+  { q: '___ there a post office near here?', hint: 'There is — question form', opts: ['Are','Is','Has','Have'], ans: 1 },
+  { q: 'The children ___ in the garden now.', hint: 'Present Continuous — they', opts: ['is playing','are playing','plays','played'], ans: 1 },
 ];
 
 let qi = 0, score = 0, answered = false;
@@ -782,3 +824,14 @@ function nextQ() {
 }
 
 loadQ();
+
+// ─── RESTORE PREFERENCES ───────────────────────────
+
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light');
+  document.getElementById('theme-toggle').textContent = '☀';
+}
+if (localStorage.getItem('lang') === 'en') {
+  document.body.classList.add('hide-am');
+  document.getElementById('lang-toggle').textContent = 'EN';
+}

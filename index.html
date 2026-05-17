@@ -52,6 +52,10 @@
     <button class="nav-btn" onclick="showSection('lessons',this)">Lessons</button>
     <button class="nav-btn" onclick="showSection('quiz',this)">Quiz</button>
   </div>
+  <div class="nav-controls">
+    <button class="ctrl-btn" id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☾</button>
+    <button class="ctrl-btn" id="lang-toggle" onclick="toggleLang()" title="Toggle Armenian/English">ՀԱ</button>
+  </div>
 </nav>
 
 <main>
@@ -1734,6 +1738,125 @@
     </div>
   </div>
 
+  <!-- ─── LESSON 27 ─── -->
+  <div class="lesson-card live compact">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>27</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">16 · 05 · 2026</span>
+      </div>
+    </div>
+
+    <div class="lesson-body">
+
+      <div class="topic-pill-row">
+        <span class="topic-pill">Present Perfect</span>
+        <span class="topic-pill">Whether / If</span>
+        <span class="topic-pill">Much / Many / A lot of</span>
+      </div>
+
+      <!-- ── Present Perfect ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Present Perfect
+          <span class="topic-arm">— Ներկա վաղակատար</span>
+        </div>
+        <div class="topic-formula">have / has + past participle (verb 3)</div>
+
+        <div class="three-forms">
+          <div class="pos-bg">
+            <div class="lbl" style="color:var(--green);">＋ Positive</div>
+            <div class="sentence">I <strong>have read</strong> this book.<br>She <strong>has read</strong> this book.</div>
+          </div>
+          <div class="neg-bg">
+            <div class="lbl" style="color:var(--red);">− Negative</div>
+            <div class="sentence">I <strong>have not read</strong> this book.<br>She <strong>has not read</strong> this book.</div>
+          </div>
+          <div class="q-bg">
+            <div class="lbl" style="color:var(--violet);">? Question</div>
+            <div class="sentence"><strong>Have</strong> I read this book?<br><strong>Has</strong> she read this book?</div>
+          </div>
+        </div>
+
+        <table class="mini">
+          <tr><th>Subject</th><th>have / has</th><th>Verb 3</th></tr>
+          <tr><td>I / You / We / They</td><td class="pos">have</td><td>read / gone / eaten…</td></tr>
+          <tr><td>He / She / It</td><td class="pos">has</td><td>read / gone / eaten…</td></tr>
+        </table>
+
+        <div class="mini-block" style="margin-top:18px;">
+          <div class="mini-block-title">Signal Words</div>
+          <div class="chips">
+            <span class="chip">already <span style="color:var(--muted);font-size:10px;">— արդեն</span></span>
+            <span class="chip">since <span style="color:var(--muted);font-size:10px;">— սկսած</span></span>
+            <span class="chip">for <span style="color:var(--muted);font-size:10px;">— for 3 months</span></span>
+            <span class="chip">ever <span style="color:var(--muted);font-size:10px;">— երբևէ</span></span>
+            <span class="chip">never <span style="color:var(--muted);font-size:10px;">— երբեք</span></span>
+            <span class="chip">lately / recently <span style="color:var(--muted);font-size:10px;">— վերջերս</span></span>
+            <span class="chip">finally <span style="color:var(--muted);font-size:10px;">— վերջապես</span></span>
+            <span class="chip">three times</span>
+            <span class="chip">this morning</span>
+          </div>
+          <p class="example" style="margin-top:12px;">
+            I have <strong>already</strong> finished. &nbsp;·&nbsp;
+            She has lived here <strong>for</strong> three months. &nbsp;·&nbsp;
+            I have known him <strong>since</strong> 2020. &nbsp;·&nbsp;
+            Have you <strong>ever</strong> been to London? &nbsp;·&nbsp;
+            He has <strong>never</strong> eaten sushi.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Whether / If ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Whether / If
+        </div>
+        <div class="topic-formula">verb + whether / if + subject + verb</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.7;">
+          Used to introduce indirect questions or reported questions. Both <strong style="color:var(--text);">whether</strong> and <strong style="color:var(--text);">if</strong> have the same meaning here.
+        </p>
+        <p class="example">Sam was asking <strong>whether</strong> I have any time for the class.<br>
+        I don't know <strong>if</strong> she is coming.</p>
+      </div>
+
+      <!-- ── Much / Many / A lot of ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Much / Many / A lot of
+        </div>
+
+        <table class="mini">
+          <tr><th>Word</th><th>Used with</th><th>Example</th></tr>
+          <tr>
+            <td><span class="pos">much</span></td>
+            <td>uncountable nouns <span class="topic-arm">— անհաշվելի գոյականներ</span></td>
+            <td>How much time?</td>
+          </tr>
+          <tr>
+            <td><span class="q">many</span></td>
+            <td>countable nouns <span class="topic-arm">— հաշվելի գոյականներ</span></td>
+            <td>How many books?</td>
+          </tr>
+          <tr>
+            <td><span style="color:var(--amber);font-weight:500;font-family:var(--mono);font-size:11px;">a lot of</span></td>
+            <td>both countable &amp; uncountable</td>
+            <td>a lot of books · a lot of time</td>
+          </tr>
+        </table>
+
+        <p class="example" style="margin-top:12px;">
+          There are <strong>a lot of</strong> books. &nbsp;·&nbsp;
+          There is <strong>a lot of</strong> time. &nbsp;·&nbsp;
+          How <strong>much</strong> water do you drink? &nbsp;·&nbsp;
+          How <strong>many</strong> students are in the class?
+        </p>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══ QUIZ ═══ -->
@@ -1760,7 +1883,7 @@
 </main>
 
 <footer>
-  English A1/A2 · Lessons 1–25 · February–May 2026
+  English A1/A2 · Lessons 1–27 · February–May 2026
 </footer>
 
 <script src="script.js"></script>
