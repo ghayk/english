@@ -404,6 +404,59 @@ const jobs = [
   ['welder','եռակիչ'],
 ];
 
+const uncountableNouns = [
+  // Food & Drink
+  ['water','ջուր','Food & Drink'],
+  ['milk','կաթ','Food & Drink'],
+  ['coffee','սուրճ','Food & Drink'],
+  ['tea','թեյ','Food & Drink'],
+  ['juice','հյութ','Food & Drink'],
+  ['rice','բրինձ','Food & Drink'],
+  ['bread','հաց','Food & Drink'],
+  ['butter','կարագ','Food & Drink'],
+  ['cheese','պանիր','Food & Drink'],
+  ['meat','միս','Food & Drink'],
+  ['chicken','հավ (կերակուր)','Food & Drink'],
+  ['fish','ձուկ (կերակուր)','Food & Drink'],
+  ['pasta','մակարոն','Food & Drink'],
+  ['salt','աղ','Food & Drink'],
+  ['sugar','շաքար','Food & Drink'],
+  ['flour','ալյուր','Food & Drink'],
+  ['oil','ձեթ / յուղ','Food & Drink'],
+  ['soup','ապուր','Food & Drink'],
+  ['food','կերակուր / սնունդ','Food & Drink'],
+  // Time & Abstract
+  ['time','ժամանակ','Abstract'],
+  ['money','փող','Abstract'],
+  ['information','տեղեկատվություն','Abstract'],
+  ['advice','խորհուրդ','Abstract'],
+  ['news','լուր / նորություն','Abstract'],
+  ['homework','տնային աշխատանք','Abstract'],
+  ['work','աշխատանք','Abstract'],
+  ['help','օգնություն','Abstract'],
+  ['luck','բախտ','Abstract'],
+  ['fun','զվարճություն','Abstract'],
+  ['weather','եղանակ','Abstract'],
+  ['traffic','երթևեկություն','Abstract'],
+  ['knowledge','գիտելիք','Abstract'],
+  ['experience','փորձ','Abstract'],
+  ['progress','առաջընթաց','Abstract'],
+  // Household & Materials
+  ['furniture','կահույք','Materials'],
+  ['equipment','սարքավորում','Materials'],
+  ['luggage','ուղեբեռ','Materials'],
+  ['baggage','ուղեբեռ','Materials'],
+  ['clothing','հագուստ','Materials'],
+  ['rubbish','աղբ','Materials'],
+  ['trash','աղբ','Materials'],
+  ['paper','թուղթ','Materials'],
+  ['wood','փայտ','Materials'],
+  ['glass','ապակի','Materials'],
+  ['plastic','պլաստիկ','Materials'],
+  ['gold','ոսկի','Materials'],
+  ['silver','արծաթ','Materials'],
+];
+
 const prepositions = [
   ['above','վերևում','The light is above the table.'],
   ['below','ներքևում','Please read the text below.'],
@@ -696,6 +749,7 @@ renderVocabGrid('cloth-grid', clothing);
 renderVocabGrid('pers-grid', personality);
 renderVocabGrid('prep-grid', prepositions);
 renderVocabGrid('gen-grid', general);
+renderVocabGrid('unc-grid', uncountableNouns);
 renderIrr();
 renderPlaces();
 
@@ -818,6 +872,19 @@ const questions = [
   // ── Adjectives ──
   { type: 'Adjectives', q: 'She is a ___ driver. (careful)', hint: 'Adjective before noun, not adverb', opts: ['carefully','careful','care','careless'], ans: 1 },
   { type: 'Adjectives', q: "The coffee is ___ hot. I can't drink it.", hint: 'Adverb intensifier before adjective', opts: ['very','much','many','a lot'], ans: 0 },
+  // ── How Much / How Many ──
+  { type: 'Quantifiers', q: 'How ___ coffee do you drink a day?', hint: 'Uncountable noun — which question word?', opts: ['many','much','few','a lot'], ans: 1 },
+  { type: 'Quantifiers', q: 'How ___ friends have you got?', hint: 'Plural countable noun', opts: ['much','many','little','less'], ans: 1 },
+  { type: 'Quantifiers', q: 'How ___ money have you got?', hint: 'Uncountable noun', opts: ['many','few','much','some'], ans: 2 },
+  { type: 'Quantifiers', q: 'How ___ lessons do you have today?', hint: 'Plural countable noun', opts: ['much','little','many','few'], ans: 2 },
+  // ── Much / Many / A lot of ──
+  { type: 'Quantifiers', q: "I don't drink ___ coffee.", hint: 'Negative — uncountable noun', opts: ['many','much','a lot of','few'], ans: 1 },
+  { type: 'Quantifiers', q: 'She has got ___ friends. (positive, spoken)', hint: 'Spoken English positive — use a lot of, not many', opts: ['many','much','a lot of','few'], ans: 2 },
+  { type: 'Quantifiers', q: 'Are there ___ shops here?', hint: 'Question — plural countable noun', opts: ['much','a lot of','many','little'], ans: 2 },
+  { type: 'Quantifiers', q: "We don't have ___ time.", hint: 'Negative — uncountable noun', opts: ['many','few','a lot of','much'], ans: 3 },
+  // ── Uncountable Nouns ──
+  { type: 'Quantifiers', q: 'Which is an uncountable noun?', hint: 'Uncountable = cannot be counted individually', opts: ['books','friends','information','cars'], ans: 2 },
+  { type: 'Quantifiers', q: '"Information" is uncountable. Which is correct?', hint: 'Uncountable nouns have no plural form', opts: ['some informations','an information','some information','two informations'], ans: 2 },
 ];
 
 const QUIZ_SIZE = 10;
