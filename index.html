@@ -17,10 +17,10 @@
     <div class="header-left">
       <div class="subtitle-tag" data-en="A1 / A2 · English Course 2026" data-am="Ա1 / Ա2 · Անգլերենի դասընթաց 2026">A1 / A2 · English Course 2026</div>
       <h1><span data-en="English" data-am="Անգլերեն">English</span><br><em data-en="Study" data-am="Ուսումնական">Study</em><br><span data-en="Guide" data-am="Ուղեցույց">Guide</span></h1>
-      <p class="header-desc" data-en="A complete reference covering grammar, vocabulary, phrases, and practice from Lessons 1–28." data-am="Ամբողջական տեղեկատու, որն ընդգրկում է քերականություն, բառապաշար, արտահայտություններ և վարժություններ Դաս 1–28-ից։">A complete reference covering grammar, vocabulary, phrases, and practice from Lessons 1–28.</p>
+      <p class="header-desc" data-en="A complete reference covering grammar, vocabulary, phrases, and practice from Lessons 1–30." data-am="Ամբողջական տեղեկատու, որն ընդգրկում է քերականություն, բառապաշար, արտահայտություններ և վարժություններ Դաս 1–30-ից։">A complete reference covering grammar, vocabulary, phrases, and practice from Lessons 1–30.</p>
       <div class="header-meta">
         <div class="meta-item">
-          <span class="meta-num">28</span>
+          <span class="meta-num">30</span>
           <span class="meta-label" data-en="Lessons" data-am="Դաս">Lessons</span>
         </div>
         <div class="meta-item">
@@ -180,6 +180,35 @@
       </table>
     </div>
 
+    <div class="grammar-card">
+      <h3 data-icon="CA">Comparatives</h3>
+      <table class="mini">
+        <tr><th>Adjective type</th><th>Form</th><th>Example</th></tr>
+        <tr><td>Short (1 syl.)</td><td>+ <strong>er</strong> … than</td><td>tall → <strong>taller</strong> than</td></tr>
+        <tr><td>Ends in -e</td><td>+ <strong>r</strong> … than</td><td>nice → <strong>nicer</strong> than</td></tr>
+        <tr><td>CVC → double</td><td>double + <strong>er</strong></td><td>big → <strong>bigger</strong> than</td></tr>
+        <tr><td>Ends in -y</td><td>y → <strong>ier</strong></td><td>happy → <strong>happier</strong> than</td></tr>
+        <tr><td>Long (2+ syl.)</td><td><strong>more</strong> … than</td><td><strong>more</strong> beautiful than</td></tr>
+        <tr><td>Irregular</td><td>good → <strong>better</strong> · bad → <strong>worse</strong></td><td>She is <strong>better</strong> than me.</td></tr>
+      </table>
+      <p class="example">She is <strong>taller than</strong> her sister. · This phone is <strong>more expensive than</strong> mine.</p>
+      <p class="example" style="margin-top:6px;">as … as → She is <strong>as tall as</strong> her sister. · not as … as → He is <strong>not as fast as</strong> her.</p>
+    </div>
+
+    <div class="grammar-card">
+      <h3 data-icon="SU">Superlatives</h3>
+      <table class="mini">
+        <tr><th>Adjective type</th><th>Form</th><th>Example</th></tr>
+        <tr><td>Short (1 syl.)</td><td>the + <strong>est</strong></td><td>tall → the <strong>tallest</strong></td></tr>
+        <tr><td>Ends in -y</td><td>the + y→<strong>iest</strong></td><td>happy → the <strong>happiest</strong></td></tr>
+        <tr><td>Long (2+ syl.)</td><td>the <strong>most</strong> …</td><td>the <strong>most</strong> beautiful</td></tr>
+        <tr><td>Irregular</td><td>good → the <strong>best</strong> · bad → the <strong>worst</strong></td><td>He is the <strong>best</strong>.</td></tr>
+        <tr><td>far (distance)</td><td>the <strong>farthest</strong></td><td>the farthest place</td></tr>
+      </table>
+      <p class="example">She is the <strong>tallest</strong> girl in the class. · This is the <strong>most expensive</strong> shop in the city.</p>
+      <p class="example" style="margin-top:6px;">one of the + superlative + plural noun: She is <strong>one of the best</strong> students.</p>
+    </div>
+
   </div>
 </div>
 
@@ -280,6 +309,7 @@
     <button class="vtab" onclick="showVocab('prepositions',this)">Prepositions</button>
     <button class="vtab" onclick="showVocab('general',this)">General</button>
     <button class="vtab" onclick="showVocab('uncountable',this)">Uncountable</button>
+    <button class="vtab" onclick="showVocab('food',this)">Food &amp; Drink</button>
   </div>
 
   <div id="activities" class="vocab-section active">
@@ -305,6 +335,9 @@
   </div>
   <div id="uncountable" class="vocab-section">
     <div class="vocab-grid" id="unc-grid"></div>
+  </div>
+  <div id="food" class="vocab-section">
+    <div class="vocab-grid" id="food-grid"></div>
   </div>
 </div>
 
@@ -439,6 +472,12 @@
 
   <div class="lessons-intro">
     A chronological record of every live session — <strong>February through May 2026</strong>. Each card lists the date, topics covered, key examples, and homework links. Detailed grammar tables live in the <strong>Grammar</strong> and <strong>Tenses</strong> sections.
+  </div>
+
+  <div class="lesson-pagination">
+    <button class="pg-btn" id="pg-prev" onclick="lessonPage(-1)">← Prev</button>
+    <span class="pg-info" id="pg-info">Page 1</span>
+    <button class="pg-btn" id="pg-next" onclick="lessonPage(1)">Next →</button>
   </div>
 
   <div class="lesson-card live compact">
@@ -2131,6 +2170,184 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════════ -->
+  <div class="lesson-card live">
+    <div class="lesson-head">
+      <div class="lesson-num">Live Lesson <em>30</em></div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="lesson-tag live-tag">Live</span>
+        <span class="lesson-date">23 · 05 · 2026</span>
+      </div>
+    </div>
+
+    <div class="lesson-body">
+
+      <div class="topic-pill-row">
+        <span class="topic-pill">Comparative Adjectives</span>
+        <span class="topic-pill">Superlative Adjectives</span>
+        <span class="topic-pill">as … as / not as … as</span>
+        <span class="topic-pill">Food &amp; Drink Vocabulary</span>
+      </div>
+
+      <!-- ── Comparative Adjectives ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Comparative Adjectives
+          <span class="topic-arm">— Համեմատական ածականներ</span>
+        </div>
+        <div class="topic-formula">A + verb + comparative adjective + than + B</div>
+
+        <table class="mini" style="margin:16px 0;">
+          <tr><th>Adjective type</th><th>Rule</th><th>Example</th></tr>
+          <tr><td>Short (1 syl.)</td><td>+ <strong>er</strong> … than</td><td>tall → <strong>taller</strong> than</td></tr>
+          <tr><td>Ends in -e</td><td>+ <strong>r</strong> … than</td><td>nice → <strong>nicer</strong> than</td></tr>
+          <tr><td>CVC → double final</td><td>double + <strong>er</strong></td><td>big → <strong>bigger</strong> than</td></tr>
+          <tr><td>Ends in consonant + y</td><td>y → <strong>ier</strong></td><td>happy → <strong>happier</strong> than</td></tr>
+          <tr><td>Long (2+ syl.)</td><td><strong>more</strong> … than</td><td><strong>more</strong> beautiful than</td></tr>
+          <tr><td>Irregular</td><td>good → <strong>better</strong> · bad → <strong>worse</strong> · far → <strong>farther</strong></td><td>She is <strong>better</strong> than him.</td></tr>
+        </table>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+          <div>
+            <div class="conj-label pos-label">Short adjectives</div>
+            <p class="example" style="font-size:12px;">
+              My brother is <strong>younger</strong> than me.<br>
+              This road is <strong>longer</strong> than that road.<br>
+              Today is <strong>hotter</strong> than yesterday.<br>
+              This exercise is <strong>easier</strong> than the last one.
+            </p>
+          </div>
+          <div>
+            <div class="conj-label q-label">Long adjectives</div>
+            <p class="example" style="font-size:12px;">
+              This film is <strong>more interesting</strong> than that one.<br>
+              This dress is <strong>more expensive</strong> than the black one.<br>
+              English is <strong>more important</strong> than people think.
+            </p>
+          </div>
+        </div>
+
+        <div class="mini-block" style="margin-top:16px;">
+          <div class="mini-block-title">as … as / not as … as</div>
+          <p class="example">
+            She is <strong>as tall as</strong> her sister. <em style="color:var(--muted);">(equal)</em><br>
+            This test is <strong>not as difficult as</strong> the last one. <em style="color:var(--muted);">(less)</em><br>
+            My phone is <strong>as expensive as</strong> yours.
+          </p>
+        </div>
+
+        <div class="mini-block" style="margin-top:12px;">
+          <div class="mini-block-title">Intensifiers</div>
+          <div class="chips">
+            <span class="chip">much / far / a lot <span style="color:var(--muted);font-size:10px;">— stronger</span></span>
+            <span class="chip">a little / a bit / slightly <span style="color:var(--muted);font-size:10px;">— softer</span></span>
+          </div>
+          <p class="example" style="margin-top:10px;">
+            This test is <strong>much easier</strong> than the last one. &nbsp;·&nbsp;
+            Today is <strong>a bit colder</strong> than yesterday.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Superlative Adjectives ── -->
+      <div class="topic-block">
+        <div class="topic-title">
+          Superlative Adjectives
+          <span class="topic-arm">— Գերադրական ածականներ</span>
+        </div>
+        <div class="topic-formula">A + verb + the + superlative adjective + in / of + group</div>
+
+        <table class="mini" style="margin:16px 0;">
+          <tr><th>Adjective type</th><th>Rule</th><th>Example</th></tr>
+          <tr><td>Short (1 syl.)</td><td>the + <strong>est</strong></td><td>tall → the <strong>tallest</strong></td></tr>
+          <tr><td>Ends in consonant + y</td><td>the + y→<strong>iest</strong></td><td>happy → the <strong>happiest</strong></td></tr>
+          <tr><td>Long (2+ syl.)</td><td>the <strong>most</strong> …</td><td>the <strong>most</strong> beautiful</td></tr>
+          <tr><td>Irregular</td><td>good → the <strong>best</strong> · bad → the <strong>worst</strong></td><td>He is the <strong>best</strong> student.</td></tr>
+        </table>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+          <div>
+            <div class="conj-label pos-label">in — places &amp; groups</div>
+            <p class="example" style="font-size:12px;">
+              She is the <strong>tallest</strong> girl <strong>in</strong> the class.<br>
+              This is the <strong>best</strong> restaurant <strong>in</strong> the city.<br>
+              He is the <strong>youngest</strong> player <strong>in</strong> the team.
+            </p>
+          </div>
+          <div>
+            <div class="conj-label q-label">of — time periods &amp; experiences</div>
+            <p class="example" style="font-size:12px;">
+              This is the <strong>happiest</strong> day <strong>of</strong> my life.<br>
+              Monday is the <strong>busiest</strong> day <strong>of</strong> the week.<br>
+              She is the <strong>best</strong> <strong>of</strong> all.
+            </p>
+          </div>
+        </div>
+
+        <div class="mini-block" style="margin-top:16px;">
+          <div class="mini-block-title">one of the + superlative + plural noun</div>
+          <p class="example">
+            She is <strong>one of the best</strong> students in the class.<br>
+            This is <strong>one of the most beautiful</strong> cities in Europe.<br>
+            He is <strong>one of the most talented</strong> singers in Armenia.
+          </p>
+        </div>
+
+        <div class="mini-block" style="margin-top:12px;">
+          <div class="mini-block-title">far — two meanings</div>
+          <div class="chips">
+            <span class="chip">farther / the farthest <span style="color:var(--muted);font-size:10px;">— physical distance</span></span>
+            <span class="chip">further / the furthest <span style="color:var(--muted);font-size:10px;">— time / abstract distance</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Homework ── -->
+      <div class="topic-block">
+        <div class="topic-title">Homework</div>
+        <ul class="hw-list">
+          <li><span class="hw-topic">Grammar PDF</span> <a href="https://autoenglish.org/basic/gr.comp2.pdf" target="_blank">autoenglish.org — Comparatives 2</a></li>
+          <li><span class="hw-topic">Exercises PDF</span> <a href="https://timetolearnesl.wordpress.com/wp-content/uploads/2020/03/comparative_superlative1-.pdf" target="_blank">Comparative &amp; Superlative — theory &amp; exercises</a></li>
+          <li><span class="hw-topic">Listening</span> <a href="https://test-english.com/listening/a1/weekend-plans-listening-test/" target="_blank">test-english.com — Weekend Plans (A1)</a></li>
+          <li><span class="hw-topic">Reading</span> <a href="https://test-english.com/reading/a1/going-to-the-mall-reading-test/" target="_blank">test-english.com — Going to the Mall (A1)</a></li>
+        </ul>
+      </div>
+
+      <!-- ── Class Notes ── -->
+      <div class="topic-block">
+        <div class="topic-title">Class Notes &amp; Vocabulary</div>
+        <div class="mini-block">
+          <div class="mini-block-title">Corrections from class</div>
+          <p class="example">
+            <em style="color:var(--muted);">In class practice — correcting common errors:</em><br>
+            "I think the reason is that there wasn't much work in the past …"<br>
+            ✓ <strong>availability</strong> of the Internet · <strong>their</strong> (not "they their") · <strong>take it seriously</strong> · <strong>mindset / mentality</strong>
+          </p>
+        </div>
+        <div class="mini-block" style="margin-top:12px;">
+          <div class="mini-block-title">New Vocabulary — Food &amp; Drink</div>
+          <div class="chips" style="gap:4px;">
+            <span class="chip">beef <span style="color:var(--muted);font-size:10px;">— tavarei mis</span></span>
+            <span class="chip">lamb <span style="color:var(--muted);font-size:10px;">— okhaakhari mis</span></span>
+            <span class="chip">pork <span style="color:var(--muted);font-size:10px;">— khozi mis</span></span>
+            <span class="chip">veal <span style="color:var(--muted);font-size:10px;">— khorthi mis</span></span>
+            <span class="chip">salmon <span style="color:var(--muted);font-size:10px;">— sagmon</span></span>
+            <span class="chip">prawns <span style="color:var(--muted);font-size:10px;">— tsovakhets'getin</span></span>
+            <span class="chip">aubergine <span style="color:var(--muted);font-size:10px;">— smbuk</span></span>
+            <span class="chip">broccoli <span style="color:var(--muted);font-size:10px;">— brokoli</span></span>
+            <span class="chip">spinach <span style="color:var(--muted);font-size:10px;">— spanakh</span></span>
+            <span class="chip">cauliflower <span style="color:var(--muted);font-size:10px;">— tsaghkakaghamb</span></span>
+            <span class="chip">sparkling <span style="color:var(--muted);font-size:10px;">— antonym: still</span></span>
+            <span class="chip">vinegar <span style="color:var(--muted);font-size:10px;">— katsvakh</span></span>
+            <span class="chip">sausage <span style="color:var(--muted);font-size:10px;">— yershik</span></span>
+            <span class="chip">ham <span style="color:var(--muted);font-size:10px;">— khozapukhd</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <!-- ═══ QUIZ ═══ -->
@@ -2189,7 +2406,7 @@
 </main>
 
 <footer>
-  English A1/A2 · Lessons 1–27 · February–May 2026
+  English A1/A2 · Lessons 1–30 · February–May 2026
 </footer>
 
 <script src="script.js"></script>

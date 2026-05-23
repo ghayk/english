@@ -457,6 +457,58 @@ const uncountableNouns = [
   ['silver','արծաթ','Materials'],
 ];
 
+const food = [
+  ['sparkling water','գazavorded ջuр','I prefer sparkling water, please.'],
+  ['still water','հhankist ջuр','Do you want sparkling or still water?'],
+  ['pepper','պghpeghi','Add some pepper to the soup.'],
+  ['vegetarian','busaketer','She is vegetarian — she doesn\'t eat meat.'],
+  ['fruit','mirg','I eat fruit every morning.'],
+  ['carrot','gazaar','Carrots are good for your eyes.'],
+  ['beans','lobi','I cook beans on Saturdays.'],
+  ['peas','olorok','She added peas to the soup.'],
+  ['onion','sokh','I need one onion for this recipe.'],
+  ['garlic','skhtor','Garlic is good for health.'],
+  ['mushroom','sunk','I like mushrooms on pizza.'],
+  ['pineapple','arkaykakhndzor','Pineapple is a tropical fruit.'],
+  ['strawberry','elaak','I love fresh strawberries.'],
+  ['pear','tands','She ate a ripe pear.'],
+  ['grapes','khaghogh','These grapes are very sweet.'],
+  ['beer','garejur','He ordered a cold beer.'],
+  ['wine','gini','She drinks a glass of wine at dinner.'],
+  ['mineral water','hankanayin jur','Can I have a mineral water, please?'],
+  ['peach','deghds','The peaches here are delicious.'],
+  ['apricot','tsiran','Armenia is famous for apricots.'],
+  ['coconut','kokos','I love coconut in desserts.'],
+  ['melon','sekh','This melon is very sweet.'],
+  ['watermelon','dzmeruk','We ate watermelon in the garden.'],
+  ['aubergine / eggplant','smbuk','She made a dish with aubergine.'],
+  ['courgette','maner dmdmik','Courgette is a summer vegetable.'],
+  ['cabbage','kaghaamb','I made a cabbage salad.'],
+  ['cauliflower','tsaghkakaghamb','Cauliflower can be roasted in the oven.'],
+  ['broccoli','brokoli','Broccoli is very good for you.'],
+  ['spinach','spanakh','Add some spinach to the salad.'],
+  ['lettuce','khazar','I need lettuce for the salad.'],
+  ['salad dressing','aghtsani hamemunek','What salad dressing do you prefer?'],
+  ['vinegar','katsvakh','Add a little vinegar to the dressing.'],
+  ['seafood','tsovamtherk','He loves seafood — especially prawns.'],
+  ['beef','tavarei mis','This burger is made with beef.'],
+  ['veal','khorthi mis','Veal is young cow meat.'],
+  ['lamb','okhaakhari mis','She cooked lamb for the holiday.'],
+  ['pork','khozi mis','I don\'t eat pork.'],
+  ['salmon','sagmon','Salmon is rich in healthy fats.'],
+  ['prawns','tsovakhets\'getin','I ordered grilled prawns.'],
+  ['radish','boghk','She sliced a radish for the salad.'],
+  ['sausage','yershik','He had eggs and sausage for breakfast.'],
+  ['ham','khozapukhd','I\'d like a ham sandwich, please.'],
+  ['dairy products','katanamtherk','She buys dairy products every week.'],
+  ['beverage / drink','ympelig','What beverage would you like?'],
+  ['sour','ttoo','This lemon is very sour.'],
+  ['salty','aghi','The soup is too salty.'],
+  ['instant coffee','luzvogh surich','He drinks instant coffee in the morning.'],
+  ['herbal tea','khotots\'ayni tey','I like herbal tea before bed.'],
+  ['spices','hamemunekhner','Armenian food has many spices.'],
+];
+
 const prepositions = [
   ['above','վերևում','The light is above the table.'],
   ['below','ներքևում','Please read the text below.'],
@@ -750,6 +802,7 @@ renderVocabGrid('pers-grid', personality);
 renderVocabGrid('prep-grid', prepositions);
 renderVocabGrid('gen-grid', general);
 renderVocabGrid('unc-grid', uncountableNouns);
+renderVocabGrid('food-grid', food);
 renderIrr();
 renderPlaces();
 
@@ -1059,6 +1112,32 @@ function resetQuizHistory() {
 }
 
 loadQ();
+
+// ─── LESSON PAGINATION ────────────────────────────
+
+const LESSONS_PER_PAGE = 5;
+let currentLessonPage = 0;
+
+function renderLessonPage() {
+  const cards = Array.from(document.querySelectorAll('#lessons .lesson-card'));
+  const total = Math.ceil(cards.length / LESSONS_PER_PAGE);
+  cards.forEach((c, i) => {
+    c.classList.toggle('pg-hidden', Math.floor(i / LESSONS_PER_PAGE) !== currentLessonPage);
+  });
+  document.getElementById('pg-info').textContent =
+    'Lesson page ' + (currentLessonPage + 1) + ' of ' + total;
+  document.getElementById('pg-prev').disabled = currentLessonPage === 0;
+  document.getElementById('pg-next').disabled = currentLessonPage >= total - 1;
+}
+
+function lessonPage(dir) {
+  const cards = Array.from(document.querySelectorAll('#lessons .lesson-card'));
+  const total = Math.ceil(cards.length / LESSONS_PER_PAGE);
+  currentLessonPage = Math.max(0, Math.min(total - 1, currentLessonPage + dir));
+  renderLessonPage();
+}
+
+renderLessonPage();
 
 // ─── RESTORE PREFERENCES ───────────────────────────
 

@@ -1072,6 +1072,34 @@ footer strong { color: var(--cyan); }
 }
 .lessons-intro strong { color: var(--text); }
 
+.lesson-card.pg-hidden { display: none; }
+
+.lesson-pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding: 14px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cyan);
+}
+.pg-btn {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 7px 16px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  letter-spacing: .04em;
+  transition: background .15s;
+}
+.pg-btn:hover:not(:disabled) { background: var(--cyan); color: #000; }
+.pg-btn:disabled { opacity: 0.3; cursor: default; }
+.pg-info { font-family: var(--mono); font-size: 11px; color: var(--muted); flex: 1; text-align: center; }
+
 .lesson-card {
   background: var(--surface);
   border: 1px solid var(--border);
